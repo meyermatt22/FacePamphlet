@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import AllProfiles from "./components/AllProfPage";
+import AllProfiles from "./components/ProfPageAll";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import ProfPageCurr from "./components/ProfPageCurr";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/profiles">
             <AllProfiles />
+          </Route>
+          <Route exact path="/profiles/current">
+            <ProfPageCurr />
           </Route>
         </Switch>
       )}

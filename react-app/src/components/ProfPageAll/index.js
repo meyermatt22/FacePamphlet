@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import { getAllProfilesThunk } from "../../store/profiles";
-import './AllProfPage.css'
+import './ProfPageAll.css'
 
 
 function AllProfiles() {
     const dispatch = useDispatch();
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
         dispatch(getAllProfilesThunk())

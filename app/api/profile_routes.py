@@ -12,3 +12,9 @@ def profiles():
     print('==========> all prof route')
     profiles = Profile.query.all()
     return { 'profiles': [prof.to_dict() for prof in profiles]}
+
+@profile_routes.route('/current')
+def user_profile():
+    """ Query for a profile owned by the current user """
+    profile = Profile.query.filter(current_user.id == Profile.user_id).first()
+    return profile.to_dict()
