@@ -18,6 +18,7 @@ class Profile(db.Model):
     prof_pic = db.Column(db.String)
     background_pic = db.Column(db.String)
 
+    # user = db.relationship('User', back_populates='profiles')
 
     def to_dict(self):
         return {
