@@ -15,6 +15,7 @@ def seed_profiles():
         user_id = 2,
         bio = "The most important thing is to enjoy your life ; to be happy ; its all that matters.",
         date_of_birth = datetime(2012,3,3,10,10,10),
+        # datetime.now()
         first_name = 'Richard', last_name = 'LaFleur', middle_name = 'Ricky',
         prof_pic = 'https://i.imgur.com/fgh67qA.jpg',
         background_pic = 'https://i.imgur.com/fN61CyY.jpg'

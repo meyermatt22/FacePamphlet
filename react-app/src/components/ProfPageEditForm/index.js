@@ -62,7 +62,7 @@ function ProfPageEditForm() {
         formData.append('prof_pic', profPic)
         formData.append('background_pic', backgroundPic)
 
-        const newProf = await dispatch(editProfileThunk(formData))
+        const newProf = await dispatch(editProfileThunk(formData, sessionUser.id))
 
         setBio(userProf.bio)
         setDateOfBirth(userProf.dateOfBirth)

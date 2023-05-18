@@ -64,12 +64,12 @@ export const createProfThunk = (profile) => async (dispatch) => {
     }
 }
 
-export const editProfileThunk = (profile) => async (dispatch) => {
+export const editProfileThunk = (profile, id) => async (dispatch) => {
 
-    console.log('editprofthunk profile info ===>', profile['has'])
-    const profileId = profile.get('id')
-    console.log('profileId inside editprofileThunk', profileId)
-    const res = await fetch(`/api/profiles/edit/${profile.id}`, {
+    // console.log('editprofthunk profile info ===>', profile['has'])
+    // const profileId = profile.get('userId')
+    // console.log('profileId inside editprofileThunk', profileId)
+    const res = await fetch(`/api/profiles/edit/${id}`, {
         method: 'PUT',
         body: profile
     })
