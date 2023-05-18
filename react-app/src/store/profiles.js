@@ -1,6 +1,7 @@
 const GET_ALL_PROFILES = 'profiles/GET_ALL_PROFILES';
 const GET_CURR_USERS_PROFILE = 'profiles/GET_CURR_USERS_PROFILE';
 const CREATE_PROFILE = 'profiles/CREATE_PROFILE';
+const EDIT_PROFILE = 'profiles/EDIT_PROFILE;'
 
 const getAllProfilesAction = (profiles) => ({
     type: GET_ALL_PROFILES,
@@ -14,6 +15,11 @@ const getCurrProfAction = (profile) => ({
 
 const createProfAction = (profile) => ({
     type: CREATE_PROFILE,
+    profile
+})
+
+const editProfileAction = (profile) => ({
+    type: EDIT_PROFILE,
     profile
 })
 
@@ -58,6 +64,25 @@ export const createProfThunk = (profile) => async (dispatch) => {
     }
 }
 
+export const editProfileThunk = (profile) => async (dispatch) => {
+
+    console.log('editprofthunk profile info ===>', profile['has'])
+    const profileId = profile.get('id')
+    console.log('profileId inside editprofileThunk', profileId)
+    const res = await fetch(`/api/profiles/edit/${profile.id}`, {
+        method: 'PUT',
+        body: profile
+    })
+
+    if(res.ok) {
+        const prof = await res.json()
+        dispatch(editProfileAction(prof))
+        return prof
+    } else {
+        return "==========> editProfileThunk res is not ok <=========="
+    }
+}
+
 const initState = {};
 function profileReducer(state = initState, action) {
     let newState;
@@ -66,18 +91,22 @@ function profileReducer(state = initState, action) {
             newState = {...state};
             action.profiles.forEach((prof) => {
                 newState[prof.id] = prof
-            })
-            return newState
+            });
+            return newState;
         case GET_CURR_USERS_PROFILE:
-            newState = {...state}
-            newState[action.profile.id] = action.profile
+            newState = {...state};
+            newState[action.profile.id] = action.profile;
             return newState;
         case CREATE_PROFILE:
-            newState = {...state}
-            newState[action.profile.id] = action.profile
-            return newState
+            newState = {...state};
+            newState[action.profile.id] = action.profile;
+            return newState;
+        case EDIT_PROFILE:
+            newState = {...state};
+            newState[action.profile.id] = action.profile;
+            return newState;
         default:
-            return state
+            return state;
     };
 };
 

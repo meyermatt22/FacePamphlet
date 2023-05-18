@@ -1,21 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createProfThunk } from "../../store/profiles";
+import { useHistory, useParams } from "react-router-dom";
+import { editProfileThunk, getCurrProfThunk } from "../../store/profiles";
 
-function ProfPageForm() {
+function ProfPageEditForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    const [bio, setBio] = useState("")
-    const [dateOfBirth, setDateOfBirth] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [middleName, setMiddleName] = useState("")
-    const [profPic, setProfPic] = useState("")
-    const [backgroundPic, setBackgroundPic] = useState("")
+
+    useEffect(() => {
+        dispatch(getCurrProfThunk())
+    }, [dispatch])
+
+    const profiles = useSelector(state => Object.values(state.profiles))
+    console.log('current users profiles', profiles)
+    let userProf = ''
+
+    for(let i = 0; i < profiles.length; i++) {
+        if (profiles && profiles[i].userId === parseInt(sessionUser.id)) {
+            userProf = profiles[i]
+        }
+    }
+
+    console.log('current users profile', userProf)
+
+    const [bio, setBio] = useState('')
+    const [dateOfBirth, setDateOfBirth] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [middleName, setMiddleName] = useState('')
+    const [profPic, setProfPic] = useState('')
+    const [backgroundPic, setBackgroundPic] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
+
+    useEffect(() => {
+        if (userProf) {
+          setBio(userProf.bio)
+          setFirstName(userProf.firstName)
+          setLastName(userProf.lastName)
+          setMiddleName(userProf.middleName)
+          setProfPic(userProf.profPic)
+          setBackgroundPic(userProf.backgroundPic)
+          setDateOfBirth(userProf.dateOfBirth)
+        }
+      }, [userProf])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,6 +53,7 @@ function ProfPageForm() {
         if(validationErrors.length) return alert('Your Profile has errors, cannot submit!')
 
         const formData = new FormData()
+        // formData.append()
         formData.append('bio', bio)
         formData.append('date_of_birth', dateOfBirth)
         formData.append('first_name', firstName)
@@ -32,15 +62,15 @@ function ProfPageForm() {
         formData.append('prof_pic', profPic)
         formData.append('background_pic', backgroundPic)
 
-        const newProf = await dispatch(createProfThunk(formData))
+        const newProf = await dispatch(editProfileThunk(formData))
 
-        setBio('')
-        setDateOfBirth('')
-        setFirstName('')
-        setLastName('')
-        setMiddleName('')
-        setProfPic('')
-        setBackgroundPic('')
+        setBio(userProf.bio)
+        setDateOfBirth(userProf.dateOfBirth)
+        setFirstName(userProf.firstName)
+        setLastName(userProf.lastName)
+        setMiddleName(userProf.middleName)
+        setProfPic(userProf.profPic)
+        setBackgroundPic(userProf.backgroundPic)
         setValidationErrors([])
         setHasSubmitted(false)
 
@@ -56,23 +86,26 @@ function ProfPageForm() {
         setValidationErrors(errors)
     }, [ firstName, lastName ])
 
+    if(!userProf) {
+        return 'no profile found for user'
+    }
     return (
-        <div id="newProfileForm">
-            <h1>Create Your Profile!</h1>
+        <div id="editProfileForm">
+            <h1>Edit Your Profile!</h1>
             {hasSubmitted && validationErrors.length > 0 && (
                 <div>
                     <h2>The following errors were found:</h2>
                     <ul>
                         {validationErrors.map(error => (
                             <li key={error}>{error}</li>
-                        ))}
+                            ))}
                     </ul>
                 </div>
             )}
             <form
                 onSubmit={(e) => handleSubmit(e)}
                 encType="multipart/form-data"
-                id="newProfForm"
+                id="editProfForm"
             >
                 <div className="form-input-box first-name-input">
                     <div><label for="name">First Name:</label></div>
@@ -149,12 +182,11 @@ function ProfPageForm() {
                 </div>
 
                 <div className="four">
-                    <button className="confirm-submit" type="submit">Create Profile</button>
+                    <button className="confirm-submit" type="submit">Update Profile</button>
                 </div>
             </form>
         </div>
     )
-
 }
 
-export default ProfPageForm;
+export default ProfPageEditForm;

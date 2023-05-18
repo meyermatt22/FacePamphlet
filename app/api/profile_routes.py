@@ -1,11 +1,8 @@
 from flask import Blueprint, request
 from app.models import Profile, db
 from flask_login import current_user, login_required
-# from forms.profile_form import ProfileForm
 from app.forms.profile_form import ProfileForm
-# from app.forms.profile_edit_form import ProfileEditForm
-from .profile_routes import ProfileEditForm
-# from ..forms.profile_edit_form import ProfileEditForm
+
 
 
 profile_routes = Blueprint('profiles', __name__)
@@ -60,7 +57,26 @@ def add_profile():
 def edit_profile(id):
     """ Handles editing a profile's details if the song owner is the logged in user """
     prof = Profile.query.get(id)
+    
     if not prof:
         return {"error": "Profile not found."}
 
-    form = ProfileEditForm()
+    form = ProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        print('================> background pic deets:', form.data['background_pic'])
+
+        prof.first_name = form.data['first_name']
+        prof.last_name = form.data['last_name']
+        prof.middle_name = form.data['middle_name']
+        prof.prof_pic = form.data['prof_pic']
+        prof.background_pic = form.data['background_pic']
+        prof.date_of_birth = form.data['date_of_birth']
+        prof.bio = form.data['bio']
+
+        db.session.commit()
+        return prof.to_dict()
+
+    return { 'errors': form.errors}

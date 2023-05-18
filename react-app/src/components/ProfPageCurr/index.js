@@ -24,7 +24,7 @@ function ProfPageCurr() {
     }
 
     // const userProf = useSelector(state => state.profile)
-    console.log(userProf)
+    // console.log(userProf)
 
     if(!userProf) {
         return 'no profile found for user'
