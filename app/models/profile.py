@@ -15,8 +15,8 @@ class Profile(db.Model):
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     middle_name = db.Column(db.String(30))
-    prof_pic = db.Column(db.String)
-    background_pic = db.Column(db.String)
+    prof_pic = db.Column(db.Text)
+    background_pic = db.Column(db.Text)
 
     # user = db.relationship('User', back_populates='profiles')
 

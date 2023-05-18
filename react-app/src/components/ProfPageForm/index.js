@@ -120,20 +120,20 @@ function ProfPageForm() {
                 <div className="form-input-box">
                     <div><label for="profPic">Profile Image:</label></div>
                     <input
-                        type="file"
+                        type="text"
                         name="profPic"
                         accept="image/*"
-                        onChange={(e) => setProfPic(e.target.files[0])}
+                        onChange={(e) => setProfPic(e.target.value)}
                         >
                     </input>
                 </div>
                 <div className="form-input-box">
                     <div><label for="backgroundPic">Background Image:</label></div>
                     <input
-                        type="file"
+                        type="text"
                         name="backgroundPic"
                         accept="image/*"
-                        onChange={(e) => setBackgroundPic(e.target.files[0])}
+                        onChange={(e) => setBackgroundPic(e.target.value)}
                         >
                     </input>
                 </div>
