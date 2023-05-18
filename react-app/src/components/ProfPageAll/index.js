@@ -36,7 +36,7 @@ function AllProfiles() {
                     return prof
                 }
             }).map(({ firstName, lastName, middleName, profPic, dateOfBirth, backgroundPic, id }) => (
-                <NavLink to={`/profiles/current`} key={id} className="profDiv">
+                <NavLink to={`/profiles/${id}`} key={id} className="profDiv">
                     <div>
                         {firstName} {middleName} {lastName}. Born on {dateOfBirth}
                     </div>
