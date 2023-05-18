@@ -4,6 +4,7 @@ import { getCurrProfThunk } from "../../store/profiles";
 import { useHistory, useParams } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import ProfileDeleteModal from "../ProfPageDeleteModal";
+import './ProfPageCurr.css'
 
 function ProfPageCurr() {
     const dispatch = useDispatch();
@@ -36,18 +37,25 @@ function ProfPageCurr() {
     }
 
     return (
-        <div>
+        <div id="profPageCurr">
+            <div id="backimgCont">
+                <img id="backimg" src={userProf?.backgroundPic}></img>
+            </div>
+            <div>
+                <img id="profimg" src={userProf?.profPic}></img>
+            </div>
+            <div id="filler">
+
+            </div>
+            <h1>{userProf?.firstName}'s prof page</h1>
+            {userProf?.firstName} {userProf?.middleName} {userProf?.lastName}
+            <div>{userProf?.bio}</div>
             {sessionUser && (
                 <button className="profile-edit-btn" onClick={() => history.push(`/profiles/edit/${sessionUser.id}`)}>Edit Profile</button>
             )}
             {sessionUser && (
                 <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={userProf.id}/>}/>
             )}
-            <h1>current users prof page</h1>
-            {userProf?.firstName} {userProf?.middleName} {userProf?.lastName}
-            <div>{userProf?.bio}</div>
-            <img src={userProf?.profPic}></img>
-            <img src={userProf?.backgroundPic}></img>
         </div>
     )
 }
