@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import ProfPageCurr from "./components/ProfPageCurr";
 import ProfPageForm from "./components/ProfPageForm";
 import ProfPageEditForm from "./components/ProfPageEditForm";
+import ProfPageSingle from "./components/ProfPageSingle";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/profiles/current">
             <ProfPageCurr />
+          </Route>
+          <Route exact path="/profiles/:id">
+            <ProfPageSingle />
           </Route>
           <Route exact path="/profiles/new">
             <ProfPageForm />

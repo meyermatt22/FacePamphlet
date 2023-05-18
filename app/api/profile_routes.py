@@ -14,6 +14,12 @@ def profiles():
     profiles = Profile.query.all()
     return { 'profiles': [prof.to_dict() for prof in profiles]}
 
+@profile_routes.route('/<int:id>')
+def profile(id):
+    """ Query for a profile by id and returns that song in a dictionary """
+    profile = Profile.query.get(id)
+    return profile.to_dict()
+
 @profile_routes.route('/current')
 @login_required
 def user_profile():

@@ -1,4 +1,5 @@
 const GET_ALL_PROFILES = 'profiles/GET_ALL_PROFILES';
+const GET_PROFILE = 'profiles/GET_PROFILE';
 const GET_CURR_USERS_PROFILE = 'profiles/GET_CURR_USERS_PROFILE';
 const CREATE_PROFILE = 'profiles/CREATE_PROFILE';
 const EDIT_PROFILE = 'profiles/EDIT_PROFILE';
@@ -7,6 +8,11 @@ const DELETE_PROFILE = 'profiles/DELETE_PROFILE';
 const getAllProfilesAction = (profiles) => ({
     type: GET_ALL_PROFILES,
     profiles
+});
+
+const getOneProfAction = (profile) => ({
+    type: GET_PROFILE,
+    profile,
 });
 
 const getCurrProfAction = (profile) => ({
@@ -41,6 +47,18 @@ export const getAllProfilesThunk = () => async (dispatch) => {
         return "==========> getAllProfilesThunk res is not ok <=========="
     }
 };
+
+export const getOneProfileThunk = (profileId) => async (dispatch) => {
+    const res = await fetch(`/api/profiles/${profileId}`);
+
+    if (res.ok) {
+        const profile = await res.json();
+        dispatch(getOneProfAction(profile));
+        return profile;
+    } else {
+        return "==========> getOneProfileThunk res is not ok <=========="
+    }
+}
 
 export const getCurrProfThunk = () => async (dispatch) => {
     const res = await fetch('/api/profiles/current')
@@ -108,6 +126,10 @@ function profileReducer(state = initState, action) {
             action.profiles.forEach((prof) => {
                 newState[prof.id] = prof
             });
+            return newState;
+        case GET_PROFILE:
+            newState = {...state};
+            newState[action.profile.id] = action.profile;
             return newState;
         case GET_CURR_USERS_PROFILE:
             newState = {...state};
