@@ -2,10 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import { getAllProfilesThunk } from "../../store/profiles";
 import './ProfPageAll.css'
+import { useHistory } from "react-router-dom";
 
 
 function AllProfiles() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [query, setQuery] = useState('');
 
     useEffect(() => {
@@ -14,11 +16,9 @@ function AllProfiles() {
 
     const profiles = useSelector(state => Object.values(state.profiles))
 
-    // if(profiles.length === 0) return 'no profiles'
-
-    // console.log("profiles", profiles)
     return (
         <div>
+            <button className="profile-curr-btn" onClick={() => history.push(`/profiles/current`)}>My Profile</button>
             <h1>all profiles page</h1>
             <input id="searchBar" placeholder="Find People (firstname & lastname)" onChange={event => setQuery(event.target.value)} />
             {profiles?.filter(prof => {
