@@ -3,6 +3,9 @@ from app.models import Profile, db
 from flask_login import current_user, login_required
 # from forms.profile_form import ProfileForm
 from app.forms.profile_form import ProfileForm
+# from app.forms.profile_edit_form import ProfileEditForm
+from .profile_routes import ProfileEditForm
+# from ..forms.profile_edit_form import ProfileEditForm
 
 
 profile_routes = Blueprint('profiles', __name__)
@@ -51,3 +54,13 @@ def add_profile():
         return profile.to_dict()
 
     return { 'errors': form.errors}
+
+@profile_routes.route('/edit/<int:id>', methods=['PUT'])
+@login_required
+def edit_profile(id):
+    """ Handles editing a profile's details if the song owner is the logged in user """
+    prof = Profile.query.get(id)
+    if not prof:
+        return {"error": "Profile not found."}
+
+    form = ProfileEditForm()
