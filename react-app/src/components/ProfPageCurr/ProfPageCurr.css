@@ -1,0 +1,27 @@
+#profPageCurr {
+    display: grid;
+}
+
+#backimg {
+    width: 100%;
+    height: 100%;
+    border: 20px solid cyan;
+}
+
+#backimgCont {
+    height: 500px;
+    /* position: absolute; */
+}
+
+#profimg {
+    position: absolute;
+    top: 350px;
+    left: 70px;
+    border-radius: 50px;
+    border: black solid 5px;
+    box-shadow: 12px 12px 2px 1px cyan;
+}
+
+#filler {
+    height: 100px;
+}
