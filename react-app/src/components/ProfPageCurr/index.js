@@ -33,8 +33,10 @@ function ProfPageCurr() {
     return (
         <div>
             <h1>current users prof page</h1>
-            {userProf?.firstName}
+            {userProf?.firstName} {userProf?.middleName} {userProf?.lastName}
+            <div>{userProf?.bio}</div>
             <img src={userProf?.profPic}></img>
+            <img src={userProf?.backgroundPic}></img>
         </div>
     )
 }
