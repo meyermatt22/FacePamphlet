@@ -57,7 +57,7 @@ def add_profile():
 def edit_profile(id):
     """ Handles editing a profile's details if the song owner is the logged in user """
     prof = Profile.query.get(id)
-    
+
     if not prof:
         return {"error": "Profile not found."}
 
@@ -80,3 +80,15 @@ def edit_profile(id):
         return prof.to_dict()
 
     return { 'errors': form.errors}
+
+@profile_routes.route('/delete/<int:id>', methods=["DELETE"])
+@login_required
+def delete_profile(id):
+    """ Handles deleting a profile by id, if owned by current user """
+    profile = Profile.query.get(id)
+    if profile.user_id == current_user.id:
+        db.session.delete(profile)
+        db.session.commit()
+        return "Delete Successful"
+    else:
+        return 'Must be profile owner to delete profile'

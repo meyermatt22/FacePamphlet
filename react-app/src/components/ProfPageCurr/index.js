@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import { getCurrProfThunk } from "../../store/profiles";
-import { useParams } from "react-router-dom";
-
+import { useHistory, useParams } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import ProfileDeleteModal from "../ProfPageDeleteModal";
 
 function ProfPageCurr() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getCurrProfThunk())
@@ -25,6 +27,9 @@ function ProfPageCurr() {
 
     // const userProf = useSelector(state => state.profile)
     // console.log(userProf)
+    if(!userProf && sessionUser) {
+        return <button className="profile-new-btn" onClick={() => history.push(`/profiles/new`)}>Make Your Profile</button>
+    }
 
     if(!userProf) {
         return 'no profile found for user'
@@ -32,6 +37,12 @@ function ProfPageCurr() {
 
     return (
         <div>
+            {sessionUser && (
+                <button className="profile-edit-btn" onClick={() => history.push(`/profiles/edit/${sessionUser.id}`)}>Edit Profile</button>
+            )}
+            {sessionUser && (
+                <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={userProf.id}/>}/>
+            )}
             <h1>current users prof page</h1>
             {userProf?.firstName} {userProf?.middleName} {userProf?.lastName}
             <div>{userProf?.bio}</div>
