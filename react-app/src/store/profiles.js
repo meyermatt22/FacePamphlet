@@ -1,5 +1,6 @@
-const GET_ALL_PROFILES = 'profiles/GET_ALL_PROFILES'
-const GET_CURR_USERS_PROFILE = 'profiles/GET_CURR_USERS_PROFILE'
+const GET_ALL_PROFILES = 'profiles/GET_ALL_PROFILES';
+const GET_CURR_USERS_PROFILE = 'profiles/GET_CURR_USERS_PROFILE';
+const CREATE_PROFILE = 'profiles/CREATE_PROFILE';
 
 const getAllProfilesAction = (profiles) => ({
     type: GET_ALL_PROFILES,
@@ -8,6 +9,11 @@ const getAllProfilesAction = (profiles) => ({
 
 const getCurrProfAction = (profile) => ({
     type: GET_CURR_USERS_PROFILE,
+    profile
+});
+
+const createProfAction = (profile) => ({
+    type: CREATE_PROFILE,
     profile
 })
 
@@ -37,6 +43,21 @@ export const getCurrProfThunk = () => async (dispatch) => {
     }
 }
 
+export const createProfThunk = (profile) => async (dispatch) => {
+    const res = await fetch('/api/profiles/new', {
+        method: "POST",
+        body: profile
+    });
+
+    if(res.ok) {
+        const profile = await res.json();
+        dispatch(createProfAction(profile));
+        return profile
+    } else {
+        return "==========> createProfileThunk res is not ok <=========="
+    }
+}
+
 const initState = {};
 function profileReducer(state = initState, action) {
     let newState;
@@ -49,10 +70,12 @@ function profileReducer(state = initState, action) {
             return newState
         case GET_CURR_USERS_PROFILE:
             newState = {...state}
-            console.log('========.> curr user reducer', action.profile.id)
             newState[action.profile.id] = action.profile
-            // console.log('curr user reducer2', newState)
             return newState;
+        case CREATE_PROFILE:
+            newState = {...state}
+            newState[action.profile.id] = action.profile
+            return newState
         default:
             return state
     };

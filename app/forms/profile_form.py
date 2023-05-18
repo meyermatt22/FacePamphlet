@@ -7,9 +7,9 @@ from app.models import Profile
 
 class ProfileForm(FlaskForm):
     bio = StringField("Bio", validators=[DataRequired()])
-    date_of_birth = DateField("Date of Birth", validators=[DataRequired()])
+    date_of_birth = DateField("Date of Birth")
     first_name = StringField("Profile First Name", validators=[DataRequired()])
     last_name = StringField("Profile Last Name", validators=[DataRequired()])
     middle_name = StringField("Profile Middle Name", validators=[DataRequired()])
     prof_pic = FileField('Profile Picture')
-    background_pic = FileField('Profile Picture')
+    background_pic = FileField('Background Picture')

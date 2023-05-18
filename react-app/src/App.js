@@ -7,6 +7,7 @@ import AllProfiles from "./components/ProfPageAll";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import ProfPageCurr from "./components/ProfPageCurr";
+import ProfPageForm from "./components/ProfPageForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/profiles/current">
             <ProfPageCurr />
+          </Route>
+          <Route exact path="/profiles/new">
+            <ProfPageForm />
           </Route>
         </Switch>
       )}
