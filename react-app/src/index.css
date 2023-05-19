@@ -4,3 +4,7 @@ img {
     height: 300px;
     object-fit: cover;
 }
+
+body {
+    background-color: rgba(15, 14, 14, 0.685);
+}
