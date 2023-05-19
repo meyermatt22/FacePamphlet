@@ -7,31 +7,44 @@ function PostPageForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // const current = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(Date.now())
+
+    // console.log('this current thing on the post page form', current)
+    // console.log(new Intl.DateTimeFormat('en-US',
+        // {year: 'numeric',
+        // month: '2-digit',
+        // day: '2-digit',
+        // hour: '2-digit',
+        // minute: '2-digit',
+        // second: '2-digit'}).format(Date.now()));
+
     const [textContent, setTextContent] = useState('');
-    const [createdAt, setCreatedAt] = useState(new Date());
-    const [updatedAt, setUpdatedAt] = useState(new Date());
+    // const [createdAt, setCreatedAt] = useState(current);
+    // const [updatedAt, setUpdatedAt] = useState(current);
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('in the handle submit ==> ')
 
         setHasSubmitted(true);
         if(validationErrors.length) return alert('Your Post has errors, cannot submit!');
 
         const formData = new FormData();
         formData.append('text_content', textContent);
-        formData.append('created_at', createdAt);
-        formData.append('updated_at', updatedAt);
+
+        // formData.append('created_at', createdAt);
+        // formData.append('updated_at', updatedAt);
 
         const newPost = await dispatch(createPostThunk(formData));
 
         setTextContent('');
-        setCreatedAt('');
-        setUpdatedAt('');
+        // setCreatedAt('');
+        // setUpdatedAt('');
 
-        history.push(`/posts`)
+        history.push(`/posts/${newPost.id}`)
     };
 
     useEffect(() => {
@@ -69,6 +82,9 @@ function PostPageForm() {
                         required={true}
                         >
                     </input>
+                </div>
+                <div className="four">
+                    <button className="confirm-submit" type="submit">Create Profile</button>
                 </div>
             </form>
         </div>

@@ -47,6 +47,7 @@ export const createPostThunk = (post) => async (dispatch) => {
         body: post
     });
 
+    console.log('inside create post thunk ========>', res)
     if(res.ok) {
         const post = await res.json();
         dispatch(createPostAction(post));
