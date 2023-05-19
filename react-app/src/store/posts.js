@@ -1,5 +1,3 @@
-import { bindActionCreators } from "redux";
-
 const GET_ALL_POSTS = 'posts/GET_ALL_POSTS';
 
 const getAllPostsAction = (posts) => ({
