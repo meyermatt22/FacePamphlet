@@ -16,7 +16,7 @@ function AllPosts() {
 
     if(posts.length < 1) return <h1>where have all the posts gone?</h1>
 
-    let sortedPosts = posts.sort((a,b) => new Date(...a.createdAt.split('/').reverse()) - new Date(...b.createdAt.split('/').reverse()))
+    let sortedPosts = posts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
     return (
         <div>
