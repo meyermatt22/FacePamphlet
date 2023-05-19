@@ -10,7 +10,6 @@ profile_routes = Blueprint('profiles', __name__)
 @profile_routes.route('')
 def profiles():
     """ Query for all profiles and return them in a list of dictionaries """
-    print('==========> all prof route')
     profiles = Profile.query.all()
     return { 'profiles': [prof.to_dict() for prof in profiles]}
 

@@ -37,7 +37,6 @@ const deleteProfileAction = (profileId) => ({
 
 export const getAllProfilesThunk = () => async (dispatch) => {
     const res = await fetch("/api/profiles");
-    console.log('inside allpof thunk : ', res)
 
     if(res.ok) {
         const { profiles } = await res.json();

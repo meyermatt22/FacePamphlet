@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import { getAllProfilesThunk } from "../../store/profiles";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import './ProfPageAll.css'
-import { useHistory } from "react-router-dom";
 
 
 function AllProfiles() {
