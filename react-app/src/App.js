@@ -11,6 +11,8 @@ import ProfPageForm from "./components/ProfPageForm";
 import ProfPageEditForm from "./components/ProfPageEditForm";
 import ProfPageSingle from "./components/ProfPageSingle";
 import AllPosts from "./components/PostPageAll";
+import PostPageSingle from "./components/PostPageSingle";
+import PostPageForm from "./components/PostPageForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,17 +38,23 @@ function App() {
           <Route exact path="/profiles/current">
             <ProfPageCurr />
           </Route>
-          <Route exact path="/profiles/:id">
-            <ProfPageSingle />
-          </Route>
           <Route exact path="/profiles/new">
             <ProfPageForm />
           </Route>
           <Route exact path="/profiles/edit/:id">
             <ProfPageEditForm />
           </Route>
+          <Route exact path="/profiles/:id">
+            <ProfPageSingle />
+          </Route>
           <Route exact path="/posts">
             <AllPosts />
+          </Route>
+          <Route exact path="/posts/new">
+            <PostPageForm />
+          </Route>
+          <Route exact path="/posts/:id">
+            <PostPageSingle />
           </Route>
         </Switch>
       )}

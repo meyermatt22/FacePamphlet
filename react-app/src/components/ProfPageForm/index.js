@@ -13,7 +13,8 @@ function ProfPageForm() {
     const [lastName, setLastName] = useState("")
     const [middleName, setMiddleName] = useState("")
     const [profPic, setProfPic] = useState("")
-    const [backgroundPic, setBackgroundPic] = useState("")
+    const [backgroundPic, setBackgroundPic] = useState("");
+    
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 

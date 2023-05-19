@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react"
-import { getOneProfileThunk, getAllProfilesThunk } from "../../store/profiles";
+import { useEffect } from "react";
+import { getOneProfileThunk } from "../../store/profiles";
 import { useHistory, useParams } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import ProfileDeleteModal from "../ProfPageDeleteModal";

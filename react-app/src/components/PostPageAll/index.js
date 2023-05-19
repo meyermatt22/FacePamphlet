@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import { getAllPostsThunk } from "../../store/posts";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
+
 
 function AllPosts() {
     const dispatch = useDispatch();
@@ -24,7 +25,9 @@ function AllPosts() {
             <div>
                 {sortedPosts?.map(({ textContent, id, createdAt }) => (
                     <div key={id}>
-                        { textContent }, created at: {new Date(createdAt).toLocaleTimeString('en-US')}, on: {new Date(createdAt).toLocaleDateString()}
+                        <NavLink to={`/posts/${id}`} key={id}>
+                            { textContent }, created at: {new Date(createdAt).toLocaleTimeString('en-US')}, on: {new Date(createdAt).toLocaleDateString()}
+                        </NavLink>
                     </div>
                 ))}
             </div>
