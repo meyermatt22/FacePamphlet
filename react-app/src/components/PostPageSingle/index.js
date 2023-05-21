@@ -2,11 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOnePostThunk } from "../../store/posts";
 import { useHistory, useParams, NavLink } from "react-router-dom";
+import PostPageEditFormModal from "../PostPageEditFormModal";
+import PostDeleteModal from "../PostPageDeleteModal";
+import OpenModalButton from "../OpenModalButton";
 
 
 function PostPageSingle() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
     const { id } = useParams();
 
     useEffect(() => {
@@ -24,6 +28,9 @@ function PostPageSingle() {
                 <NavLink to={`/posts`} >click here for all posts</NavLink>
             </div>
             { posts[id]?.textContent }, created at: {new Date(posts[id]?.createdAt).toLocaleTimeString('en-US')}, on: {new Date(posts[id]?.createdAt).toLocaleDateString()}
+            {sessionUser && sessionUser.id === posts[id].userId && (
+                <OpenModalButton buttonClass="post-del-btn" buttonText="Delete Post" modalComponent={<PostDeleteModal postId={id}/>}/>
+            )}
         </div>
     )
 };

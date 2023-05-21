@@ -22,7 +22,7 @@ function ProfPageEditForm() {
         }
     }
 
-    console.log('current users profile', userProf)
+    // console.log('current users profile', userProf)
 
     const [bio, setBio] = useState('')
     const [dateOfBirth, setDateOfBirth] = useState('')

@@ -13,6 +13,7 @@ import ProfPageSingle from "./components/ProfPageSingle";
 import AllPosts from "./components/PostPageAll";
 import PostPageSingle from "./components/PostPageSingle";
 import PostPageForm from "./components/PostPageForm";
+import PostPageEditFormModal from "./components/PostPageEditFormModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route exact path="/posts/new">
             <PostPageForm />
+          </Route>
+          <Route exact path="/posts/edit/:id">
+            <PostPageEditFormModal />
           </Route>
           <Route exact path="/posts/:id">
             <PostPageSingle />

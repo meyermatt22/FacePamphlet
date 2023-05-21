@@ -40,7 +40,7 @@ function ProfPageSingle() {
                 <button className="profile-edit-btn" onClick={() => history.push(`/profiles/edit/${sessionUser.id}`)}>Edit Profile</button>
             )}
             {sessionUser && sessionUser.id === parseInt(id) && (
-                <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={id}/>}/>
+                <OpenModalButton buttonClass="prof-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={id}/>}/>
             )}
         </div>
     )

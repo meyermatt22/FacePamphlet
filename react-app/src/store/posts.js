@@ -1,6 +1,8 @@
 const GET_ALL_POSTS = 'posts/GET_ALL_POSTS';
 const GET_POST = 'posts/GET_POST';
 const CREATE_POST = 'posts/CREATE_POST';
+const EDIT_POST = 'posts/EDIT_POST';
+const DELETE_POST = 'posts/DELETE_POST';
 
 const getAllPostsAction = (posts) => ({
     type: GET_ALL_POSTS,
@@ -15,6 +17,16 @@ const getOnePostAction = (post) => ({
 const createPostAction = (post) => ({
     type: CREATE_POST,
     post
+});
+
+const editPostAction = (post) => ({
+    type: EDIT_POST,
+    post
+});
+
+const deletePostAction = (postId) => ({
+    type: DELETE_POST,
+    postId,
 });
 
 export const getAllPostsThunk = () => async (dispatch) => {
@@ -57,6 +69,35 @@ export const createPostThunk = (post) => async (dispatch) => {
     }
 };
 
+export const editPostThunk = (post, id) => async (dispatch) => {
+
+    const res = await fetch(`/api/posts/edit/${id}`, {
+        method: 'PUT',
+        body: post
+    })
+
+    if(res.ok) {
+        const post = await res.json()
+        dispatch(editPostAction(post))
+        return post
+    } else {
+        return "==========> editPostThunk res is not ok <=========="
+    }
+};
+
+export const deletePostThunk = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/posts/delete/${postId}`, {
+        method: "DELETE",
+    });
+
+    if(res.ok) {
+        dispatch(deletePostAction(postId));
+        return { 'message': 'delete successful' };
+    } else {
+        return "==========> deletePostThunk res is not ok <=========="
+    };
+};
+
 const initState = {};
 function postReducer(state = initState, action) {
     let newState;
@@ -74,6 +115,14 @@ function postReducer(state = initState, action) {
         case CREATE_POST:
             newState = {...state};
             newState[action.post.id] = action.post;
+            return newState;
+        case EDIT_POST:
+            newState = {...state};
+            newState[action.post.id] = action.post;
+            return newState;
+        case DELETE_POST:
+            newState = {...state};
+            delete newState[action.postId];
             return newState;
         default:
             return state;

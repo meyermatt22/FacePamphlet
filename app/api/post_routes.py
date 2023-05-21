@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from app.models import Post, db
 from flask_login import current_user, login_required
 from app.forms.post_form import PostForm
-
+from app.forms.post_edit_form import PostEditForm
 
 post_routes = Blueprint('posts', __name__)
 
@@ -47,3 +47,42 @@ def add_post():
         return post.to_dict()
 
     return { 'errors': form.errors}
+
+@post_routes.route('/edit/<int:id>', methods=['PUT'])
+@login_required
+def edit_post(id):
+    """ Handles editing a post's details if the song owner is the logged in user """
+    post = Post.query.get(id)
+
+    if not post:
+        return {"error": "Post not found."}
+
+    form = PostEditForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        post.text_content = form.data['text_content'],
+        post.created_at = form.data['created_at'],
+        post.updated_at = form.data['updated_at'],
+
+        print('post edit route info =====> ', post.text_content)
+        print('post edit route info =====> ', post.created_at)
+        print('post edit route info =====> ', post.updated_at)
+
+        db.session.commit()
+        return post.to_dict()
+
+    return { 'errors': form.errors}
+
+@post_routes.route('/delete/<int:id>', methods=["DELETE"])
+@login_required
+def delete_post(id):
+    """ Handles deleting a post by id, if owned by current user """
+    post = Post.query.get(id)
+    if post.user_id == current_user.id:
+        db.session.delete(post)
+        db.session.commit()
+        return "Delete Successful"
+    else:
+        return 'Must be post owner to delete post'
