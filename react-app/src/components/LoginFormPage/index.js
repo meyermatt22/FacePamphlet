@@ -25,35 +25,42 @@ function LoginFormPage() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <div id="loginPage">
+      <div id="loginText">
+        <h1 id="logoHere">FacePamphlet</h1>
+        <h3>Connect with friends and the world around tou with FacePamphlet.</h3>
+      </div>
+      <div >
+        <form onSubmit={handleSubmit} id="loginForm">
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <label>
+            <input
+              className="verifyBox"
+              type="text"
+              placeholder="Email or username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            <input
+              className="verifyBox"
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <button id="loginBtn" type="submit">Log In</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
