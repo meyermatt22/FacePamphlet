@@ -7,5 +7,5 @@ from datetime import datetime
 
 class PostForm(FlaskForm):
     text_content = StringField("Text Content", validators=[DataRequired()])
-    created_at = DateTimeField('Date', format='%m-%d-%Y', default=datetime.now())
-    updated_at = DateField('Date', format='%m-%d-%Y', default=datetime.now())
+    created_at = DateTimeField('Date', format='%m-%d-%Y', default=datetime.now)
+    updated_at = DateField('Date', format='%m-%d-%Y', default=datetime.now)
