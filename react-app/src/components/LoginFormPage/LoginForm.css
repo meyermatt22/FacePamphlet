@@ -40,3 +40,7 @@
 .verifyBox {
     margin: 5px 0px;
 }
+
+#infoText {
+    color: rgb(53,53,53);
+}
