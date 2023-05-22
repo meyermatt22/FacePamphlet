@@ -7,6 +7,7 @@ import { useHistory, NavLink } from "react-router-dom";
 function AllPosts() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
     const [query, setQuery] = useState('');
 
     useEffect(() => {
@@ -22,6 +23,9 @@ function AllPosts() {
     return (
         <div>
             <h1>all posts page</h1>
+            {sessionUser && (
+                <button className="profile-edit-btn" onClick={() => history.push(`/posts/new`)}>Create a new Post</button>
+            )}
             <div>
                 {sortedPosts?.map(({ textContent, id, createdAt }) => (
                     <div key={id}>

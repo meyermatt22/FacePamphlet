@@ -65,7 +65,7 @@ function PostPageForm() {
                     </input>
                 </div>
                 <div className="four">
-                    <button className="confirm-submit" type="submit">Create Profile</button>
+                    <button className="confirm-submit" type="submit">Create Post</button>
                 </div>
             </form>
         </div>

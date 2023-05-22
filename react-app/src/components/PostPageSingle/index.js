@@ -19,7 +19,7 @@ function PostPageSingle() {
 
     const posts = useSelector(state => state.posts)
 
-    if (!posts) return null
+    if (!posts[id]) return null
 
     return (
         <div>
@@ -31,8 +31,8 @@ function PostPageSingle() {
             {sessionUser && sessionUser.id === posts[id].userId && (
                 <OpenModalButton buttonClass="post-del-btn" buttonText="Delete Post" modalComponent={<PostDeleteModal postId={id}/>}/>
             )}
-            {sessionUser && sessionUser.id === posts[id].userId && (
-                <OpenModalButton buttonClass="post-del-btn" buttonText="Edit Post" modalComponent={<PostPageEditFormModal postId={id}/>}/>
+            {sessionUser && (
+                <button className="profile-edit-btn" onClick={() => history.push(`/posts/edit/${id}`)}>edit your post</button>
             )}
         </div>
     )
