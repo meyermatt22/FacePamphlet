@@ -31,6 +31,9 @@ function PostPageSingle() {
             {sessionUser && sessionUser.id === posts[id].userId && (
                 <OpenModalButton buttonClass="post-del-btn" buttonText="Delete Post" modalComponent={<PostDeleteModal postId={id}/>}/>
             )}
+            {sessionUser && sessionUser.id === posts[id].userId && (
+                <OpenModalButton buttonClass="post-del-btn" buttonText="Edit Post" modalComponent={<PostPageEditFormModal postId={id}/>}/>
+            )}
         </div>
     )
 };

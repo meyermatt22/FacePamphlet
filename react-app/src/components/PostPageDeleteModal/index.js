@@ -14,8 +14,8 @@ function PostDeleteModal({postId}) {
         const deletedPost = await dispatch(deletePostThunk(postId))
 
         // if (deletedPost.message === 'delete successful') {
-        history.push("/posts");
         closeModal();
+        history.push("/posts");
         //   };
     }
 

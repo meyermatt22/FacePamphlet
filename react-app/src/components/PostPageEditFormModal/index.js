@@ -19,14 +19,13 @@ function PostPageEditFormModal() {
     console.log('post inside edit page ==> ', (post[id]))
 
     const [textContent, setTextContent] = useState('');
-    
+
 
     useEffect(() => {
         if(post[id]) {
             setTextContent(post[id].textContent)
-
         }
-    }, [post[id]]);
+    }, [post[id]?.textContent]);
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -41,10 +40,12 @@ function PostPageEditFormModal() {
         const formData = new FormData();
         formData.append('text_content', textContent);
 
+        console.log('inside handle submit for edit post ==> ', textContent)
+
 
         const updatedPost = await dispatch(editPostThunk(formData, id));
 
-        setTextContent(post.textContent);
+        setTextContent('');
 
         setValidationErrors([]);
         setHasSubmitted(false);
