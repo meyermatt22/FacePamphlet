@@ -3,6 +3,7 @@ from app.models import Post, db
 from flask_login import current_user, login_required
 from app.forms.post_form import PostForm
 from app.forms.post_edit_form import PostEditForm
+from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
@@ -37,7 +38,7 @@ def add_post():
         post = Post(
             user_id = current_user.id,
             text_content = form.data['text_content'],
-            created_at = form.data['created_at'],
+            created_at = datetime.now(),
             updated_at = form.data['updated_at'],
         )
 
