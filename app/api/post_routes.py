@@ -62,9 +62,9 @@ def edit_post(id):
 
     if form.validate_on_submit():
 
-        post.text_content = form.data['text_content'],
-        post.created_at = form.data['created_at'],
-        post.updated_at = form.data['updated_at'],
+        post.text_content = form.data['text_content']
+        post.created_at = form.data['created_at']
+        post.updated_at = form.data['updated_at']
 
         print('post edit route info =====> ', post.text_content)
         print('post edit route info =====> ', post.created_at)

@@ -16,19 +16,21 @@ function PostPageEditFormModal() {
     }, [dispatch, id]);
 
     const post = useSelector(state => state.posts)
-    console.log('post inside edit page ==> ', (post[id]))
+    // console.log('post inside edit page ==> ', (post[id]))
 
     const [textContent, setTextContent] = useState('');
+    // const [createdAt, setCreatedAt] = useState(post[id]?.createdAt);
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
 
     useEffect(() => {
         if(post[id]) {
             setTextContent(post[id].textContent)
+            // setTextContent(post[id].createdAt)
         }
     }, [post[id]?.textContent]);
 
-    const [validationErrors, setValidationErrors] = useState([]);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,13 +41,17 @@ function PostPageEditFormModal() {
 
         const formData = new FormData();
         formData.append('text_content', textContent);
+        // formData.append('created_at', createdAt);
 
-        console.log('inside handle submit for edit post ==> ', textContent)
+        // console.log('inside handle submit for edit post 1 ==> ', textContent)
 
+        // console.log('inside handle submit for edit post 2 ==> ', formData, id)
 
         const updatedPost = await dispatch(editPostThunk(formData, id));
+        // console.log('inside handle submit for edit post 3 ==> ', updatedPost)
 
-        setTextContent('');
+        setTextContent(post[id].textContent);
+        // setCreatedAt(post[id].createdAt);
 
         setValidationErrors([]);
         setHasSubmitted(false);

@@ -14,6 +14,11 @@ function Navigation({ isLoaded }){
 				<NavLink exact to="/profiles">Find Faces</NavLink>
 			</li>
 			)}
+			{sessionUser && (
+			<li>
+				<NavLink exact to="/posts">Find Posts</NavLink>
+			</li>
+			)}
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
