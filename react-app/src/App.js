@@ -14,6 +14,7 @@ import AllPosts from "./components/PostPageAll";
 import PostPageSingle from "./components/PostPageSingle";
 import PostPageForm from "./components/PostPageForm";
 import PostPageEditFormModal from "./components/PostPageEditFormModal";
+import HomePage from "./components/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/home">
+            <HomePage />
           </Route>
           <Route exact path="/profiles">
             <AllProfiles />
