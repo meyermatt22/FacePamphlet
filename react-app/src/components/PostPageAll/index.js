@@ -18,6 +18,8 @@ function AllPosts() {
 
     if(posts.length < 1) return <h1>where have all the posts gone?</h1>
 
+    console.log('inside all posts, info for sort', new Date(posts[0].createdAt))
+
     let sortedPosts = posts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
     return (
