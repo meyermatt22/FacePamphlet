@@ -100,7 +100,7 @@ function PostPageEditFormModal() {
                     </input>
                 </div>
                 <div className="four">
-                    <button className="confirm-submit" type="submit">Edit Post</button>
+                    <button className="confirm-submit" type="submit">Confirm Edit</button>
                 </div>
             </form>
         </div>
