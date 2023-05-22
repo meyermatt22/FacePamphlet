@@ -1,0 +1,23 @@
+#homePage {
+    background-color: rgb(217,217,217);
+}
+
+
+#selectForm {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(60,110,113);
+    height: 80px;
+}
+
+.radio {
+    width: 30px;
+    height: 30px;
+}
+
+.radio3 {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}

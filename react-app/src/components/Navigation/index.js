@@ -9,14 +9,14 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul>
-			{sessionUser && (
+			{/* {sessionUser && (
 			<li>
 				<NavLink exact to="/profiles">Find Faces</NavLink>
 			</li>
-			)}
+			)} */}
 			{sessionUser && (
 			<li>
-				<NavLink exact to="/posts">Find Posts</NavLink>
+				<NavLink exact to="/home">Home Logo</NavLink>
 			</li>
 			)}
 			{isLoaded && (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import AllPosts from "../PostPageAll"
 import AllProfiles from "../ProfPageAll"
+import './HomePage.css'
 
 function HomePage() {
 
@@ -16,19 +17,19 @@ function HomePage() {
     }
 
     return (
-        <div>
+        <div id="homePage">
             <h1>Home page</h1>
-            <form >
-                <div className="radio">
+            <form id="selectForm">
+                <div className="radio2">
                   <label>
-                    <input type="radio" value="option1" checked={selected === 'option1'} onChange={handleChange}/>
-                    all posts
+                    <input className="radio3" type="radio" value="option1" checked={selected === 'option1'} onChange={handleChange}/>
+                    <img className="radio" src="https://i.imgur.com/ZkokdxT.jpg"></img>
                   </label>
                 </div>
-                <div className="radio">
+                <div className="radio2">
                   <label>
-                  <input type="radio" value="option2" checked={selected === 'option2'} onChange={handleChange}/>
-                    all profiles
+                  <input className="radio3" type="radio" value="option2" checked={selected === 'option2'} onChange={handleChange}/>
+                    <img className="radio" src="https://i.imgur.com/SWNKMlS.png"></img>
                   </label>
                 </div>
             </form>

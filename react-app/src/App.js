@@ -15,6 +15,7 @@ import PostPageSingle from "./components/PostPageSingle";
 import PostPageForm from "./components/PostPageForm";
 import PostPageEditFormModal from "./components/PostPageEditFormModal";
 import HomePage from "./components/HomePage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,34 +36,54 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/home">
-            <HomePage />
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/profiles">
-            <AllProfiles />
+            <ProtectedRoute>
+              <AllProfiles />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/profiles/current">
-            <ProfPageCurr />
+            <ProtectedRoute>
+              <ProfPageCurr />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/profiles/new">
-            <ProfPageForm />
+            <ProtectedRoute>
+              <ProfPageForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/profiles/edit/:id">
-            <ProfPageEditForm />
+            <ProtectedRoute>
+              <ProfPageEditForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/profiles/:id">
-            <ProfPageSingle />
+            <ProtectedRoute>
+              <ProfPageSingle />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/posts">
-            <AllPosts />
+            <ProtectedRoute>
+              <AllPosts />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/posts/new">
-            <PostPageForm />
+            <ProtectedRoute>
+              <PostPageForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/posts/edit/:id">
-            <PostPageEditFormModal />
+            <ProtectedRoute>
+              <PostPageEditFormModal />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/posts/:id">
-            <PostPageSingle />
+            <ProtectedRoute>
+              <PostPageSingle />
+            </ProtectedRoute>
           </Route>
         </Switch>
       )}
