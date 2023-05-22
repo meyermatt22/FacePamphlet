@@ -1,0 +1,26 @@
+#allPosts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.post {
+    height: 100px;
+    width: 60%;
+    /* border: 3px solid green; */
+    padding: 10px;
+    background-color: rgb(255,255,255);
+}
+
+#postArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}

@@ -23,7 +23,7 @@ function HomePage() {
                 <div className="radio2">
                   <label>
                     <input className="radio3" type="radio" value="option1" checked={selected === 'option1'} onChange={handleChange}/>
-                    <img className="radio" src="https://i.imgur.com/ZkokdxT.jpg"></img>
+                    <img className="radio" src="https://i.imgur.com/2iSoM4U.png"></img>
                   </label>
                 </div>
                 <div className="radio2">
