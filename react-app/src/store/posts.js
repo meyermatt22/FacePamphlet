@@ -71,11 +71,11 @@ export const createPostThunk = (post) => async (dispatch) => {
 
 export const editPostThunk = (post, id) => async (dispatch) => {
 
-    console.log('inside edit post thunk ===>')
     const res = await fetch(`/api/posts/edit/${id}`, {
         method: 'PUT',
         body: post
     })
+    console.log('inside edit post thunk ===>', res)
 
 
     if(res.ok) {

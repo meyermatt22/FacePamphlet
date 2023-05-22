@@ -63,12 +63,12 @@ def edit_post(id):
     if form.validate_on_submit():
 
         post.text_content = form.data['text_content']
-        post.created_at = form.data['created_at']
-        post.updated_at = form.data['updated_at']
+        # post.created_at = form.data['created_at']
+        # post.updated_at = form.data['updated_at']
 
-        print('post edit route info =====> ', post.text_content)
-        print('post edit route info =====> ', post.created_at)
-        print('post edit route info =====> ', post.updated_at)
+        # print('post edit route info =====> ', post.text_content)
+        # print('post edit route info =====> ', post.created_at)
+        # print('post edit route info =====> ', post.updated_at)
 
         db.session.commit()
         return post.to_dict()
