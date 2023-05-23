@@ -40,7 +40,11 @@ function ProfPageCurr() {
     // const userProf = useSelector(state => state.profile)
     // console.log(userProf)
     if(!userProf && sessionUser) {
-        return <button className="profile-new-btn" onClick={() => history.push(`/profiles/new`)}>Make Your Profile</button>
+        return (
+            <div id="noProfPage">
+                <button className="profile-new-btn" onClick={() => history.push(`/profiles/new`)}>Make Your Profile</button>
+            </div>
+        )
     }
 
     if(!userProf) {

@@ -24,6 +24,11 @@ function LoginFormPage() {
     }
   };
 
+  const handleDemoUser = () => {
+    setEmail('bubbles@aa.io')
+    setPassword('password')
+  }
+
   return (
     <div id="loginPage">
       <div id="loginText">
@@ -58,6 +63,7 @@ function LoginFormPage() {
             />
           </label>
           <button id="loginBtn" type="submit">Log In</button>
+          <button id="loginBtn" type="submit" onClick={handleDemoUser}>Demo User</button>
         </form>
       </div>
     </div>
