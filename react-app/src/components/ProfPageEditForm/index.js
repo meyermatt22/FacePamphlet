@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editProfileThunk, getCurrProfThunk } from "../../store/profiles";
+import './ProfPageEditForm.css'
 
 function ProfPageEditForm() {
     const dispatch = useDispatch();
@@ -90,26 +91,28 @@ function ProfPageEditForm() {
         return 'no profile found for user'
     }
     return (
-        <div id="editProfileForm">
-            <h1>Edit Your Profile!</h1>
+        <div id="newProfileForm">
+            <h1>Edit your profile!</h1>
             {hasSubmitted && validationErrors.length > 0 && (
                 <div>
                     <h2>The following errors were found:</h2>
                     <ul>
                         {validationErrors.map(error => (
                             <li key={error}>{error}</li>
-                            ))}
+                        ))}
                     </ul>
                 </div>
             )}
             <form
                 onSubmit={(e) => handleSubmit(e)}
                 encType="multipart/form-data"
-                id="editProfForm"
+                id="newProfForm"
             >
                 <div className="form-input-box first-name-input">
-                    <div><label for="name">First Name:</label></div>
+                    <div><label for="name">first name:</label></div>
                     <input
+                        className="inBox"
+                        placeholder="first name"
                         type="text"
                         name="firstName"
                         onChange={(e) => setFirstName(e.target.value)}
@@ -119,19 +122,23 @@ function ProfPageEditForm() {
                     </input>
                 </div>
                 <div className="form-input-box last-name-input">
-                    <div><label for="name">Last Name:</label></div>
+                    <div><label for="name">last name:</label></div>
                     <input
+                        className="inBox"
+                        placeholder="last name"
                         type="text"
                         name="lastName"
                         onChange={(e) => setLastName(e.target.value)}
                         value={lastName}
                         required={true}
-                        >
+                    >
                     </input>
                 </div>
                 <div className="form-input-box middle-name-input">
-                    <div><label for="name">Middle Name:</label></div>
+                    <div><label for="name">middle name:</label></div>
                     <input
+                        className="inBox"
+                        placeholder="middle name"
                         type="text"
                         name="middleName"
                         onChange={(e) => setMiddleName(e.target.value)}
@@ -139,10 +146,15 @@ function ProfPageEditForm() {
                         >
                     </input>
                 </div>
+                    <div id="aboutBox">
+                        <h4 id="aboutBoxin">About me:</h4>
+                    </div>
                 <div className="form-input-box bio-input">
-                    <div><label for="bio">Biography:</label></div>
+                    <div><label for="bio"></label></div>
                     <input
-                        type="text"
+                        className="inBox1"
+                        placeholder="biography"
+                        type="textArea"
                         name="bio"
                         onChange={(e) => setBio(e.target.value)}
                         value={bio}
@@ -153,6 +165,8 @@ function ProfPageEditForm() {
                 <div className="form-input-box">
                     <div><label for="profPic">Profile Image:</label></div>
                     <input
+                        className="inBox2"
+                        placeholder="profile image (jpg, png...)"
                         type="text"
                         name="profPic"
                         accept="image/*"
@@ -163,6 +177,8 @@ function ProfPageEditForm() {
                 <div className="form-input-box">
                     <div><label for="backgroundPic">Background Image:</label></div>
                     <input
+                        className="inBox2"
+                        placeholder="background image (jpg, png...)"
                         type="text"
                         name="backgroundPic"
                         accept="image/*"
@@ -170,9 +186,10 @@ function ProfPageEditForm() {
                         >
                     </input>
                 </div>
-                <div>
+                <div className="form-input-box">
                     <label for="birthday">Birthday:</label>
                     <input
+
                         type="date"
                         name="birthday"
                         onChange={(e) => setDateOfBirth(e.target.value)}
@@ -180,9 +197,8 @@ function ProfPageEditForm() {
                     </input>
 
                 </div>
-
-                <div className="four">
-                    <button className="confirm-submit" type="submit">Update Profile</button>
+                <div className="submitBtn">
+                    <button className="confirm-submit" type="submit">Create Profile</button>
                 </div>
             </form>
         </div>

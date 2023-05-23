@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { deleteProfileThunk } from "../../store/profiles";
+import './ProfPageDeleteModal.css'
 
 function ProfileDeleteModal({profileId}) {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function ProfileDeleteModal({profileId}) {
 
     return (
         <div className="delete-profile-div">
-            <h1 className="modalText">Delete Your Profile?</h1>
+            <h1 className="modalText">Are you sure?</h1>
             <form onSubmit={handleDelete}>
                 <button className="confirm-profile-delete" type="submit">Yes, delete my profile</button>
                 <button className="decline-profile-delete" onClick={closeModal}>No, keep my profile</button>

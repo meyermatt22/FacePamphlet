@@ -1,0 +1,45 @@
+#newProfileForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(217,217,217);
+}
+
+#newProfForm {
+    /* border: green 2px solid; */
+}
+
+.form-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0px;
+    /* border: green solid 3px; */
+    width: 400px;
+}
+
+.submitBtn {
+    /* border: solid 2px cyan; */
+    display: flex;
+    justify-content: center;
+}
+
+.inBox2 {
+    width: 300px;
+}
+
+.inBox1 {
+    width: 90%;
+    height: 50px;
+}
+
+#aboutBox {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+}
+
+#aboutBoxin {
+    margin: 0px;
+
+}
