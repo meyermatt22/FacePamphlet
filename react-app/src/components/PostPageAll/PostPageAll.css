@@ -56,6 +56,8 @@
     color: rgb(40,75,99)
     /* color: cyan; */
 }
-/* NavLink {
-    text-decoration: none;
-} */
+
+#postManip {
+    display: flex;
+    justify-content: end;
+}

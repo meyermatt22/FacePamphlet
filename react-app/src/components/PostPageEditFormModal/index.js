@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editPostThunk, getOnePostThunk } from "../../store/posts";
+import { useModal } from "../../context/Modal";
+import './PostPageEditFormModal.css'
 
-function PostPageEditFormModal() {
+function PostPageEditFormModal({ id }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
+    // const { id } = useParams();
+    const { closeModal } = useModal()
     // const goHere = id
 
     // console.log(id)
@@ -50,13 +53,14 @@ function PostPageEditFormModal() {
         const updatedPost = await dispatch(editPostThunk(formData, id));
         // console.log('inside handle submit for edit post 3 ==> ', updatedPost)
 
-        setTextContent(post[id].textContent);
+        setTextContent(post[id]?.textContent);
         // setCreatedAt(post[id].createdAt);
 
         setValidationErrors([]);
         setHasSubmitted(false);
 
-        history.push(`/posts/${id}`);
+        closeModal()
+        history.push(`/home`);
     };
 
     useEffect(() => {
@@ -71,8 +75,8 @@ function PostPageEditFormModal() {
     };
 
     return (
-        <div id="editPostForm">
-            <h1>Edit Your Post!</h1>
+        <div id="editPostForm1">
+            <h1>Update your post</h1>
             {hasSubmitted && validationErrors.length > 0 && (
                 <div>
                     <h2>The following errors were found:</h2>
@@ -89,9 +93,10 @@ function PostPageEditFormModal() {
                 id="editPostForm"
             >
                 <div className="form-input-box text-input">
-                    <div><label for="name">share here:</label></div>
+                    <div><label for="name"></label></div>
                     <input
-                        type="textArea"
+                        id="updateIn"
+                        type="text"
                         name="textContent"
                         onChange={(e) => setTextContent(e.target.value)}
                         value={textContent}
@@ -100,7 +105,7 @@ function PostPageEditFormModal() {
                     </input>
                 </div>
                 <div className="four">
-                    <button className="confirm-submit" type="submit">Confirm Edit</button>
+                    <button id="subBtn" className="confirm-submit" type="submit">Confirm Edit</button>
                 </div>
             </form>
         </div>

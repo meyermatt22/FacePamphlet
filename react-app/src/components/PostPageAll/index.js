@@ -9,6 +9,7 @@ import OpenModalButton from "../OpenModalButton";
 import PostDeleteModal from "../PostPageDeleteModal";
 
 import './PostPageAll.css'
+import PostPageEditFormModal from "../PostPageEditFormModal";
 
 
 function AllPosts() {
@@ -102,12 +103,14 @@ function AllPosts() {
                                     { textContent }
                                 </div>
                             </div>
+                            <div id="postManip">
                             {sessionUser && sessionUser.id === userId && (
                                 <OpenModalButton buttonClass="post-del-btn" buttonText="Delete Post" modalComponent={<PostDeleteModal postId={id}/>}/>
                             )}
                             {sessionUser && sessionUser.id === userId && (
-                                <OpenModalButton/>
+                                <OpenModalButton buttonText="Edit Post" modalComponent={<PostPageEditFormModal id={id}/>}/>
                             )}
+                            </div>
                         </div>
                     ))}
                 </div>
