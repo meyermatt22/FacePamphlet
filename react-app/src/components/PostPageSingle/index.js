@@ -25,7 +25,7 @@ function PostPageSingle() {
         <div>
             <h1>post page single</h1>
             <div>
-                <NavLink to={`/posts`} >click here for all posts</NavLink>
+                <NavLink to={`/home`} >click here for all posts</NavLink>
             </div>
             { posts[id]?.textContent }, created at: {new Date(posts[id]?.createdAt).toLocaleTimeString('en-US')}, on: {new Date(posts[id]?.createdAt).toLocaleDateString()}
             {sessionUser && sessionUser.id === posts[id].userId && (

@@ -4,6 +4,7 @@ import { getAllPostsThunk } from "../../store/posts";
 import { useHistory, NavLink } from "react-router-dom";
 import { getAllUsersThunk } from "../../store/user";
 import { getAllProfilesThunk } from "../../store/profiles";
+import { createPostThunk } from "../../store/posts";
 
 import './PostPageAll.css'
 
@@ -13,6 +14,32 @@ function AllPosts() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [query, setQuery] = useState('');
+    const [textContent, setTextContent] = useState('');
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        setHasSubmitted(true);
+        if(validationErrors.length) return alert('Your Post has errors, cannot submit!');
+
+        const formData = new FormData();
+        formData.append('text_content', textContent);
+
+        const newPost = await dispatch(createPostThunk(formData));
+
+        setTextContent('');
+
+        history.push(`/home`)
+    };
+
+    useEffect(() => {
+        const errors = [];
+
+        if (!textContent) errors.push('Please provide something!')
+        setValidationErrors(errors)
+    }, [ textContent ]);
 
     useEffect(() => {
         dispatch(getAllPostsThunk())
@@ -31,27 +58,53 @@ function AllPosts() {
     let sortedPosts = posts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
     return (
-        <div id="allPosts">
+        <div id="allpostpage">
             <h1>all posts page</h1>
-            {sessionUser && (
-                <button className="profile-edit-btn" onClick={() => history.push(`/posts/new`)}>Create a new Post</button>
-            )}
-            <div id="postArea">
-                {sortedPosts?.map(({ textContent, id, createdAt, userId }) => (
-                    <div key={id} className="post">
-                        <NavLink to={`/posts/${id}`} key={id}>
-                            <div>
-                                <img className="profImg" src={profiles[userId]?.profPic} />
-                            </div>
-                            <div>
-                                { textContent }
-                            </div>
-                           , created at: {new Date(createdAt).toLocaleTimeString('en-US')}, on: {new Date(createdAt).toLocaleDateString()}
-                        </NavLink>
+            <div id="postDiv">
+                <form
+                    onSubmit={(e) => handleSubmit(e)}
+                    encType="multipart/form-data"
+                    id="newPostForm"
+                >
+                    <div className="form-input-box text-input">
+                        <div><label for="name"></label></div>
+                        <input
+                            placeholder="What's on you mind?"
+                            type="textArea"
+                            name="textContent"
+                            onChange={(e) => setTextContent(e.target.value)}
+                            value={textContent}
+                            required={true}
+                            >
+                        </input>
                     </div>
-                ))}
+                </form>
             </div>
+            <div id="allPosts">
+                <div id="postArea">
+                    {sortedPosts?.map(({ textContent, id, createdAt, userId }) => (
+                        <div key={id} className="post">
+                            <NavLink className="postBox" to={`/posts/${id}`} key={id}>
+                                <div className="createInfo">
+                                    <img className="profImg" src={profiles[userId]?.profPic} />
+                                    <div className="ciS">
+                                        <div className="pText">
+                                            Posted by: {users[userId]?.username}
+                                        </div>
+                                        <div className="pText">
+                                            Posted at: {new Date(createdAt).toLocaleTimeString('en-US')}, on: {new Date(createdAt).toLocaleDateString()}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="pText">
+                                    { textContent }
+                                </div>
+                            </NavLink>
+                        </div>
+                    ))}
+                </div>
 
+            </div>
         </div>
     )
 }

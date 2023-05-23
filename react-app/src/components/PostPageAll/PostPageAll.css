@@ -5,18 +5,26 @@
     align-content: center;
 }
 
+#allpostpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .post {
-    height: 100px;
+    height: auto;
     width: 60%;
     /* border: 3px solid green; */
     padding: 10px;
     background-color: rgb(255,255,255);
+    /* text-decoration: none; */
 }
 
 #postArea {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* text-decoration: none; */
 }
 
 .profImg {
@@ -24,3 +32,29 @@
     width: 40px;
     border-radius: 20px;
 }
+
+.postBox {
+    text-decoration: none;
+    color: rgb(53,53,53,);
+}
+
+.createInfo {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    /* border: green 2px solid; */
+}
+
+.ciS {
+    display: flex;
+    flex-direction: column;
+    /* text-decoration: none; */
+    /* border: cyan 2px dotted; */
+}
+
+.pText {
+    color: rgb(53,53,53)
+}
+/* NavLink {
+    text-decoration: none;
+} */
