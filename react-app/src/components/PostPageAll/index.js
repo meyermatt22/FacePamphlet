@@ -5,6 +5,8 @@ import { useHistory, NavLink } from "react-router-dom";
 import { getAllUsersThunk } from "../../store/user";
 import { getAllProfilesThunk } from "../../store/profiles";
 import { createPostThunk } from "../../store/posts";
+import OpenModalButton from "../OpenModalButton";
+import PostDeleteModal from "../PostPageDeleteModal";
 
 import './PostPageAll.css'
 
@@ -84,7 +86,7 @@ function AllPosts() {
                 <div id="postArea">
                     {sortedPosts?.map(({ textContent, id, createdAt, userId }) => (
                         <div key={id} className="post">
-                            <NavLink className="postBox" to={`/posts/${id}`} key={id}>
+                            <div className="postBox" to={`/posts/${id}`} key={id}>
                                 <div className="createInfo">
                                     <img className="profImg" src={profiles[userId - 1]?.profPic} />
                                     <div className="ciS">
@@ -99,7 +101,13 @@ function AllPosts() {
                                 <div className="textContent">
                                     { textContent }
                                 </div>
-                            </NavLink>
+                            </div>
+                            {sessionUser && sessionUser.id === userId && (
+                                <OpenModalButton buttonClass="post-del-btn" buttonText="Delete Post" modalComponent={<PostDeleteModal postId={id}/>}/>
+                            )}
+                            {sessionUser && sessionUser.id === userId && (
+                                <OpenModalButton/>
+                            )}
                         </div>
                     ))}
                 </div>

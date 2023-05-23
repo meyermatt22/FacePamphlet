@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -65,6 +67,14 @@ function LoginFormPage() {
           <button id="loginBtn" type="submit">Log In</button>
           <button id="loginBtn" type="submit" onClick={handleDemoUser}>Demo User</button>
         </form>
+        <div id="signUp">
+          <h5>new to FacePanmplet?</h5>
+            <OpenModalButton
+              buttonText="Sign Up"
+              // onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+            />
+        </div>
       </div>
     </div>
   );

@@ -35,6 +35,7 @@
     background-color: rgb(60,110,113);
     width: 100%;
     margin: 5px 0px;
+    color: white;
 }
 
 .verifyBox {
@@ -43,4 +44,17 @@
 
 #infoText {
     color: rgb(53,53,53);
+}
+
+#signUp {
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: rgb(40,75,99); */
+    /* border: green 3px solid; */
+}
+
+#modBtn {
+    background-color: rgb(60,110,113);
 }
