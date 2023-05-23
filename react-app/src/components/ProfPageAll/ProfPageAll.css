@@ -14,9 +14,11 @@ div {
 }
 
 .profDiv {
+    display: flex;
     width: 500px;
     border: 2px black solid;
     margin: 5px;
+    height: auto;
 }
 
 #allProfInfo {
@@ -26,7 +28,6 @@ div {
 }
 
 .profPic {
-    width: 490px;
-    height: 490px;
-    /* border: 2px cyan solid; */
+    width: 100px;
+    height: 100px;
 }
