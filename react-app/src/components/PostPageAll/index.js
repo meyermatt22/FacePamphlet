@@ -86,10 +86,10 @@ function AllPosts() {
                         <div key={id} className="post">
                             <NavLink className="postBox" to={`/posts/${id}`} key={id}>
                                 <div className="createInfo">
-                                    <img className="profImg" src={profiles[userId]?.profPic} />
+                                    <img className="profImg" src={profiles[userId - 1]?.profPic} />
                                     <div className="ciS">
                                         <div className="pText">
-                                            Posted by: {users[userId]?.username}
+                                            Posted by: {users[userId - 1]?.username}
                                         </div>
                                         <div className="pText">
                                             Posted at: {new Date(createdAt).toLocaleTimeString('en-US')}, on: {new Date(createdAt).toLocaleDateString()}
