@@ -1,21 +1,16 @@
 """empty message
 
-Revision ID: 57260c79aa3e
-Revises:
-Create Date: 2023-05-22 15:45:12.258713
+Revision ID: f28b9e0e207c
+Revises: 
+Create Date: 2023-05-23 18:40:37.260564
 
 """
 from alembic import op
 import sqlalchemy as sa
 
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
-
 # revision identifiers, used by Alembic.
-revision = '57260c79aa3e'
+revision = 'f28b9e0e207c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,19 +27,15 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('friends',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user1_id', sa.Integer(), nullable=True),
     sa.Column('user2_id', sa.Integer(), nullable=True),
-    sa.Column('status', sa.String(), nullable=False),
+    sa.Column('status', sa.Enum('pending', 'accepted', 'declined'), nullable=True),
     sa.ForeignKeyConstraint(['user1_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['user2_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE friends SET SCHEMA {SCHEMA};")
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -54,8 +45,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
     op.create_table('profiles',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -69,8 +58,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE profiles SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

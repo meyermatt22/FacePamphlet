@@ -2,6 +2,8 @@ from flask import Blueprint, request
 from app.models import Profile, db
 from flask_login import current_user, login_required
 from app.forms.profile_form import ProfileForm
+from .aws_image_helpers import get_unique_filename, upload_file_to_s3
+
 
 
 
@@ -33,19 +35,26 @@ def add_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print("prof form info in routes ===> ", form)
+    # print("prof form info in routes ===> ", form)
 
     if form.validate_on_submit():
 
-        print('================> background pic deets:', form.data['background_pic'])
+        prof_pic = form.data['prof_pic']
+        prof_pic.filename = get_unique_filename(prof_pic.filename)
+        upload_prof = upload_file_to_s3(prof_pic)
+
+        background_pic = form.data['background_pic']
+        background_pic.filename = get_unique_filename(background_pic.filename)
+        upload_background = upload_file_to_s3(background_pic)
+        # print('================> background pic deets:', form.data['background_pic'])
 
         profile = Profile(
             user_id = current_user.id,
             first_name = form.data['first_name'],
             last_name = form.data['last_name'],
             middle_name = form.data['middle_name'],
-            prof_pic = form.data['prof_pic'],
-            background_pic = form.data['background_pic'],
+            prof_pic = upload_prof["url"],
+            background_pic = upload_background["url"],
             date_of_birth = form.data['date_of_birth'],
             bio = form.data['bio'],
         )

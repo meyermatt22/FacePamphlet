@@ -3,10 +3,10 @@ from sqlalchemy.sql import text
 
 def seed_friends():
     re1 = Friend(
-        user1_id = 1, user_id = 2, status = 'friends'
+        user1_id = 1, user2_id = 2, status = 'accepted'
     )
     re2 = Friend(
-        user1_id = 1, user_id = 3, status = 'friends'
+        user1_id = 1, user2_id = 3, status = 'accepted'
     )
 
     db.session.add_all([re1, re2])

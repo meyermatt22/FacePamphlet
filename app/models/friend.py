@@ -10,7 +10,7 @@ class Friend(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user1_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')))
     user2_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')))
-    status = db.Column(db.String, nullable=False)
+    status = db.Column(db.Enum('pending', 'accepted', 'declined'))
 
 
     def to_dict(self):
@@ -20,3 +20,9 @@ class Friend(db.Model):
             'user2Id': self.user2_id,
             'status': self.status
         }
+
+# friends = db.Table(
+#     'friends',
+#     db.Model.metadata,
+#     db.Column()
+# )

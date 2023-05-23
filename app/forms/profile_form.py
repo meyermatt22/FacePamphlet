@@ -3,6 +3,7 @@ from wtforms import StringField, DateField, SubmitField, IntegerField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Profile
+from ..api.aws_image_helpers import ALLOWED_EXTENSIONS
 
 def valid_image(form, field):
     prof_pic = field.data
@@ -22,5 +23,7 @@ class ProfileForm(FlaskForm):
     first_name = StringField("Profile First Name", validators=[DataRequired()])
     last_name = StringField("Profile Last Name", validators=[DataRequired()])
     middle_name = StringField("Profile Middle Name", validators=[DataRequired()])
-    prof_pic = StringField('Profile Picture', validators=[DataRequired()])
-    background_pic = StringField('Background Picture', validators=[DataRequired()])
+    # prof_pic = StringField('Profile Picture', validators=[DataRequired()])
+    prof_pic = FileField('Profile Picture', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    background_pic = FileField('Background Picture', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    # background_pic = StringField('Background Picture', validators=[DataRequired()])

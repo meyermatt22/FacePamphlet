@@ -137,10 +137,10 @@ function ProfPageForm() {
                     <input
                         className="inBox2"
                         placeholder="profile image (jpg, png...)"
-                        type="text"
+                        type="file"
                         name="profPic"
                         accept="image/*"
-                        onChange={(e) => setProfPic(e.target.value)}
+                        onChange={(e) => setProfPic(e.target.files[0])}
                         >
                     </input>
                 </div>
@@ -149,10 +149,10 @@ function ProfPageForm() {
                     <input
                         className="inBox2"
                         placeholder="background image (jpg, png...)"
-                        type="text"
+                        type="file"
                         name="backgroundPic"
                         accept="image/*"
-                        onChange={(e) => setBackgroundPic(e.target.value)}
+                        onChange={(e) => setBackgroundPic(e.target.files[0])}
                         >
                     </input>
                 </div>
