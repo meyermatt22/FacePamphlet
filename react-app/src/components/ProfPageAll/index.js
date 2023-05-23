@@ -18,10 +18,10 @@ function AllProfiles() {
 
     return (
         <div id="allProfPage">
-            <div>
-            <button className="profile-curr-btn" onClick={() => history.push(`/profiles/current`)}>My Profile</button>
-            <h1>all profiles page</h1>
-            <input id="searchBar" placeholder="Find People (firstname & lastname)" onChange={event => setQuery(event.target.value)} />
+            <div id="allProfInfo">
+                <button className="profile-curr-btn" onClick={() => history.push(`/profiles/current`)}>My Profile</button>
+                    <h1>all profiles page</h1>
+                <input id="searchBar" placeholder="Find People (firstname & lastname)" onChange={event => setQuery(event.target.value)} />
             </div>
             <div>
 
@@ -42,8 +42,8 @@ function AllProfiles() {
                     <div>
                     </div>
                     <div className="picDiv">
-                        <img src={profPic}></img>
-                        <img className="backgroundPic" src={backgroundPic}></img>
+                        <img className="profPic" src={profPic}></img>
+                        {/* <img className="backgroundPic" src={backgroundPic}></img> */}
                     </div>
                 </NavLink>
             ))}
