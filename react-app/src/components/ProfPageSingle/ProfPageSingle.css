@@ -1,0 +1,72 @@
+#profPageSingle {
+    background-color: rgb(217,217,217);
+    padding: 5px;
+}
+
+#backimg {
+    width: 100%;
+    height: 100%;
+    /* border: 20px solid cyan; */
+}
+
+#backimgCont {
+    height: 500px;
+    /* position: absolute; */
+}
+
+#profimg {
+    position: absolute;
+    top: 350px;
+    left: 70px;
+    border-radius: 50px;
+    border: black solid 5px;
+    box-shadow: 12px 12px 2px 1px rgb(60,110,113);
+}
+
+#profInfo {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#filler {
+    height: 100px;
+}
+
+#userPosts {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.userPost {
+    border: 1px solid rgb(53,53,53);
+    height: auto;
+    padding: 5px;;
+}
+
+.postDate {
+    color: rgb(40,75,99);
+    display: flex;
+    justify-content: end;
+}
+
+#noProfPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: rgb(217,217,217);
+}
+
+.profile-new-btn {
+    background-color: rgb(40,75,99);
+    color: rgb(255,255,255);
+    width: 200px;
+    height: 30px;
+}
+
+.profile-new-btn:hover {
+    cursor: pointer;
+}

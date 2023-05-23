@@ -198,7 +198,7 @@ function ProfPageEditForm() {
 
                 </div>
                 <div className="submitBtn">
-                    <button className="confirm-submit" type="submit">Create Profile</button>
+                    <button className="confirm-submit" type="submit">Submit</button>
                 </div>
             </form>
         </div>
