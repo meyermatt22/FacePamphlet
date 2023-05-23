@@ -1,6 +1,7 @@
-/* #profPageCurr {
-    display: grid;
-} */
+#profPageCurr {
+    background-color: rgb(217,217,217);
+    padding: 5px;
+}
 
 #backimg {
     width: 100%;
@@ -19,9 +20,34 @@
     left: 70px;
     border-radius: 50px;
     border: black solid 5px;
-    box-shadow: 12px 12px 2px 1px cyan;
+    box-shadow: 12px 12px 2px 1px rgb(60,110,113);
+}
+
+#profInfo {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #filler {
     height: 100px;
+}
+
+#userPosts {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.userPost {
+    border: 1px solid rgb(53,53,53);
+    height: auto;
+    padding: 5px;;
+}
+
+.postDate {
+    color: rgb(40,75,99);
+    display: flex;
+    justify-content: end;
 }

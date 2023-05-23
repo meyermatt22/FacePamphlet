@@ -5,6 +5,7 @@ import { useHistory, useParams, NavLink } from "react-router-dom";
 import PostPageEditFormModal from "../PostPageEditFormModal";
 import PostDeleteModal from "../PostPageDeleteModal";
 import OpenModalButton from "../OpenModalButton";
+import './PostPageSingle.css'
 
 
 function PostPageSingle() {

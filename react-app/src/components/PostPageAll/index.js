@@ -96,7 +96,7 @@ function AllPosts() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="pText">
+                                <div className="textContent">
                                     { textContent }
                                 </div>
                             </NavLink>

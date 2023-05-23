@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import ProfileDeleteModal from "../ProfPageDeleteModal";
 import './ProfPageCurr.css'
+import { getAllPostsThunk } from "../../store/posts";
 
 function ProfPageCurr() {
     const dispatch = useDispatch();
@@ -12,19 +13,29 @@ function ProfPageCurr() {
 
     useEffect(() => {
         dispatch(getCurrProfThunk())
+        dispatch(getAllPostsThunk())
     }, [dispatch])
     const sessionUser = useSelector(state => state.session.user);
     const profiles = useSelector(state => Object.values(state.profiles))
-
+    const posts = useSelector(state => Object.values(state.posts));
     // console.log("this should be the session user : ", sessionUser, profiles)
 
     let userProf = ''
+    let userPosts = []
 
     for(let i = 0; i < profiles.length; i++) {
         if (profiles && profiles[i].userId === parseInt(sessionUser.id)) {
             userProf = profiles[i]
         }
     }
+
+    for(let i = 0; i < posts.length; i++) {
+        if (posts[i].userId === parseInt(sessionUser.id)) {
+            userPosts.push(posts[i])
+        }
+    }
+
+    let sortedPosts = userPosts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
     // const userProf = useSelector(state => state.profile)
     // console.log(userProf)
@@ -47,15 +58,25 @@ function ProfPageCurr() {
             <div id="filler">
 
             </div>
-            <h1>{userProf?.firstName}'s prof page</h1>
-            {userProf?.firstName} {userProf?.middleName} {userProf?.lastName}
-            <div>{userProf?.bio}</div>
+            <div id="profInfo">
+                <h1>{userProf?.firstName}'s prof page</h1>
+                {userProf?.firstName} {userProf?.middleName} {userProf?.lastName}
+                <div>{userProf?.bio}</div>
+                <div id="userPosts">
+                {sortedPosts?.map(({textContent, id, createdAt}) => (
+                    <div className="userPost" key={id}>
+                        {textContent}
+                        <div className="postDate">posted at {new Date(createdAt).toLocaleTimeString('en-US')} on: {new Date(createdAt).toLocaleDateString()}</div>
+                    </div>
+                ))}
+                </div>
             {sessionUser && (
                 <button className="profile-edit-btn" onClick={() => history.push(`/profiles/edit/${sessionUser.id}`)}>Edit Profile</button>
-            )}
+                )}
             {sessionUser && (
                 <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={userProf.id}/>}/>
-            )}
+                )}
+            </div>
         </div>
     )
 }
