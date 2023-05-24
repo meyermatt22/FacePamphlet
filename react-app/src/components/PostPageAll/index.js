@@ -68,10 +68,11 @@ function AllPosts() {
                     onSubmit={(e) => handleSubmit(e)}
                     encType="multipart/form-data"
                     id="newPostForm"
-                >
+                    >
                     <div className="form-input-box text-input">
                         <div><label for="name"></label></div>
-                        <input
+                        <textarea
+                        className="textA"
                             placeholder="What's on you mind?"
                             type="textArea"
                             name="textContent"
@@ -79,8 +80,11 @@ function AllPosts() {
                             value={textContent}
                             required={true}
                             >
-                        </input>
+                        </textarea>
                     </div>
+                    <div className="four">
+                    <button className="confirm-submit" type="submit">Create Post</button>
+                </div>
                 </form>
             </div>
             <div id="allPosts">
