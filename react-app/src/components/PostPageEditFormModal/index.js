@@ -94,15 +94,16 @@ function PostPageEditFormModal({ id }) {
             >
                 <div className="form-input-box text-input">
                     <div><label for="name"></label></div>
-                    <input
+                    <textarea
                         id="updateIn"
                         type="text"
                         name="textContent"
                         onChange={(e) => setTextContent(e.target.value)}
                         value={textContent}
                         required={true}
+                        maxLength={500}
                         >
-                    </input>
+                    </textarea>
                 </div>
                 <div className="four">
                     <button id="subBtn" className="confirm-submit" type="submit">Confirm Edit</button>

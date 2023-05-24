@@ -21,6 +21,10 @@ function AllPosts() {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+    // const handleTextContent = (e) => {
+    //     if(textContent.length < 100) setTextContent(e.target.value)
+    // }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -79,6 +83,7 @@ function AllPosts() {
                             onChange={(e) => setTextContent(e.target.value)}
                             value={textContent}
                             required={true}
+                            maxLength={500}
                             >
                         </textarea>
                     </div>

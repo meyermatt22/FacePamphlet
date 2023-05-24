@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editProfileThunk, getCurrProfThunk } from "../../store/profiles";
 import './ProfPageEditForm.css'
+import { BarLoader } from "react-spinners";
 
 function ProfPageEditForm() {
     const dispatch = useDispatch();
@@ -103,6 +104,11 @@ function ProfPageEditForm() {
                     </ul>
                 </div>
             )}
+            <div className="loadingArea">
+                {hasSubmitted &&  validationErrors.length === 0 &&(
+                    <BarLoader color="#36d7b7" className="loadingBar" />
+                )}
+            </div>
             <form
                 onSubmit={(e) => handleSubmit(e)}
                 encType="multipart/form-data"
@@ -131,7 +137,7 @@ function ProfPageEditForm() {
                         onChange={(e) => setLastName(e.target.value)}
                         value={lastName}
                         required={true}
-                    >
+                        >
                     </input>
                 </div>
                 <div className="form-input-box middle-name-input">
@@ -143,6 +149,7 @@ function ProfPageEditForm() {
                         name="middleName"
                         onChange={(e) => setMiddleName(e.target.value)}
                         value={middleName}
+                        required={true}
                         >
                     </input>
                 </div>
@@ -151,15 +158,17 @@ function ProfPageEditForm() {
                     </div>
                 <div className="form-input-box bio-input">
                     <div><label for="bio"></label></div>
-                    <input
+                    <textarea
                         className="inBox1"
                         placeholder="biography"
                         type="textArea"
                         name="bio"
                         onChange={(e) => setBio(e.target.value)}
                         value={bio}
+                        required={true}
+                        maxLength={500}
                         >
-                    </input>
+                    </textarea>
                 </div>
 
                 <div className="form-input-box">
@@ -170,6 +179,7 @@ function ProfPageEditForm() {
                         type="file"
                         name="profPic"
                         accept="image/*"
+                        required={true}
                         onChange={(e) => setProfPic(e.target.files[0])}
                         >
                     </input>
@@ -182,6 +192,7 @@ function ProfPageEditForm() {
                         type="file"
                         name="backgroundPic"
                         accept="image/*"
+                        required={true}
                         onChange={(e) => setBackgroundPic(e.target.files[0])}
                         >
                     </input>
@@ -189,13 +200,11 @@ function ProfPageEditForm() {
                 <div className="form-input-box">
                     <label for="birthday">Birthday:</label>
                     <input
-
                         type="date"
                         name="birthday"
-                        onChange={(e) => setDateOfBirth(e.target.value)}
-                        >
+                        required={true}
+                        onChange={(e) => setDateOfBirth(e.target.value)}>
                     </input>
-
                 </div>
                 <div className="submitBtn">
                     <button className="confirm-submit" type="submit">Submit</button>
