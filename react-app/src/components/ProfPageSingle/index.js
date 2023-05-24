@@ -22,16 +22,34 @@ function ProfPageSingle() {
     const posts = useSelector(state => Object.values(state.posts));
 
     let userPosts = []
+    let userProf = profiles
 
     for(let i = 0; i < posts.length; i++) {
         if (posts[i].userId === parseInt(id)) {
             userPosts.push(posts[i])
         }
     }
+    // for(let i = 0; i < profiles.length; i++) {
+    //     if (profiles[i].userId === parseInt(sessionUser.id)) {
+    //         userProf = profiles[i]
+    //     }
+    // }
+
+    console.log('inside single prof page', userProf)
 
     let sortedPosts = userPosts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
+    if(!userProf && sessionUser) {
+        return (
+            <div id="noProfPage">
+                <button className="profile-new-btn" onClick={() => history.push(`/profiles/new`)}>Make Your Profile</button>
+            </div>
+        )
+    }
+
     if(profiles.length < 1) return null
+
+
 
 
     // console.log('session number type ', sessionUser.id, id, parseInt(id) === parseInt(sessionUser.id))

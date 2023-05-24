@@ -8,6 +8,15 @@ function ProfPageEditForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
+    const [bio, setBio] = useState('')
+    const [dateOfBirth, setDateOfBirth] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [middleName, setMiddleName] = useState('')
+    const [profPic, setProfPic] = useState('')
+    const [backgroundPic, setBackgroundPic] = useState('')
+    const [validationErrors, setValidationErrors] = useState([])
+    const [hasSubmitted, setHasSubmitted] = useState(false)
 
     useEffect(() => {
         dispatch(getCurrProfThunk())
@@ -23,17 +32,8 @@ function ProfPageEditForm() {
         }
     }
 
-    // console.log('current users profile', userProf)
+    console.log('current users profile', userProf.backgroundPic)
 
-    const [bio, setBio] = useState('')
-    const [dateOfBirth, setDateOfBirth] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [middleName, setMiddleName] = useState('')
-    const [profPic, setProfPic] = useState('')
-    const [backgroundPic, setBackgroundPic] = useState('')
-    const [validationErrors, setValidationErrors] = useState([])
-    const [hasSubmitted, setHasSubmitted] = useState(false)
 
     useEffect(() => {
         if (userProf) {
@@ -75,7 +75,7 @@ function ProfPageEditForm() {
         setValidationErrors([])
         setHasSubmitted(false)
 
-        history.push(`/profiles/current`)
+        history.push(`/profiles/${updatedProf.id}`)
     }
 
     useEffect(() => {
@@ -163,26 +163,26 @@ function ProfPageEditForm() {
                 </div>
 
                 <div className="form-input-box">
-                    <div><label for="profPic">Profile Image:</label></div>
+                    <div><label for="profPic"></label></div>
                     <input
                         className="inBox2"
                         placeholder="profile image (jpg, png...)"
-                        type="text"
+                        type="file"
                         name="profPic"
                         accept="image/*"
-                        onChange={(e) => setProfPic(e.target.value)}
+                        onChange={(e) => setProfPic(e.target.files[0])}
                         >
                     </input>
                 </div>
                 <div className="form-input-box">
-                    <div><label for="backgroundPic">Background Image:</label></div>
+                    <div><label for="backgroundPic"></label></div>
                     <input
                         className="inBox2"
                         placeholder="background image (jpg, png...)"
-                        type="text"
+                        type="file"
                         name="backgroundPic"
                         accept="image/*"
-                        onChange={(e) => setBackgroundPic(e.target.value)}
+                        onChange={(e) => setBackgroundPic(e.target.files[0])}
                         >
                     </input>
                 </div>

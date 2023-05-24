@@ -8,6 +8,7 @@ function ProfPageForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
+
     const [bio, setBio] = useState("")
     const [dateOfBirth, setDateOfBirth] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -46,7 +47,7 @@ function ProfPageForm() {
         setValidationErrors([])
         setHasSubmitted(false)
 
-        history.push(`/profiles/current`)
+        history.push(`/profiles/${newProf.id}`)
     }
 
     useEffect(() => {

@@ -80,13 +80,20 @@ def edit_profile(id):
 
     if form.validate_on_submit():
 
+        prof_pic = form.data['prof_pic']
+        prof_pic.filename = get_unique_filename(prof_pic.filename)
+        upload_prof = upload_file_to_s3(prof_pic)
+
+        background_pic = form.data['background_pic']
+        background_pic.filename = get_unique_filename(background_pic.filename)
+        upload_background = upload_file_to_s3(background_pic)
         print('================> background pic deets:', form.data['background_pic'])
 
         prof.first_name = form.data['first_name']
         prof.last_name = form.data['last_name']
         prof.middle_name = form.data['middle_name']
-        prof.prof_pic = form.data['prof_pic']
-        prof.background_pic = form.data['background_pic']
+        prof.prof_pic = upload_prof["url"]
+        prof.background_pic = upload_background["url"]
         prof.date_of_birth = form.data['date_of_birth']
         prof.bio = form.data['bio']
 

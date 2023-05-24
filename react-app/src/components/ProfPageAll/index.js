@@ -8,6 +8,7 @@ import './ProfPageAll.css'
 function AllProfiles() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
     const [query, setQuery] = useState('');
 
     useEffect(() => {
@@ -15,11 +16,29 @@ function AllProfiles() {
     }, [dispatch]);
 
     const profiles = useSelector(state => Object.values(state.profiles))
+    let userProf = ''
+
+    for(let i = 0; i < profiles.length; i++) {
+        if (profiles && profiles[i].userId === parseInt(sessionUser.id)) {
+            userProf = profiles[i]
+        }
+    }
+
+    let profileId = userProf.id
+
+    if (profileId === null) {
+        profileId = 'new'
+    }
 
     return (
         <div id="allProfPage">
             <div id="allProfInfo">
-                <button className="profile-curr-btn" onClick={() => history.push(`/profiles/current`)}>My Profile</button>
+                {userProf && (
+                    <button className="profile-curr-btn" onClick={() => history.push(`/profiles/${profiles.id}`)}>My Profile</button>
+                    )}
+                {!userProf && (
+                    <button className="profile-curr-btn" onClick={() => history.push(`/profiles/new`)}>Create a Profile</button>
+                )}
                 <h1>all profiles page</h1>
                 <input id="searchBar" placeholder="Find People (firstname & lastname)" onChange={event => setQuery(event.target.value)} />
             {profiles?.filter(prof => {
@@ -31,6 +50,7 @@ function AllProfiles() {
                     return prof
                 }
             }).map(({ firstName, lastName, middleName, profPic, dateOfBirth, backgroundPic, id }) => (
+
                 <NavLink to={`/profiles/${id}`} key={id} className="profDiv">
                     <div className="picDiv">
                         <img className="profPic" src={profPic}></img>
