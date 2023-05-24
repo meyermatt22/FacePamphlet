@@ -32,6 +32,8 @@ function SignupFormModal() {
 		}
 	};
 
+	console.log('signup errors: ', errors['undefined'])
+
 	return (
 		<div id="signUpModal">
 			<h1 id="signupText">Sign Up</h1>
@@ -69,6 +71,8 @@ function SignupFormModal() {
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
+						minLength={6}
+            			maxLength={15}
 						/>
 				</label>
 				<label>
@@ -79,6 +83,8 @@ function SignupFormModal() {
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
+						minLength={6}
+            			maxLength={15}
 						/>
 				</label>
 				<div id="subBox">

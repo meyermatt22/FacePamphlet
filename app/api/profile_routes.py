@@ -46,6 +46,11 @@ def add_profile():
         background_pic = form.data['background_pic']
         background_pic.filename = get_unique_filename(background_pic.filename)
         upload_background = upload_file_to_s3(background_pic)
+
+        if "url" not in upload_prof:
+            return { 'errors': form.errors}
+        if "url" not in upload_background:
+            return { 'errors': form.errors}
         # print('================> background pic deets:', form.data['background_pic'])
 
         profile = Profile(

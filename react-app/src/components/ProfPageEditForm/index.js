@@ -81,12 +81,16 @@ function ProfPageEditForm() {
 
     useEffect(() => {
         const errors = [];
-        // Only adding to the validation errors for fields that are nullable=False in the Song model
-        // if (!dateOfBirth) errors.push('Please enter a dateOfBirth!')
+
+        if (!bio) errors.push('Please tell us about yourself!')
+        if (!dateOfBirth) errors.push('When were you born?')
         if (!firstName) errors.push('Please provide a first name!')
         if (!lastName) errors.push('Please provide a last name!')
+        if (!middleName) errors.push('Please provide a middle name!')
+        if (!profPic?.name?.endsWith('.jpg') && !profPic?.name?.endsWith('.pdf') && !profPic?.name?.endsWith('.jpeg') && !profPic?.name?.endsWith('.png') && !profPic?.name?.endsWith('.gif')) errors.push('Please provide a profile picture that ends with "pdf", "png", "jpg", "jpeg", or "gif"!')
+        if (!backgroundPic?.name?.endsWith('.jpg') && !backgroundPic?.name?.endsWith('.pdf') && !backgroundPic?.name?.endsWith('.jpeg') && !backgroundPic?.name?.endsWith('.png') && !backgroundPic?.name?.endsWith('.gif')) errors.push('Please provide a background picture that ends with "pdf", "png", "jpg", "jpeg", or "gif"!')
         setValidationErrors(errors)
-    }, [ firstName, lastName ])
+    }, [ bio, dateOfBirth, firstName, lastName, middleName, profPic, backgroundPic ])
 
     if(!userProf) {
         return 'no profile found for user'
@@ -175,12 +179,11 @@ function ProfPageEditForm() {
                     <div><label for="profPic"></label></div>
                     <input
                         className="inBox2"
-                        placeholder="profile image (jpg, png...)"
                         type="file"
                         name="profPic"
                         accept="image/*"
-                        required={true}
                         onChange={(e) => setProfPic(e.target.files[0])}
+                        required={true}
                         >
                     </input>
                 </div>
@@ -188,12 +191,11 @@ function ProfPageEditForm() {
                     <div><label for="backgroundPic"></label></div>
                     <input
                         className="inBox2"
-                        placeholder="background image (jpg, png...)"
                         type="file"
                         name="backgroundPic"
                         accept="image/*"
-                        required={true}
                         onChange={(e) => setBackgroundPic(e.target.files[0])}
+                        required={true}
                         >
                     </input>
                 </div>

@@ -59,7 +59,9 @@ function SignupFormPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+            minLength={6}
+            maxLength={15}
+            />
         </label>
         <label>
           Confirm Password
@@ -68,6 +70,8 @@ function SignupFormPage() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            minLength={6}
+            maxLength={15}
           />
         </label>
         <button type="submit">Sign Up</button>
