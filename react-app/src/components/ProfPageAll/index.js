@@ -34,7 +34,7 @@ function AllProfiles() {
         <div id="allProfPage">
             <div id="allProfInfo">
                 {userProf && (
-                    <button className="profile-curr-btn" onClick={() => history.push(`/profiles/${profiles.id}`)}>My Profile</button>
+                    <button className="profile-curr-btn" onClick={() => history.push(`/profiles/${userProf.id}`)}>My Profile</button>
                     )}
                 {!userProf && (
                     <button className="profile-curr-btn" onClick={() => history.push(`/profiles/new`)}>Create a Profile</button>
