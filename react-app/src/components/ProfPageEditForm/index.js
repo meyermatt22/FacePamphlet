@@ -110,7 +110,7 @@ function ProfPageEditForm() {
             )}
             <div className="loadingArea">
                 {hasSubmitted &&  validationErrors.length === 0 &&(
-                    <BarLoader color="#36d7b7" className="loadingBar" />
+                    <BarLoader color="#3c6e71" className="loadingBar" />
                 )}
             </div>
             <form
