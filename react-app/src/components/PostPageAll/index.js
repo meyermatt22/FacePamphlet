@@ -7,6 +7,7 @@ import { getAllProfilesThunk } from "../../store/profiles";
 import { createPostThunk } from "../../store/posts";
 import OpenModalButton from "../OpenModalButton";
 import PostDeleteModal from "../PostPageDeleteModal";
+import CommentModal from "../CommentModal";
 
 import './PostPageAll.css'
 import PostPageEditFormModal from "../PostPageEditFormModal";
@@ -118,6 +119,9 @@ function AllPosts() {
                             )}
                             {sessionUser && sessionUser.id === userId && (
                                 <OpenModalButton buttonText="Edit Post" modalComponent={<PostPageEditFormModal id={id}/>}/>
+                            )}
+                            {sessionUser &&  (
+                                <OpenModalButton buttonText="Post a comment" modalComponent={<CommentModal postId={id} />}/>
                             )}
                             </div>
                         </div>

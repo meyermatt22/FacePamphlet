@@ -111,6 +111,6 @@ function PostPageEditFormModal({ id }) {
             </form>
         </div>
     )
-}
+};
 
 export default PostPageEditFormModal;

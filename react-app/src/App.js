@@ -16,6 +16,7 @@ import PostPageForm from "./components/PostPageForm";
 import PostPageEditFormModal from "./components/PostPageEditFormModal";
 import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AllComments from "./components/CommentPageAll";
 
 function App() {
   const dispatch = useDispatch();
@@ -68,6 +69,11 @@ function App() {
           <Route exact path="/posts">
             <ProtectedRoute>
               <AllPosts />
+            </ProtectedRoute>
+          </Route>
+          <Route exact path="/comments">
+            <ProtectedRoute>
+              <AllComments />
             </ProtectedRoute>
           </Route>
           <Route exact path="/posts/new">
