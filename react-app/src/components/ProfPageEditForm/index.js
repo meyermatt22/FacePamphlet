@@ -128,6 +128,7 @@ function ProfPageEditForm() {
                         onChange={(e) => setFirstName(e.target.value)}
                         value={firstName}
                         required={true}
+                        maxLength={30}
                         >
                     </input>
                 </div>
@@ -141,6 +142,7 @@ function ProfPageEditForm() {
                         onChange={(e) => setLastName(e.target.value)}
                         value={lastName}
                         required={true}
+                        maxLength={30}
                         >
                     </input>
                 </div>
@@ -153,6 +155,7 @@ function ProfPageEditForm() {
                         name="middleName"
                         onChange={(e) => setMiddleName(e.target.value)}
                         value={middleName}
+                        maxLength={30}
                         required={true}
                         >
                     </input>
@@ -205,7 +208,10 @@ function ProfPageEditForm() {
                         type="date"
                         name="birthday"
                         required={true}
-                        onChange={(e) => setDateOfBirth(e.target.value)}>
+                        onChange={(e) => setDateOfBirth(e.target.value)}
+                        max={new Date().toISOString().split("T")[0]}
+                        >
+
                     </input>
                 </div>
                 <div className="submitBtn">

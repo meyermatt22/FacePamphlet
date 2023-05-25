@@ -20,6 +20,7 @@ function ProfPageForm() {
 
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
+    // console.log('new prof form, birthday info 2',  Date.now())
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -99,6 +100,7 @@ function ProfPageForm() {
                         onChange={(e) => setFirstName(e.target.value)}
                         value={firstName}
                         required={true}
+                        maxLength={30}
                         >
                     </input>
                 </div>
@@ -112,6 +114,7 @@ function ProfPageForm() {
                         onChange={(e) => setLastName(e.target.value)}
                         value={lastName}
                         required={true}
+                        maxLength={30}
                         >
                     </input>
                 </div>
@@ -125,6 +128,7 @@ function ProfPageForm() {
                         onChange={(e) => setMiddleName(e.target.value)}
                         value={middleName}
                         required={true}
+                        maxLength={30}
                         >
                     </input>
                 </div>
@@ -170,11 +174,11 @@ function ProfPageForm() {
                 <div className="form-input-box">
                     <label for="birthday">Birthday:</label>
                     <input
-
                         type="date"
                         name="birthday"
                         onChange={(e) => setDateOfBirth(e.target.value)}
                         required={true}
+                        max={new Date().toISOString().split("T")[0]}
                         >
                     </input>
 

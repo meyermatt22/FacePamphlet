@@ -1,4 +1,5 @@
 #allPosts {
+    /* width: 800px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,16 +12,6 @@
     align-items: center;
 }
 
-.post {
-    /* display: flex; */
-    height: auto;
-    width: 60%;
-    /* border: 3px solid green; */
-    padding: 10px;
-    background-color: rgb(255,255,255);
-    /* flex-wrap: wrap; */
-    /* text-decoration: none; */
-}
 
 #postArea {
     display: flex;
@@ -39,6 +30,9 @@
 .postBox {
     text-decoration: none;
     color: rgb(53,53,53,);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .createInfo {
@@ -69,4 +63,21 @@
     width: 500px;
     height: 50px
     /* border: 3px red solid; */
+}
+
+.textContent {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+    overflow-wrap: anywhere;
+}
+
+.post {
+    height: auto;
+    width: 700px;
+    /* border: 3px solid green; */
+    padding: 10px;
+    background-color: rgb(255,255,255);
 }
