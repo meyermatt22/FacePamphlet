@@ -11,6 +11,7 @@ import CommentModal from "../CommentModal";
 
 import './PostPageAll.css'
 import PostPageEditFormModal from "../PostPageEditFormModal";
+import { getAllCommentsThunk } from "../../store/comment";
 
 
 function AllPosts() {
@@ -53,17 +54,21 @@ function AllPosts() {
         dispatch(getAllPostsThunk())
         dispatch(getAllUsersThunk())
         dispatch(getAllProfilesThunk())
+        dispatch(getAllCommentsThunk())
     }, [dispatch]);
 
     const posts = useSelector(state => Object.values(state.posts))
     const users = useSelector(state => Object.values(state.users))
     const profiles = useSelector(state => Object.values(state.profiles))
+    const comments = useSelector(state => Object.values(state.comments))
 
     if(posts.length < 1) return <h1>where have all the posts gone?</h1>
 
-    console.log('inside all posts, info for sort', users)
+    // console.log('inside all posts, info for sort', users)
 
     let sortedPosts = posts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
+
+    console.log('all of the sorted posts, ,,, ', comments)
 
     return (
         <div id="allpostpage">
@@ -123,6 +128,16 @@ function AllPosts() {
                             {sessionUser &&  (
                                 <OpenModalButton buttonText="Post a comment" modalComponent={<CommentModal postId={id} />}/>
                             )}
+                            </div>
+                            <div>
+                                {comments?.map(({textContent, userId, postId}) => (
+                                    <div>
+
+                                        {id === postId && (
+                                            <div>{textContent} {userId}</div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     ))}
