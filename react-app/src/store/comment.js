@@ -1,6 +1,7 @@
 const GET_ALL_COMMENTS = 'comments/GET_ALL_COMMENTS';
 const GET_COMMENT = 'comments/GET_COMMENT';
 const CREATE_COMMENT = 'comments/CREATE_COMMENT';
+const DELETE_COMMENT = 'comments/DELETE_COMMENT';
 
 const getAllCommentsAction = (Comments) => ({
     type: GET_ALL_COMMENTS,
@@ -15,6 +16,11 @@ const getOneCommentAction = (Comment) => ({
 const createCommentAction = (comment) => ({
     type: CREATE_COMMENT,
     comment
+});
+
+const deleteCommentAction = (commentId) => ({
+    type: DELETE_COMMENT,
+    commentId,
 });
 
 export const getAllCommentsThunk = () => async (dispatch) => {
@@ -61,6 +67,19 @@ export const createCommentThunk = (comment) => async (dispatch) => {
     }
 };
 
+export const deleteCommentThunk = (commentId) => async (dispatch) => {
+    const res = await fetch(`/api/comments/delete/${commentId}`, {
+        method: "DELETE",
+    });
+
+    if(res.ok) {
+        dispatch(deleteCommentAction(commentId));
+        return { 'message': 'delete successful' };
+    } else {
+        return "==========> deleteCommentThunk res is not ok <=========="
+    };
+};
+
 const initState = {};
 function commentReducer(state = initState, action) {
     let newState;
@@ -79,6 +98,10 @@ function commentReducer(state = initState, action) {
             newState = {...state};
             console.log('action ACTION in the reducer... ==> ', action)
             newState[action.comment.id] = action.comment;
+            return newState;
+        case DELETE_COMMENT:
+            newState = {...state};
+            delete newState[action.commentId];
             return newState;
         default:
             return state;

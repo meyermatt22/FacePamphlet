@@ -51,3 +51,15 @@ def add_comment():
         return comment.to_dict()
 
     return { 'errors': form.errors}
+
+@comment_routes.route('/delete/<int:id>', methods=["DELETE"])
+@login_required
+def delete_comment(id):
+    """ Handles deleting a comment by id, if owned by current user """
+    comment = Comment.query.get(id)
+    if comment.user_id == current_user.id:
+        db.session.delete(comment)
+        db.session.commit()
+        return "Delete Successful"
+    else:
+        return 'Must be comment owner to delete comment'

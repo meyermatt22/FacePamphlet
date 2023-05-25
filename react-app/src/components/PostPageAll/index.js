@@ -8,6 +8,7 @@ import { createPostThunk } from "../../store/posts";
 import OpenModalButton from "../OpenModalButton";
 import PostDeleteModal from "../PostPageDeleteModal";
 import CommentModal from "../CommentModal";
+import CommentDeleteModal from "../CommentDeleteModal";
 
 import './PostPageAll.css'
 import PostPageEditFormModal from "../PostPageEditFormModal";
@@ -68,7 +69,7 @@ function AllPosts() {
 
     let sortedPosts = posts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
-    console.log('all of the sorted posts, ,,, ', comments)
+    // console.log('all of the sorted posts, ,,, ', comments)
 
     return (
         <div id="allpostpage">
@@ -125,19 +126,21 @@ function AllPosts() {
                             {sessionUser && sessionUser.id === userId && (
                                 <OpenModalButton buttonText="Edit Post" modalComponent={<PostPageEditFormModal id={id}/>}/>
                             )}
+                            </div>
+                            <div>
                             {sessionUser &&  (
                                 <OpenModalButton buttonText="Post a comment" modalComponent={<CommentModal postId={id} />}/>
                             )}
-                            </div>
-                            <div>
-                                {comments?.map(({textContent, userId, postId}) => (
-                                    <div>
-
-                                        {id === postId && (
-                                            <div>{textContent} {userId}</div>
+                            {comments?.map(( c ) => (
+                                <div className="commentSection">
+                                    {id === c.postId && (
+                                        <div> {users[userId]?.username} says: {c.textContent}</div>
                                         )}
-                                    </div>
-                                ))}
+                                    {id === c.postId && sessionUser && sessionUser.id === c.userId && (
+                                            <OpenModalButton className="delComBtn" buttonText="Delete Comment" modalComponent={<CommentDeleteModal commentId={c.id}/>}/>
+                                        )}
+                                </div>
+                            ))}
                             </div>
                         </div>
                     ))}
