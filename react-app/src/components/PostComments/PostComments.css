@@ -1,0 +1,13 @@
+/* .postCommentDiv {
+    border: cyan 2px dotted;
+} */
+
+.hidden {
+    display: none;
+}
+
+.butinC {
+    display: flex;
+    justify-content: center;
+    /* border: green dotted 3px; */
+}

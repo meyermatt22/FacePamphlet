@@ -19,7 +19,7 @@ function CommentDeleteModal({commentId}) {
             <h1 className="modalText">Delete Your Comment?</h1>
             <form onSubmit={handleDelete}>
                 <button className="confirm-comment-delete" type="submit">Yes, delete my comment</button>
-                <button className="decline-comment-delete" >No, keep my comment</button>
+                <button className="decline-comment-delete" onClick={closeModal}>No, keep my comment</button>
             </form>
         </div>
     )
