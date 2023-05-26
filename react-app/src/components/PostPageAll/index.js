@@ -7,9 +7,13 @@ import { getAllProfilesThunk } from "../../store/profiles";
 import { createPostThunk } from "../../store/posts";
 import OpenModalButton from "../OpenModalButton";
 import PostDeleteModal from "../PostPageDeleteModal";
+import CommentModal from "../CommentModal";
+import CommentDeleteModal from "../CommentDeleteModal";
+import CommentEditModal from "../CommentEditModal";
 
 import './PostPageAll.css'
 import PostPageEditFormModal from "../PostPageEditFormModal";
+import { createCommentThunk, getAllCommentsThunk } from "../../store/comment";
 
 
 function AllPosts() {
@@ -18,8 +22,10 @@ function AllPosts() {
     const sessionUser = useSelector(state => state.session.user);
     const [query, setQuery] = useState('');
     const [textContent, setTextContent] = useState('');
+    const [textContent2, setTextContent2] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [hasSubmitted2, setHasSubmitted2] = useState(false);
 
     // const handleTextContent = (e) => {
     //     if(textContent.length < 100) setTextContent(e.target.value)
@@ -41,10 +47,38 @@ function AllPosts() {
         history.push(`/home`)
     };
 
+    const handleSubmit2 = async (e, id) => {
+        e.preventDefault();
+
+        setHasSubmitted2(true);
+
+        const formData = new FormData();
+        formData.append('text_content', textContent2);
+        formData.append('post_id', id);
+
+        await dispatch(createCommentThunk(formData));
+
+        setTextContent2('');
+        setHasSubmitted2(false);
+    }
+
+    // let propD = "downDrop"
+
+    // const handleClick = async (e) => {
+    //     e.preventDefault();
+    //     if(propD === "dropDown") {
+    //         propD = "downDrop"
+    //     } else {
+    //         propD = "dropDown"
+    //     }
+    // }
+
+    // console.log("handle click stuff, propD status", propD)
+
     useEffect(() => {
         const errors = [];
-
         if (!textContent) errors.push('Please provide something!')
+        // if (!textContent2) errors.push('Please provide something!')
         setValidationErrors(errors)
     }, [ textContent ]);
 
@@ -52,17 +86,21 @@ function AllPosts() {
         dispatch(getAllPostsThunk())
         dispatch(getAllUsersThunk())
         dispatch(getAllProfilesThunk())
+        dispatch(getAllCommentsThunk())
     }, [dispatch]);
 
     const posts = useSelector(state => Object.values(state.posts))
     const users = useSelector(state => Object.values(state.users))
     const profiles = useSelector(state => Object.values(state.profiles))
+    const comments = useSelector(state => Object.values(state.comments))
 
     if(posts.length < 1) return <h1>where have all the posts gone?</h1>
 
-    console.log('inside all posts, info for sort', users)
+    // console.log('inside all posts, info for sort', users)
 
     let sortedPosts = posts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
+
+    // console.log('all of the sorted posts, ,,, ', comments)
 
     return (
         <div id="allpostpage">
@@ -120,6 +158,57 @@ function AllPosts() {
                                 <OpenModalButton buttonText="Edit Post" modalComponent={<PostPageEditFormModal id={id}/>}/>
                             )}
                             </div>
+                            {/* <div id="dropD">
+                                <button className="comBtn" onClick={(e) => handleClick(e)}>want more?</button>
+                                <div id={propD}> */}
+                                    <div id="postManip2">
+                                        {sessionUser &&  (
+                                            <div id="commentDiv">
+                                                <form
+                                                onSubmit={(e) => handleSubmit2(e, id)}
+                                                encType="multipart/form-data"
+                                                id="newPostForm"
+                                                >
+                                                    <div className="form-comment text-input">
+                                                        <div><label for="name"></label></div>
+                                                        <textarea
+                                                            className="textB"
+                                                            placeholder="What's on you mind?"
+                                                            type="textArea"
+                                                            name="textContent"
+                                                            onChange={(e) => setTextContent2(e.target.value)}
+                                                            value={textContent2}
+                                                            required={true}
+                                                            maxLength={500}
+                                                            >
+                                                        </textarea>
+                                                    </div>
+                                                <div className="four">
+                                                <button className="confirm-submit" type="submit">Create Comment</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    )}
+                                    {comments?.filter(co => {
+                                        if(co.postId === id) {
+                                            return co
+                                        }
+                                    }).map(( c ) => (
+                                        <div className="commentSection" key={c.id} >
+                                            <div> {users[userId]?.username} says: {c.textContent}</div>
+                                            <div className="EDbtn">
+                                            { sessionUser && sessionUser.id === c.userId && (
+                                                    <OpenModalButton className="delComBtn2" buttonText="Edit Comment" modalComponent={<CommentEditModal c={c}/>}/>
+                                                )}
+                                            { sessionUser && sessionUser.id === c.userId && (
+                                                    <OpenModalButton className="delComBtn2" buttonText="Delete Comment" modalComponent={<CommentDeleteModal commentId={c.id}/>}/>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                    </div>
+                                {/* </div>
+                            </div> */}
                         </div>
                     ))}
                 </div>

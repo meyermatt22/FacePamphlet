@@ -14,6 +14,9 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.Date, nullable=False)
 
+    
+    comments = db.relationship('Comment', back_populates='post')
+
     def to_dict(self):
         return {
             'id': self.id,
