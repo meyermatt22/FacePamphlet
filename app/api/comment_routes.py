@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from app.models import Comment, Post, db
 from flask_login import current_user, login_required
 from app.forms.comment_form import CommentForm
+from app.forms.comment_edit_form import CommentEditForm
 from datetime import datetime
 
 comment_routes = Blueprint('comments', __name__)
@@ -32,10 +33,6 @@ def add_comment():
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    # post = Post.query.get(id)
-
-    # print('create comment route -==========> : ' ,post)
-
     if form.validate_on_submit():
 
         comment = Comment(
@@ -45,8 +42,28 @@ def add_comment():
             created_at = datetime.now()
         )
 
-
         db.session.add(comment)
+        db.session.commit()
+        return comment.to_dict()
+
+    return { 'errors': form.errors}
+
+@comment_routes.route('/edit/<int:id>', methods=['PUT'])
+@login_required
+def edit_comment(id):
+    """ Handles editing a comment's details if the song owner is the logged in user """
+    comment = Comment.query.get(id)
+
+    if not comment:
+        return {"error": "comment not found."}
+
+    form = CommentEditForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        comment.text_content = form.data['text_content']
+
         db.session.commit()
         return comment.to_dict()
 

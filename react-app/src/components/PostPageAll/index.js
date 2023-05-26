@@ -9,6 +9,7 @@ import OpenModalButton from "../OpenModalButton";
 import PostDeleteModal from "../PostPageDeleteModal";
 import CommentModal from "../CommentModal";
 import CommentDeleteModal from "../CommentDeleteModal";
+import CommentEditModal from "../CommentEditModal";
 
 import './PostPageAll.css'
 import PostPageEditFormModal from "../PostPageEditFormModal";
@@ -135,6 +136,9 @@ function AllPosts() {
                                 <div className="commentSection">
                                     {id === c.postId && (
                                         <div> {users[userId]?.username} says: {c.textContent}</div>
+                                        )}
+                                    {id === c.postId && sessionUser && sessionUser.id === c.userId && (
+                                            <OpenModalButton className="delComBtn" buttonText="Edit Comment" modalComponent={<CommentEditModal c={c}/>}/>
                                         )}
                                     {id === c.postId && sessionUser && sessionUser.id === c.userId && (
                                             <OpenModalButton className="delComBtn" buttonText="Delete Comment" modalComponent={<CommentDeleteModal commentId={c.id}/>}/>

@@ -1,6 +1,7 @@
 const GET_ALL_COMMENTS = 'comments/GET_ALL_COMMENTS';
 const GET_COMMENT = 'comments/GET_COMMENT';
 const CREATE_COMMENT = 'comments/CREATE_COMMENT';
+const EDIT_COMMENT = 'comments/EDIT_COMMENT';
 const DELETE_COMMENT = 'comments/DELETE_COMMENT';
 
 const getAllCommentsAction = (Comments) => ({
@@ -15,6 +16,11 @@ const getOneCommentAction = (Comment) => ({
 
 const createCommentAction = (comment) => ({
     type: CREATE_COMMENT,
+    comment
+});
+
+const editCommentAction = (comment) => ({
+    type: EDIT_COMMENT,
     comment
 });
 
@@ -67,6 +73,24 @@ export const createCommentThunk = (comment) => async (dispatch) => {
     }
 };
 
+export const editCommentThunk = (comment, id) => async (dispatch) => {
+
+    const res = await fetch(`/api/comments/edit/${id}`, {
+        method: 'PUT',
+        body: comment
+    })
+    console.log('inside edit comment thunk ===>', res)
+
+
+    if(res.ok) {
+        const comment = await res.json()
+        dispatch(editCommentAction(comment))
+        return comment
+    } else {
+        return "==========> editCommentThunk res is not ok <=========="
+    }
+};
+
 export const deleteCommentThunk = (commentId) => async (dispatch) => {
     const res = await fetch(`/api/comments/delete/${commentId}`, {
         method: "DELETE",
@@ -97,6 +121,10 @@ function commentReducer(state = initState, action) {
         case CREATE_COMMENT:
             newState = {...state};
             console.log('action ACTION in the reducer... ==> ', action)
+            newState[action.comment.id] = action.comment;
+            return newState;
+        case EDIT_COMMENT:
+            newState = {...state};
             newState[action.comment.id] = action.comment;
             return newState;
         case DELETE_COMMENT:

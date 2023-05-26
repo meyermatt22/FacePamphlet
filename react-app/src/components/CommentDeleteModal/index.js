@@ -1,11 +1,9 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { deleteCommentThunk } from "../../store/comment";
 
 function CommentDeleteModal({commentId}) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { closeModal } = useModal();
 
     const handleDelete = async (e) => {
