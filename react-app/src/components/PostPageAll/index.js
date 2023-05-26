@@ -180,7 +180,7 @@ useEffect(() => {
                 )}
               </div>
               <div>
-                {<PostComments postId={id} />}
+                {<PostComments postId={id} users={users} profiles={profiles}/>}
               </div>
               {/* <div className="butnBox">
                 <button

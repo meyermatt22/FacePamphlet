@@ -6,7 +6,7 @@ import CommentEditModal from "../CommentEditModal";
 import CommentDeleteModal from "../CommentDeleteModal";
 import "./PostComments.css";
 
-function PostComments({ postId }) {
+function PostComments({ postId, users, profiles }) {
   const dispatch = useDispatch();
   //   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,6 +20,8 @@ function PostComments({ postId }) {
   }, [dispatch]);
 
   const comments = useSelector((state) => Object.values(state.comments));
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ function PostComments({ postId }) {
   }, [textContent]);
 
   return (
-    <div>
+    <div className="butinPC">
       <button
         className="butinC"
         onClick={() => {
@@ -82,7 +84,7 @@ function PostComments({ postId }) {
       </button>
       <div className={display}>
         {sessionUser && (
-          <div>
+          <div className="formArea">
             <form
               onSubmit={(e) => handleSubmit(e)}
               encType="multipart/form-data"
@@ -119,7 +121,8 @@ function PostComments({ postId }) {
           })
           .map((c) => (
             <div className="commentSection" key={c.id}>
-              <div> {c.textContent}</div>
+              <div> posted by: {users[c.userId]?.username}; posted at:{" "} {new Date(c.createdAt).toLocaleTimeString("en-US")}, on:{" "}
+                      {new Date(c.createdAt).toLocaleDateString()}; heres what they said:  {c.textContent}</div>
               <div className="EDbtn">
                 {sessionUser && sessionUser.id === c.userId && (
                   <OpenModalButton

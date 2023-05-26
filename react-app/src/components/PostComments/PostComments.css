@@ -1,6 +1,9 @@
-/* .postCommentDiv {
-    border: cyan 2px dotted;
-} */
+.postCommentDiv {
+    /* border: cyan 2px dotted; */
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
 
 .hidden {
     display: none;
@@ -10,4 +13,32 @@
     display: flex;
     justify-content: center;
     /* border: green dotted 3px; */
+}
+
+.butinPC {
+    /* border: 2px dotted red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrowimg {
+    height: 10px;
+    width: 10px;
+    margin: 0px 10px;
+}
+
+.arrowBox {
+    display: flex;
+    align-items: center;
+    height: 5px;
+}
+
+.commentSection {
+    /* border: green solid 3px; */
+    border-bottom: solid 1px rgb(53,53,53);
+}
+
+.formArea {
+    border-bottom: 3px solid rgb(53,53,53);
 }
