@@ -59,6 +59,7 @@
     justify-content: end;
     border: green dotted 2px;
 }
+
 #postManip2 {
     display: flex;
     justify-content: end;
