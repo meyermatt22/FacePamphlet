@@ -35,62 +35,64 @@ function SignupFormModal() {
 	console.log('signup errors: ', errors['undefined'])
 
 	return (
-		<div id="signUpModal">
-			<h1 id="signupText">Sign Up</h1>
-			<form onSubmit={handleSubmit}>
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-				<label>
-					<input
-						className="inSignup"
-						placeholder="email"
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-						/>
-				</label>
-				<label>
-					<input
-						className="inSignup"
-						placeholder="username"
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-						/>
-				</label>
-				<label>
-					<input
-						className="inSignup"
-						placeholder="password"
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-						minLength={6}
-            			maxLength={15}
-						/>
-				</label>
-				<label>
-					<input
-						className="inSignup"
-						placeholder="confirm password"
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-						minLength={6}
-            			maxLength={15}
-						/>
-				</label>
-				<div id="subBox">
-					<button id="signUpBtn" type="submit">Sign Up</button>
-				</div>
-			</form>
+		<div  id="signUpModal2">
+			<div id="signUpModal">
+				<h1 id="signupText">Sign Up</h1>
+				<form onSubmit={handleSubmit}>
+					<ul>
+						{errors.map((error, idx) => (
+							<li key={idx}>{error}</li>
+						))}
+					</ul>
+					<label>
+						<input
+							className="inSignup"
+							placeholder="email"
+							type="text"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+							/>
+					</label>
+					<label>
+						<input
+							className="inSignup"
+							placeholder="username"
+							type="text"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+							required
+							/>
+					</label>
+					<label>
+						<input
+							className="inSignup"
+							placeholder="password"
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+							minLength={6}
+							maxLength={15}
+							/>
+					</label>
+					<label>
+						<input
+							className="inSignup"
+							placeholder="confirm password"
+							type="password"
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+							required
+							minLength={6}
+							maxLength={15}
+							/>
+					</label>
+					<div id="subBox">
+						<button id="signUpBtn" type="submit">Sign Up</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }
