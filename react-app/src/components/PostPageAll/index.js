@@ -10,6 +10,7 @@ import PostDeleteModal from "../PostPageDeleteModal";
 import CommentModal from "../CommentModal";
 import CommentDeleteModal from "../CommentDeleteModal";
 import CommentEditModal from "../CommentEditModal";
+import PostComments from "../PostComments";
 
 import "./PostPageAll.css";
 import PostPageEditFormModal from "../PostPageEditFormModal";
@@ -27,9 +28,9 @@ function AllPosts() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [hasSubmitted2, setHasSubmitted2] = useState(false);
 
-  const buttonRef = useRef();
+  // const buttonRef = useRef();
 
-  console.log('all post page button ref reference:' , buttonRef)
+  // console.log('all post page button ref reference:' , buttonRef)
 
   // const handleTextContent = (e) => {
       //     if(textContent.length < 100) setTextContent(e.target.value)
@@ -178,7 +179,10 @@ useEffect(() => {
                   />
                 )}
               </div>
-              <div className="butnBox">
+              <div>
+                {<PostComments postId={id} />}
+              </div>
+              {/* <div className="butnBox">
                 <button
                   id={`dentification ${id}`}
                   ref={buttonRef}
@@ -282,7 +286,7 @@ useEffect(() => {
                       </div>
                     </div>
                   ))}
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

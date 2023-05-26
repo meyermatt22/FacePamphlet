@@ -24,7 +24,7 @@ function PostDeleteModal({postId}) {
             <h1 className="modalText">Delete Your Post?</h1>
             <form onSubmit={handleDelete}>
                 <button className="confirm-post-delete" type="submit">Yes, delete my post</button>
-                <button className="decline-post-delete" >No, keep my post</button>
+                <button className="decline-post-delete" onClick={closeModal} >No, keep my post</button>
             </form>
         </div>
     )
