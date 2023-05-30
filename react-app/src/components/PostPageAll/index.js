@@ -162,7 +162,7 @@ useEffect(() => {
                     </div>
                   </div>
                 </div>
-                <div className="textContent">{textContent}</div>
+                <div className="textContent"><h2>{textContent}</h2></div>
               </div>
               <div id="postManip">
                 {sessionUser && sessionUser.id === userId && (

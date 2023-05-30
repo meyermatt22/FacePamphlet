@@ -8,23 +8,26 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			{/* {sessionUser && (
-			<li>
-				<NavLink exact to="/profiles">Find Faces</NavLink>
-			</li>
-			)} */}
-			{sessionUser && (
-			<li>
-				<NavLink exact to="/home">Home Logo</NavLink>
-			</li>
-			)}
-			{isLoaded && (
+		<div className='navTotal'>
+			<ul className='navbutns'>
+				{/* {sessionUser && (
 				<li>
-					<ProfileButton user={sessionUser} />
+					<NavLink exact to="/profiles">Find Faces</NavLink>
 				</li>
-			)}
-		</ul>
+				)} */}
+				{sessionUser && (
+				<div>
+					<NavLink exact to="/home"><img className="homeB" src="https://i.imgur.com/2iSoM4U.png"></img></NavLink>
+				</div>
+				)}
+				{isLoaded && (
+					<div>
+						<ProfileButton user={sessionUser} />
+					</div>
+				)}
+			</ul>
+
+		</div>
 	);
 }
 

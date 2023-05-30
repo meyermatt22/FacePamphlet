@@ -1,7 +1,43 @@
 .profile-dropdown {
   position: absolute;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .hidden {
   display: none;
+}
+
+ul {
+  background-color: rgb(217,217,217);
+  margin: 0px;
+}
+
+html {
+  background-color: rgb(217,217,217);
+}
+
+.navbutns {
+  display: flex;
+  /* align-items: center; */
+}
+
+.homeB {
+  height: 20px;
+  width: 20px;
+}
+
+.fa-user-circle {
+  border: transparent;
+}
+
+.navTotal {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(217,217,217);
+  border-bottom: 2px solid rgb(60,110,113);
 }

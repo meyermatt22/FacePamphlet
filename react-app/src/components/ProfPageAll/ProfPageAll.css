@@ -8,11 +8,6 @@
     align-items: center;
 }
 
-div {
-    /* border: 1px green solid; */
-    margin: 3px;
-}
-
 .profDiv {
     display: flex;
     width: 500px;
@@ -31,3 +26,7 @@ div {
     width: 100px;
     height: 100px;
 }
+
+div{
+    margin: 3px;
+  }

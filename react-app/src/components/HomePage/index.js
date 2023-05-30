@@ -18,7 +18,6 @@ function HomePage() {
 
     return (
         <div id="homePage">
-            <h1>Home page</h1>
             <form id="selectForm">
                 <div className="radio2">
                   <label>

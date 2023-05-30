@@ -122,7 +122,7 @@ function PostComments({ postId, users, profiles }) {
           .map((c) => (
             <div className="commentSection" key={c.id}>
               <div> posted by: {users[c.userId]?.username}; posted at:{" "} {new Date(c.createdAt).toLocaleTimeString("en-US")}, on:{" "}
-                      {new Date(c.createdAt).toLocaleDateString()}; heres what they said:  {c.textContent}</div>
+                      {new Date(c.createdAt).toLocaleDateString()}; <h4>{c.textContent}</h4></div>
               <div className="EDbtn">
                 {sessionUser && sessionUser.id === c.userId && (
                   <OpenModalButton

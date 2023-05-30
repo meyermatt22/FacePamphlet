@@ -44,6 +44,7 @@ function ProfPageEditForm() {
           setMiddleName(userProf.middleName)
           setProfPic(userProf.profPic)
           setBackgroundPic(userProf.backgroundPic)
+          console.log('user prof background pic 888 ==>' ,userProf)
           setDateOfBirth(userProf.dateOfBirth)
         }
       }, [userProf])
