@@ -35,7 +35,7 @@ function LoginFormPage() {
     <div id="loginPage">
       <div id="loginText">
         <h1 id="logoHere">FacePamphlet</h1>
-        <h3 id="infoText">Connect with friends and the world around tou with FacePamphlet.</h3>
+        <h3 id="infoText">Connect with friends and the world around you with FacePamphlet.</h3>
       </div>
       <div >
         <form onSubmit={handleSubmit} id="loginForm">
