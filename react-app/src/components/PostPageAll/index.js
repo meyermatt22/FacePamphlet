@@ -101,7 +101,6 @@ useEffect(() => {
   if (posts.length < 1) return <h1>where have all the posts gone?</h1>;
 
   // console.log('inside all posts, info for sort', users)
-  // console.log('inside all posts, info for sort', users)
 
   let sortedPosts = posts.sort(
       (a, b) =>
