@@ -15,6 +15,8 @@ import PostComments from "../PostComments";
 import "./PostPageAll.css";
 import PostPageEditFormModal from "../PostPageEditFormModal";
 import { createCommentThunk, getAllCommentsThunk } from "../../store/comment";
+import LikeComponent from "../LikeComponent";
+
 
 function AllPosts() {
   const dispatch = useDispatch();
@@ -90,22 +92,28 @@ useEffect(() => {
     dispatch(getAllPostsThunk());
     dispatch(getAllUsersThunk());
     dispatch(getAllProfilesThunk());
-    dispatch(getAllCommentsThunk());
+    // dispatch(getAllCommentsThunk());
 }, [dispatch]);
 
   const posts = useSelector((state) => Object.values(state.posts));
   const users = useSelector((state) => Object.values(state.users));
   const profiles = useSelector((state) => Object.values(state.profiles));
-  const comments = useSelector((state) => Object.values(state.comments));
+  // const comments = useSelector((state) => Object.values(state.comments));
+
 
   if (posts.length < 1) return <h1>where have all the posts gone?</h1>;
 
-  // console.log('inside all posts, info for sort', users)
+  // console.log('inside all posts, info for sort', posts)
 
+  // let sortedPosts = posts.sort(
+  //     (a, b) =>
+  //     new Date(...b.createdAt.split("/").reverse()) -
+  //     new Date(...a.createdAt.split("/").reverse())
+  //     );
   let sortedPosts = posts.sort(
       (a, b) =>
-      new Date(...b.createdAt.split("/").reverse()) -
-      new Date(...a.createdAt.split("/").reverse())
+      a.id -
+      b.id
       );
 
       // console.log('all of the sorted posts, ,,, ', comments)
@@ -182,111 +190,9 @@ useEffect(() => {
               <div>
                 {<PostComments postId={id} users={users} profiles={profiles}/>}
               </div>
-              {/* <div className="butnBox">
-                <button
-                  id={`dentification ${id}`}
-                  ref={buttonRef}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    console.log('in the on click ....===>', buttonRef)
-                    if (e.target.id === buttonRef.current.id && propD === "hidden") {
-                      setPropD("postManip2");
-                    } else {
-                      setPropD("hidden");
-                    }
-                  }}
-                >
-                  {propD === "hidden" ? (
-                    <div className="arrowBox">
-                      <img
-                        className="arrowimg"
-                        src="https://i.imgur.com/vFVA9hw.jpg"
-                      ></img>
-                      <h5>comments</h5>
-                      <img
-                        className="arrowimg"
-                        src="https://i.imgur.com/vFVA9hw.jpg"
-                      ></img>
-                    </div>
-                  ) : (
-                    <div className="arrowBox">
-                      <img
-                        className="arrowimg"
-                        src="https://i.imgur.com/Kt3ecC6.jpg"
-                      ></img>
-                      <h5>hide comments</h5>
-                      <img
-                        className="arrowimg"
-                        src="https://i.imgur.com/Kt3ecC6.jpg"
-                      ></img>
-                    </div>
-                  )}
-                </button>
+              <div>
+                { <LikeComponent postId2={id} sessionUser={sessionUser} />}
               </div>
-              <div id={propD}>
-                {sessionUser && (
-                  <div id="commentDiv">
-                    <form
-                      onSubmit={(e) => handleSubmit2(e, id)}
-                      encType="multipart/form-data"
-                      id="newPostForm"
-                    >
-                      <div className="form-comment text-input">
-                        <div>
-                          <label for="name"></label>
-                        </div>
-                        <textarea
-                          className="textB"
-                          placeholder="What's on you mind?"
-                          type="textArea"
-                          name="textContent"
-                          onChange={(e) => setTextContent2(e.target.value)}
-                          value={textContent2}
-                          required={true}
-                          maxLength={500}
-                        ></textarea>
-                      </div>
-                      <div className="four">
-                        <button className="confirm-submit" type="submit">
-                          Create Comment
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                )}
-                {comments
-                  ?.filter((co) => {
-                    if (co.postId === id) {
-                      return co;
-                    }
-                  })
-                  .map((c) => (
-                    <div className="commentSection" key={c.id}>
-                      <div>
-                        {" "}
-                        {users[c.userId - 1]?.username} says: {c.textContent}
-                      </div>
-                      <div className="EDbtn">
-                        {sessionUser && sessionUser.id === c.userId && (
-                          <OpenModalButton
-                            className="delComBtn2"
-                            buttonText="Edit Comment"
-                            modalComponent={<CommentEditModal c={c} />}
-                          />
-                        )}
-                        {sessionUser && sessionUser.id === c.userId && (
-                          <OpenModalButton
-                            className="delComBtn2"
-                            buttonText="Delete Comment"
-                            modalComponent={
-                              <CommentDeleteModal commentId={c.id} />
-                            }
-                          />
-                        )}
-                      </div>
-                    </div>
-                  ))}
-              </div> */}
             </div>
           ))}
         </div>

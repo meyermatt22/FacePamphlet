@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Post, db
+from app.models import Post, Like, db
 from flask_login import current_user, login_required
 from app.forms.post_form import PostForm
 from app.forms.post_edit_form import PostEditForm
@@ -18,6 +18,31 @@ def post(id):
     """ Query for a post by id and returns that song in a dictionary """
     post = Post.query.get(id)
     return post.to_dict()
+
+@post_routes.route('/<int:id>/like', methods= ['POST'])
+@login_required
+def add_like(id):
+    """ Handles the posting of a new like to a user post """
+
+    print('inside backend add_like =============>')
+    like = Like (
+        user_id = current_user.id,
+        post_id = id,
+        status = True
+    )
+
+
+    db.session.add(like)
+    db.session.commit()
+    return like.to_dict()
+
+@post_routes.route('/<int:id>/like/delete', methods=['DELETE'])
+@login_required
+def delete_like(id):
+    """ Handles the deleting of a like for a post by userId"""
+    post = Post.query.get(id)
+    print('delete post route', post)
+    return "testing delete like route"
 
 @post_routes.route('/current')
 @login_required
