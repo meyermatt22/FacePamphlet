@@ -10,10 +10,11 @@
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 33% 33% 33%;
     max-width: 300px;
+    border: 5px solid white;
 }
 
 .tile {
-    border: 1px solid white;
+    border: 2px solid black;
     min-width: 100px;
     min-height: 100px;
     display: flex;
@@ -23,10 +24,62 @@
     cursor: pointer;
 }
 
+#one {
+    border-top: transparent;
+    border-left: transparent;
+}
+
+#two {
+    border-top: transparent;
+}
+#three {
+    border-top: transparent;
+    border-right: transparent;
+}
+#four {
+    border-left: transparent;
+}
+#six {
+    border-right: transparent;
+}
+#seven {
+    border-left: transparent;
+    border-bottom: transparent;
+}
+#eight {
+    border-bottom: transparent;
+}
+#nine {
+    border-bottom: transparent;
+    border-right: transparent;
+}
 .playerX {
     color: #09C372;
 }
 
 .playerO {
     color: #498AFB;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    /* padding: 20px; */
+    /* flex-direction: column; */
+    /* background-color: green; */
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#reset {
+    width: 80px;
 }

@@ -205,37 +205,40 @@ let sweets = false
   return (
     <div className="background">
       <section className="title">
-        <h1>Tic Tac Toe</h1>
+        <h1 className="title">I smell a robot... <br/>
+        prove, prove, prove to me you're not a robot... <br/>
+        look mortal, if ye be... <br/>
+        you must play the game till line makes three!</h1>
       </section>
       <section className="display">
         Player <span className="display-player playerX">{currPlayer}</span>'s turn
       </section>
       <section className="container">
-        <button className="tile" onClick={handleClick} value={tile1}>
+        <button className="tile" id="one" onClick={handleClick} value={tile1}>
           {tile1}
         </button>
-        <button className="tile" onClick={handleClick2} value={tile2}>
+        <button className="tile" id="two" onClick={handleClick2} value={tile2}>
           {tile2}
         </button>
-        <button className="tile" onClick={handleClick3} value={tile3}>
+        <button className="tile" id="three" onClick={handleClick3} value={tile3}>
           {tile3}
         </button>
-        <button className="tile" onClick={handleClick4} value={tile4}>
+        <button className="tile" id="four" onClick={handleClick4} value={tile4}>
           {tile4}
         </button>
         <button className="tile" onClick={handleClick5} value={tile5}>
           {tile5}
         </button>
-        <button className="tile" onClick={handleClick6} value={tile6}>
+        <button className="tile" id="six" onClick={handleClick6} value={tile6}>
           {tile6}
         </button>
-        <button className="tile" onClick={handleClick7} value={tile7}>
+        <button className="tile" id="seven" onClick={handleClick7} value={tile7}>
           {tile7}
         </button>
-        <button className="tile" onClick={handleClick8} value={tile8}>
+        <button className="tile" id="eight" onClick={handleClick8} value={tile8}>
           {tile8}
         </button>
-        <button className="tile" onClick={handleClick9} value={tile9}>
+        <button className="tile" id="nine" onClick={handleClick9} value={tile9}>
           {tile9}
         </button>
       </section>
@@ -244,6 +247,7 @@ let sweets = false
         <button id="reset" onClick={resetValues}>
           Reset
         </button>
+        <div>
         { winner && (
         <form onSubmit={handleDelete}>
                 {/* <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/> */}
@@ -251,6 +255,7 @@ let sweets = false
                 <button className="decline-profile-delete" onClick={closeModal}>No, keep my profile</button>
             </form>
         )}
+        </div>
       </section>
     </div>
   );
