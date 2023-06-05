@@ -17,6 +17,7 @@ import PostPageEditFormModal from "./components/PostPageEditFormModal";
 import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AllComments from "./components/CommentPageAll";
+import ProfileDeleteModal2 from "./components/ProfPageDeleteModal/index2";
 
 function App() {
   const dispatch = useDispatch();
@@ -89,6 +90,11 @@ function App() {
           <Route exact path="/posts/:id">
             <ProtectedRoute>
               <PostPageSingle />
+            </ProtectedRoute>
+          </Route>
+          <Route exact path="/profiles/delete/query">
+            <ProtectedRoute>
+              <ProfileDeleteModal2 />
             </ProtectedRoute>
           </Route>
         </Switch>
