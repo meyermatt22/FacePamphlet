@@ -112,8 +112,8 @@ useEffect(() => {
   //     );
   let sortedPosts = posts.sort(
       (a, b) =>
-      a.id -
-      b.id
+      b.id -
+      a.id
       );
 
       // console.log('all of the sorted posts, ,,, ', comments)
