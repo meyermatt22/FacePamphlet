@@ -6,6 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import ProfileDeleteModal from "../ProfPageDeleteModal";
 import { getAllPostsThunk } from "../../store/posts";
 import './ProfPageSingle.css'
+import TTTModal from "../TTTModal";
 
 function ProfPageSingle() {
     const dispatch = useDispatch();
@@ -82,6 +83,9 @@ function ProfPageSingle() {
                 )}
             {sessionUser && sessionUser.id === profiles[id]?.userId && (
                 <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={id}/>}/>
+                )}
+            {sessionUser && sessionUser.id === profiles[id]?.userId && (
+                <OpenModalButton buttonClass="song-del-btn" buttonText="TTT" modalComponent={<TTTModal />}/>
                 )}
             </div>
         </div>
