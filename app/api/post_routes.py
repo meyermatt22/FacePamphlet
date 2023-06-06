@@ -24,6 +24,7 @@ def post(id):
 def add_like(id):
     """ Handles the posting of a new like to a user post """
 
+
     print('inside backend add_like =============>')
     like = Like (
         user_id = current_user.id,
@@ -31,18 +32,11 @@ def add_like(id):
         status = True
     )
 
-
     db.session.add(like)
     db.session.commit()
-    return like.to_dict()
 
-@post_routes.route('/<int:id>/like/delete', methods=['DELETE'])
-@login_required
-def delete_like(id):
-    """ Handles the deleting of a like for a post by userId"""
     post = Post.query.get(id)
-    print('delete post route', post)
-    return "testing delete like route"
+    return post.to_dict()
 
 @post_routes.route('/current')
 @login_required

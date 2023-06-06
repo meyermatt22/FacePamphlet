@@ -8,6 +8,7 @@ import { getAllPostsThunk } from "../../store/posts";
 import './ProfPageSingle.css'
 import TTTModal from "../TTTModal";
 import SnakeGame from "../SnakeGame";
+// import Game from "../../components/Minesweeper/Game"
 
 function ProfPageSingle() {
     const dispatch = useDispatch();
@@ -86,6 +87,7 @@ function ProfPageSingle() {
                 <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={id}/>}/>
                 )}
                 {<OpenModalButton buttonClass="prof-song-btn" buttonText="Snake Game" modalComponent={ <SnakeGame />}/>}
+                {/* {<OpenModalButton buttonClass="prof-song-btn" buttonText="minesweeper" modalComponent={ <Game />}/>} */}
             </div>
         </div>
     )

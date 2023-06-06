@@ -16,10 +16,6 @@ function LikeComponent({postId2, sessionUser}) {
     const likes = useSelector((state) => Object.values(state.likes))
     const posts = useSelector(state => state.posts)
 
-
-    // console.log('inside like component , likes, ', state)
-    // console.log('inside like component , post', posts[postId2])
-
     let postLikes = [];
 
     for(let i = 0; i < likes.length; i++) {
@@ -28,27 +24,7 @@ function LikeComponent({postId2, sessionUser}) {
         }
     }
 
-    // console.log('inside like component , post likes', postLikes)
 
-
-    // const postLikes = likes.filter( l => {
-    //     if(l.userId === postId) return l
-    // })
-
-    // console.log('inside like component , likes, 22', postLikes)
-
-    // const addLikeEvent = (e) => {
-    //     e.preventDefault();
-    //     if (sessionUser) {
-    //         dispatch(addLikeToPostThunk(postId2))
-    //     }
-    // }
-    // const deleteLikeEvent = (e) => {
-    //     e.preventDefault();
-    //     if (sessionUser) {
-    //         dispatch(deleteOneLikeThunk(song.id, sessionUser.id))
-    //     }
-    // }
 
     return (
         <div>

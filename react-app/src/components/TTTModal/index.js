@@ -72,8 +72,6 @@ function TTTModal({profileId}) {
       };
 }
 
-let sweets = false
-
   useEffect(() => {
        for(let i = 0; i < winningConditions.length; i++) {
         let set = winningConditions[i]
@@ -91,7 +89,7 @@ let sweets = false
 
    }, [dispatch, tilesArray])
 
-   console.log('sweet stuff', sweets)
+
 
   const handleClick = (e) => {
     e.preventDefault();

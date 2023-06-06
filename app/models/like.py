@@ -21,5 +21,5 @@ class Like(db.Model):
             'id': self.id,
             'userId': self.user_id,
             'postId': self.post_id,
-            'textContent': self.status
+            'status': self.status
         }

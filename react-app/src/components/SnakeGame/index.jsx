@@ -49,9 +49,9 @@ const SnakeGame = () => {
 
   useEffect(() => {
     if (eatFood()) {
-      setFoodX(Math.round(Math.random() * 390));
-      setFoodY(Math.round(Math.random() * 370));
-      setScore(score + 1);
+      setFoodX((Math.round(Math.random() * 39))*10);
+      setFoodY((Math.round(Math.random() * 37))*10);
+      setScore(score + (Math.round(Math.random() * 100)));
     };
 
     if (score > 3) {
@@ -107,7 +107,6 @@ const SnakeGame = () => {
       <div
         className="grandfather"
         style={{
-            // backgroundImage: url("https://i.imgur.com/zfpWwml.jpg"),
           backgroundColor: "rgb(217,217,217)",
           display: "flex",
           flexDirection: "column",
