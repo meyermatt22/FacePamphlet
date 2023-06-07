@@ -27,8 +27,8 @@ function Board() {
     freshBoard();
   }, []);
 
-  const updateFlag = ( x, y) => {
-    // e.preventDefault();
+  const updateFlag = (e, x, y) => {
+    e.preventDefault();
     // deep copy of the object
     console.log("right - click")
     let newGrid = JSON.parse(JSON.stringify(grid));

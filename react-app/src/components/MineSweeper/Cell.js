@@ -10,11 +10,12 @@ export default function Cell({details,updateFlag, revealcell}) {
             alignItems:'center',
             fontSize:'20px',
             cursor: 'pointer',
+            caretColor: "transparent",
         },
     }
 
     return (
-        <div style={style.cellStyle} onClick={()=>{revealcell(details.x,details.y)}} onContextMenu={()=>{updateFlag(details.x,details.y)}}>
+        <div style={style.cellStyle} onClick={()=>{revealcell(details.x,details.y)}} onContextMenu={(e)=>{updateFlag(e,details.x,details.y)}}>
             {details.revealed && (details.value)}
             {!details.revealed && details.flagged && (<img className='flags' src='https://i.imgur.com/o5iOiHI.jpg' />)}
         </div>
