@@ -48,6 +48,7 @@ function LikeBtn({postId}) {
         e.preventDefault();
         if(sessionUser) {
             dispatch(deleteLikeThunk(likeId))
+            clickable = true
         }
     }
 
