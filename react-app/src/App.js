@@ -18,6 +18,7 @@ import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AllComments from "./components/CommentPageAll";
 import ProfileDeleteModal2 from "./components/ProfPageDeleteModal/index2";
+import Board from "./components/MineSweeper/Board";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <LoginFormPage />
+          </Route>
+          <Route exact path="/mine" >
+            <Board />
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
