@@ -5,12 +5,16 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
+import './Navigation.css'
+import { useSelector } from "react-redux";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+
+  const sessionUser = useSelector((state) => state.session.user);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -42,13 +46,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu} id='profBtn' >
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>{user.username}</div>
+            <div onClick={() => history.push(`/profiles/${sessionUser.id}`)}>{user.username}</div>
             <div>{user.email}</div>
             <div>
               <button onClick={handleLogout}>Log Out</button>

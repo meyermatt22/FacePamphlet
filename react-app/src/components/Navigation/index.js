@@ -15,15 +15,15 @@ function Navigation({ isLoaded }){
 					<NavLink exact to="/profiles">Find Faces</NavLink>
 				</li>
 				)} */}
+				{isLoaded && (
+					<div >
+						<ProfileButton user={sessionUser} />
+					</div>
+				)}
 				{sessionUser && (
 				<div>
 					<NavLink exact to="/home"><img className="homeB" src="https://i.imgur.com/2iSoM4U.png"></img></NavLink>
 				</div>
-				)}
-				{isLoaded && (
-					<div>
-						<ProfileButton user={sessionUser} />
-					</div>
 				)}
 			</ul>
 

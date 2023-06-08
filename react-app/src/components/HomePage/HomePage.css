@@ -6,7 +6,7 @@
 
 #selectForm {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(60,110,113);
     height: 80px;
@@ -22,4 +22,15 @@
     position: fixed;
     opacity: 0;
     pointer-events: none;
+}
+
+.radioBtns {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+#loginOut {
+    background-color: cyan;
+    
 }

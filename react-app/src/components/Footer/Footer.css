@@ -1,0 +1,11 @@
+#Footer {
+    background-color: rgba(255, 255, 255, 0.726);
+    height: 200px;
+}
+
+#pText1 {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+}
