@@ -17,7 +17,6 @@ import PostPageEditFormModal from "../PostPageEditFormModal";
 import { createCommentThunk, getAllCommentsThunk } from "../../store/comment";
 import LikeComponent from "../LikeComponent";
 
-
 function AllPosts() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,7 +34,7 @@ function AllPosts() {
   // console.log('all post page button ref reference:' , buttonRef)
 
   // const handleTextContent = (e) => {
-      //     if(textContent.length < 100) setTextContent(e.target.value)
+  //     if(textContent.length < 100) setTextContent(e.target.value)
   // }
 
   const handleSubmit = async (e) => {
@@ -43,7 +42,7 @@ function AllPosts() {
 
     setHasSubmitted(true);
     if (validationErrors.length)
-    return alert("Your Post has errors, cannot submit!");
+      return alert("Your Post has errors, cannot submit!");
 
     const formData = new FormData();
     formData.append("text_content", textContent);
@@ -53,7 +52,7 @@ function AllPosts() {
     setTextContent("");
 
     history.push(`/home`);
-};
+  };
 
   const handleSubmit2 = async (e, id) => {
     e.preventDefault();
@@ -68,38 +67,37 @@ function AllPosts() {
 
     setTextContent2("");
     setHasSubmitted2(false);
-};
+  };
 
-// const handleClick = async (e) => {
+  // const handleClick = async (e) => {
   //     e.preventDefault();
   //     if(propD === "dropDown") {
-      //         propD = "downDrop"
+  //         propD = "downDrop"
   //     } else {
-      //         propD = "dropDown"
-      //     }
+  //         propD = "dropDown"
+  //     }
   // }
 
   // console.log("handle click stuff, propD status", propD)
 
   useEffect(() => {
-      const errors = [];
-      if (!textContent) errors.push("Please provide something!");
+    const errors = [];
+    if (!textContent) errors.push("Please provide something!");
     // if (!textContent2) errors.push('Please provide something!')
     setValidationErrors(errors);
-}, [textContent]);
+  }, [textContent]);
 
-useEffect(() => {
+  useEffect(() => {
     dispatch(getAllPostsThunk());
     dispatch(getAllUsersThunk());
     dispatch(getAllProfilesThunk());
     // dispatch(getAllCommentsThunk());
-}, [dispatch]);
+  }, [dispatch]);
 
   const posts = useSelector((state) => Object.values(state.posts));
   const users = useSelector((state) => Object.values(state.users));
   const profiles = useSelector((state) => Object.values(state.profiles));
   // const comments = useSelector((state) => Object.values(state.comments));
-
 
   if (posts.length < 1) return <h1>where have all the posts gone?</h1>;
 
@@ -110,23 +108,18 @@ useEffect(() => {
   //     new Date(...b.createdAt.split("/").reverse()) -
   //     new Date(...a.createdAt.split("/").reverse())
   //     );
-  let sortedPosts = posts.sort(
-      (a, b) =>
-      b.id -
-      a.id
-      );
+  let sortedPosts = posts.sort((a, b) => b.id - a.id);
 
-      // console.log('all of the sorted posts, ,,, ', comments)
+  // console.log('all of the sorted posts, ,,, ', comments)
 
-      return (
-          <div id="allpostpage">
-      <h1>all posts page</h1>
+  return (
+    <div id="allpostpage">
       <div id="postDiv">
         <form
           onSubmit={(e) => handleSubmit(e)}
           encType="multipart/form-data"
           id="newPostForm"
-          >
+        >
           <div className="form-input-box text-input">
             <div>
               <label for="name"></label>
@@ -140,7 +133,7 @@ useEffect(() => {
               value={textContent}
               required={true}
               maxLength={500}
-              ></textarea>
+            ></textarea>
           </div>
           <div className="four">
             <button className="confirm-submit" type="submit">
@@ -152,13 +145,13 @@ useEffect(() => {
       <div id="allPosts">
         <div id="postArea">
           {sortedPosts?.map(({ textContent, id, createdAt, userId }) => (
-              <div key={id} className="post">
+            <div key={id} className="post">
               <div className="postBox" to={`/posts/${id}`} key={id}>
                 <div className="createInfo">
                   <img
                     className="profImg"
                     src={profiles[userId - 1]?.profPic}
-                    />
+                  />
                   <div className="ciS">
                     <div className="pText">
                       Posted by: {users[userId - 1]?.username}
@@ -170,11 +163,13 @@ useEffect(() => {
                     </div>
                   </div>
                 </div>
-                <div className="textContent"><h2>{textContent}</h2></div>
+                <div className="textContent">
+                  <h2>{textContent}</h2>
+                </div>
               </div>
               <div id="postManip">
                 {sessionUser && sessionUser.id === userId && (
-                    <OpenModalButton
+                  <OpenModalButton
                     buttonClass="post-del-btn"
                     buttonText="Delete Post"
                     modalComponent={<PostDeleteModal postId={id} />}
@@ -188,10 +183,10 @@ useEffect(() => {
                 )}
               </div>
               <div>
-                {<PostComments postId={id} users={users} profiles={profiles}/>}
+                {<LikeComponent postId2={id} sessionUser={sessionUser} />}
               </div>
               <div>
-                { <LikeComponent postId2={id} sessionUser={sessionUser} />}
+                {<PostComments postId={id} users={users} profiles={profiles} />}
               </div>
             </div>
           ))}

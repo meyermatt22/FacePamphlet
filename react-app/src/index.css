@@ -21,7 +21,7 @@ body {
 button:hover {
     cursor: pointer;
     background-color: rgb(2,2,4);
-    color: rgb(128, 206, 135);
+    color: rgb(146, 229, 161);
 }
 
 div{
@@ -29,6 +29,6 @@ div{
   }
 
 button {
-    background-color: rgb(128, 206, 135);
+    background-color: rgb(146, 229, 161);
     color: rgb(31,72,41);
 }

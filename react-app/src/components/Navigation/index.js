@@ -21,6 +21,9 @@ function Navigation({ isLoaded }){
 					<div >
 						<ProfileButton user={sessionUser} />
 					</div>
+					<div id='wUser'>
+						FacePamphlet
+					</div>
 
 				<div>
 					<NavLink exact to="/home"><img className="homeB" src="https://i.imgur.com/2iSoM4U.png"></img></NavLink>

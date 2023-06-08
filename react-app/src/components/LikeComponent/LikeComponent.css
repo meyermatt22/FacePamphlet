@@ -1,0 +1,9 @@
+#likeC {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 3px cyan dotted; */
+    margin: 0px;
+    padding: 0px 10px;
+    /* flex-direction: column; */
+}

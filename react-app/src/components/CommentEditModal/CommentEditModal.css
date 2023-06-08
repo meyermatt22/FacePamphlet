@@ -1,0 +1,24 @@
+#editCtext {
+    color: rgb(146, 229, 161);
+}
+
+#editCModal {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#updateIn {
+    background-color: rgb(146, 229, 161);
+}
+
+#subBtn.confirm-submit {
+    background-color: rgb(146, 229, 161);
+    color: rgb(2,2,4);
+}
+
+#subBtn.confirm-submit:hover {
+    background-color: rgb(2,2,4);
+    color: rgb(146, 229, 161);
+}

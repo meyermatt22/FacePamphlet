@@ -55,7 +55,6 @@ function LikeBtn({postId}) {
 
     return (
         <div>
-            <h2>likeBtn</h2>
             <div>{clickable ? <button onClick={addLikeEvent}>like</button> : <button onClick={removeLikeEvent}>unlike</button>}</div>
         </div>
     )

@@ -3,6 +3,7 @@ import { addLikeToPostThunk, getOnePostThunk } from "../../store/posts";
 import { useEffect } from "react";
 import { getAllLikeThunk } from "../../store/like";
 import LikeBtn from "./likeBtn";
+import './LikeComponent.css'
 
 
 function LikeComponent({postId2, sessionUser}) {
@@ -27,10 +28,8 @@ function LikeComponent({postId2, sessionUser}) {
 
 
     return (
-        <div>
-            <h2>like component</h2>
-            {/* <button onClick={addLikeEvent} >add like</button> */}
-            {postLikes.length}
+        <div id="likeC">
+            likes: {postLikes.length}
             {<LikeBtn postId={postId2}/>}
         </div>
     )

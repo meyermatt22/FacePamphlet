@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { editCommentThunk } from "../../store/comment";
 import { useEffect, useState } from "react";
+import './CommentEditModal.css'
 
 function CommentEditModal({ c }) {
     const dispatch = useDispatch();
@@ -46,8 +47,8 @@ function CommentEditModal({ c }) {
     };
 
     return (
-        <div>
-            <h1>edit comment modal</h1>
+        <div id="editCModal">
+            <h1 id="editCtext">edit your comment</h1>
             <form
                 onSubmit={(e) => handleSubmit(e)}
                 encType="multipart/form-data"
