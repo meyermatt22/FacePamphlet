@@ -21,6 +21,7 @@ html {
 }
 
 .navbutns {
+  background-color: rgb(60,110,113);
   display: flex;
   justify-content: space-between;
 }
@@ -39,10 +40,20 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(217,217,217);
+  background-color: rgb(60,110,113);
   border-bottom: 2px solid rgb(60,110,113);
 }
 
 #profBtn {
   width: 30px;
+}
+
+#noUser {
+  background-color:rgb(60,110,113);
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 }

@@ -10,12 +10,12 @@ function Navigation({ isLoaded }){
 	return (
 		<div className='navTotal'>
 			<ul className='navbutns'>
-				{/* {sessionUser && (
-				<li>
-					<NavLink exact to="/profiles">Find Faces</NavLink>
-				</li>
-				)} */}
-				{isLoaded && (
+				{!sessionUser && (
+				<div id='noUser'>
+					FacePamphlet
+				</div>
+				)}
+				{sessionUser && (
 					<div >
 						<ProfileButton user={sessionUser} />
 					</div>

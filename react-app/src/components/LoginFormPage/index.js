@@ -68,7 +68,7 @@ function LoginFormPage() {
           <button id="loginBtn" type="submit" onClick={handleDemoUser}>Demo User</button>
         </form>
         <div id="signUp">
-          <h5>new to FacePanmplet?</h5>
+          <h5>new to FacePamphlet?</h5>
             <OpenModalButton
               buttonText="Sign Up"
               // onItemClick={closeMenu}
