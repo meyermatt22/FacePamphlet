@@ -60,24 +60,24 @@ function PostComments({ postId, users, profiles }) {
           <div className="arrowBox">
             <img
               className="arrowimg"
-              src="https://i.imgur.com/vFVA9hw.jpg"
+              src="https://i.imgur.com/3LYkU1v.png"
             ></img>
             <h5>comments</h5>
             <img
               className="arrowimg"
-              src="https://i.imgur.com/vFVA9hw.jpg"
+              src="https://i.imgur.com/3LYkU1v.png"
             ></img>
           </div>
         ) : (
           <div className="arrowBox">
             <img
               className="arrowimg"
-              src="https://i.imgur.com/Kt3ecC6.jpg"
+              src="https://i.imgur.com/nxboxDF.png"
             ></img>
             <h5>hide comments</h5>
             <img
               className="arrowimg"
-              src="https://i.imgur.com/Kt3ecC6.jpg"
+              src="https://i.imgur.com/nxboxDF.png"
             ></img>
           </div>
         )}
