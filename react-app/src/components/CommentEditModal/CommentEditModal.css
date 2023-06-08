@@ -1,5 +1,6 @@
 #editCtext {
     color: rgb(146, 229, 161);
+    padding: 5px;
 }
 
 #editCModal {
@@ -11,6 +12,7 @@
 
 #updateIn {
     background-color: rgb(146, 229, 161);
+    padding: 5px;
 }
 
 #subBtn.confirm-submit {

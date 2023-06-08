@@ -21,7 +21,7 @@ html {
 }
 
 .navbutns {
-  background-color: rgb(32, 72, 41);
+  /* background-color: rgb(32, 72, 41); */
   display: flex;
 
   /* border: cyan 1px solid; */
@@ -30,6 +30,11 @@ html {
 .homeB {
   height: 20px;
   width: 20px;
+  background-color: rgb(146, 229, 161);
+  box-shadow: 0px 0px 10px 2px rgb(146, 229, 161);
+  border-radius: 15px;
+  /* border: rgb(2,2,4); */
+  padding: 2px;
 }
 
 .fa-user-circle {
@@ -44,11 +49,14 @@ html {
   background-color: rgb(32, 72, 41);
   border-bottom: 2px solid rgb(2,2,4);
   margin: 0;
-  
+
 }
 
 #profBtn {
-  width: 30px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 0px 0px 10px 2px rgb(146, 229, 161);
+  border-radius: 15px;
 }
 
 #noUser {

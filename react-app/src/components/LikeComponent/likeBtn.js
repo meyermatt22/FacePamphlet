@@ -55,7 +55,7 @@ function LikeBtn({postId}) {
 
     return (
         <div>
-            <div>{clickable ? <button onClick={addLikeEvent}>like</button> : <button onClick={removeLikeEvent}>unlike</button>}</div>
+            <div>{clickable ? <img className="likeImage" onClick={addLikeEvent} src="https://i.imgur.com/GfdH3b9.png"></img> : <img className="likeImage" src="https://i.imgur.com/dAFepWp.png" onClick={removeLikeEvent}></img>}</div>
         </div>
     )
 }
