@@ -16,14 +16,16 @@ function Navigation({ isLoaded }){
 				</div>
 				)}
 				{sessionUser && (
+					<div id='navB2'>
+
 					<div >
 						<ProfileButton user={sessionUser} />
 					</div>
-				)}
-				{sessionUser && (
+
 				<div>
 					<NavLink exact to="/home"><img className="homeB" src="https://i.imgur.com/2iSoM4U.png"></img></NavLink>
 				</div>
+					</div>
 				)}
 			</ul>
 

@@ -1,6 +1,9 @@
 #homePage {
-    background-color: rgb(217,217,217);
+    /* background-color: rgb(2,2,4, 0.5); */
     margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -8,8 +11,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(60,110,113);
-    height: 80px;
+    background-color: rgb(146, 229, 161);
+    height: 50px;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 95%;
+    box-shadow: 0px 0px 5px 5px rgb(146, 229, 161);
 }
 
 .radio {
@@ -32,5 +39,5 @@
 
 #loginOut {
     background-color: cyan;
-    
+
 }

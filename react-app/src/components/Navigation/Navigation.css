@@ -21,9 +21,10 @@ html {
 }
 
 .navbutns {
-  background-color: rgb(2, 2, 4);
+  background-color: rgb(146, 229, 161);
   display: flex;
-  justify-content: space-between;
+
+  /* border: cyan 1px solid; */
 }
 
 .homeB {
@@ -40,8 +41,9 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(2, 2, 4);
-  border-bottom: 2px solid rgb(2, 2, 4);
+  background-color: rgb(146, 229, 161);
+  border-bottom: 2px solid rgb(2,2,4);
+  margin: 0;
 }
 
 #profBtn {
@@ -57,4 +59,13 @@ html {
   align-items: center;
   height: 50px;
   border-bottom: 2px solid rgb(146, 229, 161);
+}
+
+#navB2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0px 5px;
+  /* border: cyan 2px dotted; */
 }
