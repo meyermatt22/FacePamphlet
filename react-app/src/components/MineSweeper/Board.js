@@ -30,7 +30,7 @@ function Board() {
   const updateFlag = (e, x, y) => {
     e.preventDefault();
     // deep copy of the object
-    console.log("right - click")
+    console.log("right - click");
     let newGrid = JSON.parse(JSON.stringify(grid));
     newGrid[x][y].flagged = true;
     console.log(newGrid[x][y]);
@@ -40,7 +40,7 @@ function Board() {
   const revealcell = (x, y) => {
     let newGrid = JSON.parse(JSON.stringify(grid));
     if (newGrid[x][y].value === "X") {
-      alert("clicked on mine");
+      alert("you lose! you get nothing!");
       for (let i = 0; i < mineLocation.length; i++) {
         newGrid[mineLocation[i][0]][mineLocation[i][1]].revealed = true;
       }
@@ -50,9 +50,8 @@ function Board() {
       setGrid(revealedboard.arr);
       setNonMinecount(revealedboard.newNonMines);
     }
-
-};
-if (!grid) return (<h1>grid is missing</h1>)
+  };
+  if (!grid) return <h1>grid is missing</h1>;
   return (
     <div className="parent">
       <h1>look here</h1>
