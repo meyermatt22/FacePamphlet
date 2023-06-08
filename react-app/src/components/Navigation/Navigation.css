@@ -12,16 +12,16 @@
 }
 
 ul {
-  background-color: rgb(217,217,217);
+  background-color: rgb(2, 2, 4);
   margin: 0px;
 }
 
 html {
-  background-color: rgb(217,217,217);
+  background-color: rgb(2, 2, 4);
 }
 
 .navbutns {
-  background-color: rgb(60,110,113);
+  background-color: rgb(2, 2, 4);
   display: flex;
   justify-content: space-between;
 }
@@ -40,8 +40,8 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(60,110,113);
-  border-bottom: 2px solid rgb(60,110,113);
+  background-color: rgb(2, 2, 4);
+  border-bottom: 2px solid rgb(2, 2, 4);
 }
 
 #profBtn {
@@ -49,11 +49,12 @@ html {
 }
 
 #noUser {
-  background-color:rgb(60,110,113);
+  background-color:rgb(2, 2, 4);
   width: 100%;
-  color: white;
+  color: rgb(34, 180, 85);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
+  border-bottom: 2px solid rgb(146, 229, 161);
 }

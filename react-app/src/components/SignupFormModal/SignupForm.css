@@ -7,17 +7,24 @@
 }
 
 #signUpBtn {
-    background-color: rgb(60,110,113);
-    color: rgb(255,255,255);
+    background-color: rgb(146, 229, 161);
+    color: rgb(2,2,4);
+}
+
+#signUpBtn:hover {
+    background-color: rgb(2,2,4);
+    color: rgb(146, 229, 161);
+    border: 1px solid rgb(146, 229, 161);
 }
 
 #signupText {
-    color: rgb(53,53,53);
+    color: rgb(146, 229, 161);
 }
 
 .inSignup {
     margin: 2px 5px;
     width: 282px;
+    background-color: rgb(146, 229, 161);
 }
 
 #subBox {

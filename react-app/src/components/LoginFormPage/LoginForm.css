@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 300px 0px;
-    background-color: rgb(217, 217, 217);
+    background-color: rgb(2,2,4);
     /* border: 2px cyan solid; */
 }
 
@@ -20,22 +20,28 @@
     flex-direction: column;
     align-items: center;
     /* border: 3px green dotted; */
-    background-color: rgb(255,255,255);
-    box-shadow: 0px 0px 3px 3px rgba(43, 43, 43, 0.411);
-    padding: 0px 10px;
+    background-color: rgb(146, 229, 161);
+    box-shadow: 0px 0px 3px 3px rgba(128, 206, 135);
+    padding: 5px 10px;
     margin: 15px 10px;
     height: auto;
 }
 
 #logoHere {
-    color: rgb(60,110,113);
+    color: rgb(34, 180, 85);
 }
 
 #loginBtn {
-    background-color: rgb(60,110,113);
+    background-color: rgb(2,2,4);
     width: 100%;
     margin: 5px 0px;
-    color: white;
+    color: rgb(32, 72, 41);
+}
+
+#loginBtn:hover {
+    background-color: rgb(146, 229, 161);
+    border: 2px solid rgb(2, 2, 4);
+    color: rgb(2, 2, 4);
 }
 
 .verifyBox {
@@ -43,7 +49,7 @@
 }
 
 #infoText {
-    color: rgb(53,53,53);
+    color: rgb(32, 72, 41);
 }
 
 #signUp {
@@ -58,3 +64,8 @@
 #modBtn {
     background-color: rgb(60,110,113);
 }
+
+#signU {
+    color: rgb(146, 229, 161);
+}
+
