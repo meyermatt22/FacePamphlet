@@ -3,16 +3,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: space-between;
+    height: 100px;
+    margin: 20px;
 }
 
-.confirm-profile-delete {
-    background-color: rgba(187, 31, 31, 0.308);
+/* .confirm-profile-delete2:hover {
+    background-color: red;
+    color: red;
     margin: 0px 2px;
-}
+} */
 
 .decline-profile-delete {
     margin: 0px 2px;
-    background-color: rgb(60,110,113);
-    color: rgb(255,255,255);
+    background-color: rgb(146, 229, 161);
+    color: rgb(2,2,4);
+}
+
+.modalText {
+    color: rgb(146, 229, 161);
+}
+
+button {
+    background-color: red;
 }

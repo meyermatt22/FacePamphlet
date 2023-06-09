@@ -209,7 +209,7 @@ function TTTModal({profileId}) {
         you must play the game till line makes three!</h1>
       </section>
       <section className="display">
-        Player <span className="display-player playerX">{currPlayer}</span>'s turn
+        <span className="display-player playerX">{currPlayer}</span>'s turn
       </section>
       <section className="container">
         <button className="tile" id="one" onClick={handleClick} value={tile1}>

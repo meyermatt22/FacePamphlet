@@ -26,7 +26,7 @@ function ProfileDeleteModal({profileId}) {
         <div className="delete-profile-div">
             <h1 className="modalText">Are you sure?</h1>
             <form>
-                <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/>
+                <OpenModalButton buttonText={"Yes, delete my profile"} className="confirm-profile-delete2" modalComponent={<TTTModal profileId={profileId}/>}/>
                 {/* <button className="confirm-profile-delete" type="submit">Yes, delete my profile</button> */}
                 <button className="decline-profile-delete" onClick={closeModal}>No, keep my profile</button>
             </form>
