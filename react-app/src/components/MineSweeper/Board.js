@@ -77,7 +77,7 @@ function Board({ profileId}) {
       let revealedboard = revealed(newGrid, x, y, nonMinecount);
       setGrid(revealedboard.arr);
       setNonMinecount(revealedboard.newNonMines);
-      if(nonMinecount === 0) setWinner(true)
+      if(nonMinecount < 1) setWinner(true)
     }
   };
   if (!grid) return <h1>grid is missing</h1>;
