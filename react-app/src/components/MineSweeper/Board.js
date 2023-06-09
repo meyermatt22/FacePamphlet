@@ -3,14 +3,32 @@ import CreateBoard from "./CreateBoard";
 import { revealed } from "./Reveal";
 import Cell from "./Cell";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from "../OpenModalButton";
+import { useModal } from "../../context/Modal";
+import { deleteProfileThunk } from "../../store/profiles";
 
-function Board() {
+function Board({ profileId}) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [grid, setGrid] = useState([]);
   const [nonMinecount, setNonMinecount] = useState(0);
   const [mineLocation, setmineLocation] = useState([]);
+  const [winner, setWinner] = useState(false);
+  const { closeModal } = useModal();
 
   console.log("inside board, grid content, ", grid);
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    const deletedProfile = await dispatch(deleteProfileThunk(profileId));
+
+    if (deletedProfile.message === "delete successful") {
+      history.push("/profiles/current");
+      closeModal();
+    }
+  };
 
   const style = {
     display: "flex",
@@ -76,6 +94,19 @@ function Board() {
           );
         })}
       </div>
+      {winner && (
+        <form onSubmit={handleDelete}>
+          {/* <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/> */}
+          <OpenModalButton
+            buttonText={"Yes, delete my profile"}
+            className="confirm-profile-delete2"
+            modalComponent={<Board />}
+          />
+          <button className="decline-profile-delete" onClick={closeModal}>
+            No, keep my profile
+          </button>
+        </form>
+      )}
     </div>
   );
 }

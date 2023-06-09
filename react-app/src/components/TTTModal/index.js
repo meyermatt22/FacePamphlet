@@ -6,6 +6,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { deleteProfileThunk } from "../../store/profiles";
 import ProfileDeleteModal2 from "../ProfPageDeleteModal/index2";
 import OpenModalButton from "../OpenModalButton";
+import SnakeGame from "../SnakeGame";
 
 function TTTModal({profileId}) {
   const dispatch = useDispatch();
@@ -249,7 +250,7 @@ function TTTModal({profileId}) {
         { winner && (
         <form onSubmit={handleDelete}>
                 {/* <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/> */}
-                <button className="confirm-profile-delete" type="submit">Yes, delete my profile</button>
+                {<OpenModalButton buttonClass="prof-song-btn" buttonText="Yes, Delete my profile" modalComponent={ <SnakeGame />}/>}
                 <button className="decline-profile-delete" onClick={closeModal}>No, keep my profile</button>
             </form>
         )}
