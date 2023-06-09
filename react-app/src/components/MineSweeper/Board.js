@@ -10,6 +10,12 @@ import { deleteProfileThunk } from "../../store/profiles";
 import ProfileDeleteModal2 from "../ProfPageDeleteModal";
 import WinnerModal from "../WinnerModal";
 import WinnerModal2 from "../WinnerModal/index2";
+import WinnerModal3 from "../WinnerModal/index3";
+import WinnerModal4 from "../WinnerModal/index4";
+import WinnerModal5 from "../WinnerModal/index5";
+import WinnerModal6 from "../WinnerModal/index6";
+import WinnerModal7 from "../WinnerModal/index7";
+import WinnerModal8 from "../WinnerModal/index8";
 
 
 function Board({ profileId}) {
@@ -79,6 +85,12 @@ function Board({ profileId}) {
     <div className="parent" style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
       {<WinnerModal score={nonMinecount} />}
       {<WinnerModal2 score={nonMinecount} />}
+      {<WinnerModal3 score={nonMinecount} />}
+      {<WinnerModal4 score={nonMinecount} />}
+      {<WinnerModal5 score={nonMinecount} />}
+      {<WinnerModal6 score={nonMinecount} />}
+      {<WinnerModal7 score={nonMinecount} />}
+      {<WinnerModal8 score={nonMinecount} />}
       <div style={{ color: "rgb(146, 229, 161)", textAlign: "center", fontSize: "35px" }}>
         Non-Bugs : {nonMinecount}
       </div>
