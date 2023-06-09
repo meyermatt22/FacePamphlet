@@ -8,6 +8,9 @@ import OpenModalButton from "../OpenModalButton";
 import { useModal } from "../../context/Modal";
 import { deleteProfileThunk } from "../../store/profiles";
 import ProfileDeleteModal2 from "../ProfPageDeleteModal";
+import WinnerModal from "../WinnerModal";
+import WinnerModal2 from "../WinnerModal/index2";
+
 
 function Board({ profileId}) {
   const history = useHistory();
@@ -74,6 +77,8 @@ function Board({ profileId}) {
   if (!grid) return <h1>grid is missing</h1>;
   return (
     <div className="parent" style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+      {<WinnerModal score={nonMinecount} />}
+      {<WinnerModal2 score={nonMinecount} />}
       <div style={{ color: "rgb(146, 229, 161)", textAlign: "center", fontSize: "35px" }}>
         Non-Bugs : {nonMinecount}
       </div>
