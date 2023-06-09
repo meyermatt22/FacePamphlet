@@ -250,7 +250,7 @@ function TTTModal({profileId}) {
         { winner && (
         <form onSubmit={handleDelete}>
                 {/* <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/> */}
-                {<OpenModalButton buttonClass="prof-song-btn" buttonText="Yes, Delete my profile" modalComponent={ <SnakeGame />}/>}
+                {<OpenModalButton buttonClass="prof-song-btn" buttonText="Yes, Delete my profile" modalComponent={ <SnakeGame profileId={profileId}/>}/>}
                 <button className="decline-profile-delete" onClick={closeModal}>No, keep my profile</button>
             </form>
         )}

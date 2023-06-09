@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
 import { useModal } from "../../context/Modal";
 import { deleteProfileThunk } from "../../store/profiles";
+import ProfileDeleteModal2 from "../ProfPageDeleteModal";
 
 function Board({ profileId}) {
   const history = useHistory();
@@ -48,7 +49,7 @@ function Board({ profileId}) {
   const updateFlag = (e, x, y) => {
     e.preventDefault();
     // deep copy of the object
-    console.log("right - click");
+    // console.log("right - click");
     let newGrid = JSON.parse(JSON.stringify(grid));
     newGrid[x][y].flagged = true;
     console.log(newGrid[x][y]);
@@ -67,14 +68,14 @@ function Board({ profileId}) {
       let revealedboard = revealed(newGrid, x, y, nonMinecount);
       setGrid(revealedboard.arr);
       setNonMinecount(revealedboard.newNonMines);
+      if(nonMinecount < 10) setWinner(true)
     }
   };
   if (!grid) return <h1>grid is missing</h1>;
   return (
-    <div className="parent">
-      <h1>look here</h1>
-      <div style={{ color: "white", textAlign: "center", fontSize: "35px" }}>
-        Non-Mines : {nonMinecount}
+    <div className="parent" style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+      <div style={{ color: "rgb(146, 229, 161)", textAlign: "center", fontSize: "35px" }}>
+        Non-Bugs : {nonMinecount}
       </div>
       <div>
         {grid.map((singlerow, index1) => {
@@ -96,16 +97,10 @@ function Board({ profileId}) {
       </div>
       {winner && (
         <form onSubmit={handleDelete}>
-          {/* <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/> */}
-          <OpenModalButton
-            buttonText={"Yes, delete my profile"}
-            className="confirm-profile-delete2"
-            modalComponent={<Board />}
-          />
-          <button className="decline-profile-delete" onClick={closeModal}>
-            No, keep my profile
-          </button>
-        </form>
+        {/* <OpenModalButton buttonText={"delete"} className="confirm-profile-delete" modalComponent={<TTTModal profileId={profileId}/>}/> */}
+        <button className="confirm-profile-delete" type="submit">Yes, delete my profile</button>
+        <button className="decline-profile-delete" onClick={closeModal}>No, keep my profile</button>
+    </form>
       )}
     </div>
   );

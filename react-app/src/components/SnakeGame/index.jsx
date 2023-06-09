@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import ProfileDeleteModal3 from "../ProfPageDeleteModal/index3";
 
-const SnakeGame = () => {
+const SnakeGame = ({ profileId }) => {
   const [x, setX] = useState(100);
   const [y, setY] = useState(100);
   const [keyPressed, setKeyPressed] = useState("none");
@@ -103,11 +104,11 @@ const SnakeGame = () => {
 
   return (
     <div>
-      <div className="great-grandfather" style={{ margin: "20px" }}>
+      <div className="great-grandfather" style={{ margin: "20px", backgroundColor: "rgb(128, 206, 135)" }}>
         <div
           className="grandfather"
           style={{
-            backgroundColor: "rgb(217,217,217)",
+            backgroundColor: "rgb(128, 206, 135)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -126,7 +127,7 @@ const SnakeGame = () => {
               position: "relative",
               width: "400px",
               height: "400px",
-              border: "2px solid rgb(60,110,113)",
+              border: "2px solid rgb(32, 72, 41)",
               borderRadius: "10px",
               caretColor: "transparent",
             }}
@@ -136,8 +137,8 @@ const SnakeGame = () => {
               style={{
                 width: "8px",
                 height: "8px",
-                border: "1px solid blue",
-                backgroundColor: "blue",
+                border: "1px solid rgb(2,2,4)",
+                backgroundColor: "rgb(2,2,4)",
                 position: "absolute",
                 left: x,
                 top: y,
@@ -152,8 +153,8 @@ const SnakeGame = () => {
                 style={{
                   width: "8px",
                   height: "8px",
-                  border: "1px solid blue",
-                  backgroundColor: "skyblue",
+                  border: "1px solid rgb(2,2,4)",
+                  backgroundColor: "rgb(2,2,4, .3)",
                   position: "absolute",
                   left: e[0],
                   top: e[1],
@@ -166,8 +167,8 @@ const SnakeGame = () => {
               style={{
                 width: "8px",
                 height: "8px",
-                border: "1px solid rgb(60,110,113)",
-                backgroundColor: "rgb(60,110,113)",
+                border: "1px solid rgb(32, 72, 41)",
+                backgroundColor: "rgb(32, 72, 41)",
                 position: "absolute",
                 left: foodX,
                 top: foodY,
@@ -177,7 +178,11 @@ const SnakeGame = () => {
           </div>
         </div>
       </div>
-      <div>{next && <div>delete account</div>}</div>
+      <div>{next && <ProfileDeleteModal3 profileId={profileId} />}</div>
+      <div>{!next && <p style={{ color: "rgb(146, 229, 161)", display:"flex", justifyContent:"center", height: "120px"}}>
+              so you've past the robot test? <br/> do you think that puts you above the rest? <br/>
+              it's time to become indy's greatest fear, <br/> Put your snake into solid metal gear
+        </p>}</div>
     </div>
   );
 };
