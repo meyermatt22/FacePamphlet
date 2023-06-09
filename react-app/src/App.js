@@ -46,6 +46,7 @@ function App() {
           <Route exact path="/home">
             <ProtectedRoute>
               <HomePage/>
+              <Footer />
             </ProtectedRoute>
           </Route>
           <Route exact path="/profiles">
