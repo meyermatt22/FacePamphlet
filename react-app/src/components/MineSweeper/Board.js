@@ -27,7 +27,7 @@ function Board({ profileId}) {
   const [winner, setWinner] = useState(false);
   const { closeModal } = useModal();
 
-  console.log("inside board, grid content, ", grid);
+  // console.log("inside board, grid content, ", grid);
 
   const handleDelete = async (e) => {
     e.preventDefault();

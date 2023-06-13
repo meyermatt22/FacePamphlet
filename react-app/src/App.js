@@ -97,7 +97,7 @@ function App() {
               <PostPageSingle />
             </ProtectedRoute>
           </Route>
-          <Route exact path="/profiles/delete/query">
+          <Route exact path="/profiles/delete/:id">
             <ProtectedRoute>
               <ProfileDeleteModal2 />
             </ProtectedRoute>
