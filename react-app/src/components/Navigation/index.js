@@ -11,9 +11,9 @@ function Navigation({ isLoaded }){
 		<div className='navTotal'>
 			<ul className='navbutns'>
 				{!sessionUser && (
-				<div id='noUser'>
+				<h1 id='noUser'>
 					FacePamphlet
-				</div>
+				</h1>
 				)}
 				{sessionUser && (
 					<div id='navB2'>
@@ -21,12 +21,12 @@ function Navigation({ isLoaded }){
 					<div >
 						<ProfileButton user={sessionUser} />
 					</div>
-					<div id='wUser'>
+					<h1 id='wUser'>
 						FacePamphlet
-					</div>
+					</h1>
 
-				<div>
-					<NavLink exact to="/home"><img className="homeB" src="https://i.imgur.com/2iSoM4U.png"></img></NavLink>
+				<div >
+					<NavLink id='navB3' exact to="/home"><img className="homeB" src="https://i.imgur.com/2iSoM4U.png"></img></NavLink>
 				</div>
 					</div>
 				)}

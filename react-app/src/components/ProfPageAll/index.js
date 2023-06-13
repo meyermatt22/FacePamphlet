@@ -39,7 +39,6 @@ function AllProfiles() {
                 {!userProf && (
                     <button className="profile-curr-btn" onClick={() => history.push(`/profiles/new`)}>Create a Profile</button>
                 )}
-                <h1>all profiles page</h1>
                 <input id="searchBar" placeholder="Find People (firstname & lastname)" onChange={event => setQuery(event.target.value)} />
             {profiles?.filter(prof => {
                 if (query === '') {

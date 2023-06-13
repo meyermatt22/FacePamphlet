@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import App from "./App";
 
 import "./index.css";
+import Footer from "./components/Footer";
 
 const store = configureStore();
 
@@ -27,6 +28,7 @@ function Root() {
 				<BrowserRouter>
 					<App />
 					<Modal />
+					<Footer />
 				</BrowserRouter>
 			</Provider>
 		</ModalProvider>
