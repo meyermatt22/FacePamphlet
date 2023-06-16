@@ -6,10 +6,10 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 
 ## Index
 
-[MVP Feature List](https://github.com/itsmaica/Remotebnb/wiki/Feature-List) |
-[Database Scheme](https://github.com/itsmaica/Remotebnb/wiki/Database-Schema) |
-[User Stories](https://github.com/itsmaica/Remotebnb/wiki/User-Stories) |
-[Wire Frames](https://github.com/itsmaica/Remotebnb/wiki/Wire-Frames) |
+[MVP Feature List](https://github.com/meyermatt22/Capstone-AA/wiki/Feature-List) |
+[Database Scheme](https://github.com/meyermatt22/Capstone-AA/wiki/Database-Schema-and-Backend-Routes) |
+[User Stories](https://github.com/meyermatt22/Capstone-AA/wiki/User-Stories) |
+[Wire Frames](https://github.com/meyermatt22/Capstone-AA/wiki/Wireframes) |
 
 ## Technologies Used
 
