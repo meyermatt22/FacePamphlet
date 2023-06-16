@@ -1,5 +1,5 @@
 #newProfForm {
-    /* border: green 2px solid; */
+
 }
 
 .form-input-box {
@@ -18,11 +18,13 @@
 }
 
 .inBox2 {
-    width: 300px;
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .inBox1 {
-    width: 90%;
+    width: 100%;
     height: 50px;
 }
 
@@ -35,4 +37,8 @@
 #aboutBoxin {
     margin: 0px;
 
+}
+
+.backPdiv {
+    width: 180px;
 }

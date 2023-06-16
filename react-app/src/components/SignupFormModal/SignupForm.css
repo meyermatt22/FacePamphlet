@@ -3,7 +3,13 @@
     flex-direction: column;
     align-items: center;
     width: 300px;
+    padding: 20px;
     /* box-shadow: 0px 0px 10px 10px rgb(60,110,113); */
+}
+
+.labelTag {
+    color: white;
+    padding: 0px 10px;
 }
 
 #signUpBtn {
@@ -30,4 +36,5 @@
 #subBox {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }

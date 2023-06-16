@@ -44,7 +44,9 @@ function SignupFormModal() {
 							<li key={idx}>{error}</li>
 						))}
 					</ul>
-					<label>
+					<label >
+						<h4 className="labelTag">email:</h4>
+						</label>
 						<input
 							className="inSignup"
 							placeholder="email"
@@ -53,8 +55,8 @@ function SignupFormModal() {
 							onChange={(e) => setEmail(e.target.value)}
 							required
 							/>
-					</label>
 					<label>
+						<h4 className="labelTag">username:</h4>
 						<input
 							className="inSignup"
 							placeholder="username"
@@ -65,6 +67,7 @@ function SignupFormModal() {
 							/>
 					</label>
 					<label>
+						<h4 className="labelTag">password:</h4>
 						<input
 							className="inSignup"
 							placeholder="password"
@@ -77,6 +80,7 @@ function SignupFormModal() {
 							/>
 					</label>
 					<label>
+						<h4 className="labelTag"> confirm password:</h4>
 						<input
 							className="inSignup"
 							placeholder="confirm password"

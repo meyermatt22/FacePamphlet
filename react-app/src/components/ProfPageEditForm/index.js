@@ -100,7 +100,7 @@ function ProfPageEditForm() {
         <div id="newProfWrap">
 
             <div id="newProfileForm">
-                <h1>Edit your profile!</h1>
+                <h1 className="titleT">Edit your profile!</h1>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <div>
                         <h2>The following errors were found:</h2>
@@ -182,7 +182,7 @@ function ProfPageEditForm() {
                     </div>
 
                     <div className="form-input-box">
-                        <div><label for="profPic"></label></div>
+                        <div><label for="profPic">Profile Picture: </label></div>
                         <input
                             className="inBox2"
                             type="file"
@@ -194,7 +194,7 @@ function ProfPageEditForm() {
                         </input>
                     </div>
                     <div className="form-input-box">
-                        <div><label for="backgroundPic"></label></div>
+                        <div className="backPdiv"><label for="backgroundPic">Background Picture:</label></div>
                         <input
                             className="inBox2"
                             type="file"
