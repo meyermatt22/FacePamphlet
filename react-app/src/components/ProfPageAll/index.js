@@ -48,14 +48,22 @@ function AllProfiles() {
                 } else if (prof.lastName.toLowerCase().includes(query.toLocaleLowerCase())) {
                     return prof
                 }
-            }).map(({ firstName, lastName, middleName, profPic, dateOfBirth, backgroundPic, id }) => (
+            }).map(({ firstName, lastName, middleName, profPic, dateOfBirth, backgroundPic, id, bio }) => (
 
                 <NavLink to={`/profiles/${id}`} key={id} className="profDiv">
                     <div className="picDiv">
                         <img className="profPic" src={profPic}></img>
                     </div>
-                    <div>
-                        {firstName} {middleName} {lastName}. Born on {dateOfBirth}
+                    <div className="profInfo">
+                    <h2>
+                        {firstName} {middleName} {lastName}
+                    </h2>
+                    <div className="bioText">
+                    <h5 >
+                        {bio}
+                    </h5>
+
+                    </div>
                     </div>
                 </NavLink>
             ))}

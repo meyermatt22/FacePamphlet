@@ -1,9 +1,17 @@
 #profPageSingle {
-    background-color: rgb(2,2,4);
+    /* background-color: rgb(2,2,4); */
     /* padding: 5px; */
     color: rgb(146,229,161);
+}
+
+#ppWrapper {
     background-image: url("https://i.imgur.com/QVXxGSI.gif");
 
+}
+
+#pPS2 {
+    background-color: rgb(2,2,4);
+    margin: 0px 50px;
 }
 
 #backimg {
@@ -27,14 +35,30 @@
     border-radius: 50px;
     border: black solid 5px;
     box-shadow: 12px 12px 2px 1px white;
-    background-color: rgb(60,110,113);
+    background-color: rgb(2,2,4);
 }
 
 #profInfo {
-    margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(2,2,4);
+    margin: 0px 200px;
+    padding: 0px 100px;
+    padding-bottom: 100px;
+    border-radius: 800px;
+    margin-bottom: 0px;
+}
+
+#profName {
+    margin: 20px;
+}
+
+#profBio {
+    width: 500px;
+    margin: 20px;
+    box-shadow: 0px 0px 10px 10px rgb(146, 229, 161);
+    padding: 20px;
 }
 
 #filler {
@@ -47,10 +71,17 @@
     width: 80%;
 }
 
+#nopostsdiv {
+    display: flex;
+    justify-content: center;
+}
+
 .userPost {
-    border: 1px solid rgb(146,229,161);
+    /* border: 1px solid rgb(146,229,161); */
+    box-shadow: 0px 0px 5px 5px rgb(146, 229, 161);
     height: auto;
-    padding: 5px;;
+    padding: 10px;
+    margin: 10px;
 }
 
 .postDate {
@@ -77,4 +108,8 @@
 .profile-new-btn:hover {
     cursor: pointer;
     box-shadow: 0px 0px 10px 5px rgb(146, 229, 161);
+}
+
+#bottomBs {
+    margin-top: 40px;
 }

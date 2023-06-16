@@ -58,37 +58,52 @@ function ProfPageSingle() {
     // console.log('session number type ', sessionUser.id, id, parseInt(id) === parseInt(sessionUser.id))
 
     return (
-        <div id="profPageSingle">
-            <div id="backimgCont">
-                <img id="backimg" src={profiles[id]?.backgroundPic}></img>
-            </div>
-            <div>
-                <img id="profimg" src={profiles[id]?.profPic}></img>
-            </div>
-            <div id="filler">
+        <div id="ppWrapper">
 
-            </div>
-            <div id="profInfo">
-                <h1>{profiles[id]?.firstName}'s prof page</h1>
-                {profiles[id]?.firstName} {profiles[id]?.middleName} {profiles[id]?.lastName}
-                <div>{profiles[id]?.bio}</div>
-                <div id="userPosts">
-                {sortedPosts?.map(({textContent, id, createdAt}) => (
-                    <div className="userPost" key={id}>
-                        {textContent}
-                        <div className="postDate">posted at {new Date(createdAt).toLocaleTimeString('en-US')} on: {new Date(createdAt).toLocaleDateString()}</div>
-                    </div>
-                ))}
+        <div id="profPageSingle">
+
+
+                <div id="backimgCont">
+                    <img id="backimg" src={profiles[id]?.backgroundPic}></img>
                 </div>
-            {sessionUser && sessionUser.id === profiles[id]?.userId && (
-                <button className="profile-edit-btn" onClick={() => history.push(`/profiles/edit/${sessionUser.id}`)}>Edit Profile</button>
-                )}
-            {sessionUser && sessionUser.id === profiles[id]?.userId && (
-                <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={id}/>}/>
-                )}
-                {/* {<OpenModalButton buttonClass="prof-song-btn" buttonText="Snake Game" modalComponent={ <SnakeGame />}/>} */}
-                {/* {<OpenModalButton buttonClass="prof-song-btn" buttonText="minesweeper" modalComponent={ <Game />}/>} */}
-            </div>
+                <div>
+                    <img id="profimg" src={profiles[id]?.profPic}></img>
+                </div>
+                <div id="filler">
+
+                </div>
+                <div id="profInfo">
+                    <h1 id="profName">{profiles[id]?.firstName} {profiles[id]?.middleName} {profiles[id]?.lastName}</h1>
+                    <label>About Me: </label>
+                    <div id="profBio">{profiles[id]?.bio}</div>
+                    <label>My most recent posts:</label>
+                    <div id="userPosts">
+                    {sortedPosts?.map(({textContent, id, createdAt}) => (
+                        <div className="userPost" key={id}>
+                            {textContent}
+                            <div className="postDate">posted at {new Date(createdAt).toLocaleTimeString('en-US')} on: {new Date(createdAt).toLocaleDateString()}</div>
+                        </div>
+                    ))}
+                    {sortedPosts.length === 0 && (
+                        <div id="nopostsdiv">
+                            <h1>{profiles[id]?.firstName} has not yet posted</h1>
+                        </div>
+                    )}
+                    </div>
+                    <div id="bottomBs">
+                {sessionUser && sessionUser.id === profiles[id]?.userId && (
+                    <button className="profile-edit-btn" onClick={() => history.push(`/profiles/edit/${sessionUser.id}`)}>Edit Profile</button>
+                    )}
+                {sessionUser && sessionUser.id === profiles[id]?.userId && (
+                    <OpenModalButton buttonClass="song-del-btn" buttonText="Delete Profile" modalComponent={<ProfileDeleteModal profileId={id}/>}/>
+                    )}
+
+                    </div>
+                    {/* {<OpenModalButton buttonClass="prof-song-btn" buttonText="Snake Game" modalComponent={ <SnakeGame />}/>} */}
+                    {/* {<OpenModalButton buttonClass="prof-song-btn" buttonText="minesweeper" modalComponent={ <Game />}/>} */}
+                </div>
+        </div>
+
         </div>
     )
 }

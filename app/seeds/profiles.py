@@ -1,6 +1,6 @@
 from app.models import db, Profile, environment, SCHEMA
 from sqlalchemy.sql import text
-from datetime import datetime
+from datetime import datetime, date
 
 def seed_profiles():
     bubbles = Profile(
