@@ -23,11 +23,14 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 ## Login / Signup page
 ![splash](https://i.imgur.com/Fai9VLl.jpg)
 
-## Spots
-![ezgif com-gif-maker](https://i.imgur.com/pRLRZwp.mp4)
+## Profiles
+![profiles](https://i.imgur.com/bwC5xEK.jpg)
 
-## One spot page and reviews
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/66566925/174562986-bf32d1d3-29f3-4da1-a4a7-0762f259c31e.gif)
+## Posts
+![posts](https://i.imgur.com/UumSE9e.jpg)
+
+## Profile Page 
+![profile](https://i.imgur.com/L8qfmqj.jpg)
 
 
 ## Getting started
