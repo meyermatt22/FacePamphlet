@@ -83,3 +83,8 @@ Logged-in Users can
 ## AWS
 Logged-in Users can
 * Upload multiple images to their profiles using AWS
+
+## Landing Page
+You can access the Login and Signup page here. Also, we have a demo user button for you to check the website.
+
+**Home Page: [Facepamphlet](https://facepamphlet.onrender.com)**
