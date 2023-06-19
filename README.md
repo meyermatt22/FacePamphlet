@@ -50,16 +50,28 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 
 # Features 
 
-## Spots
-* Users can create a Spot
-* Users can read/view other Spot
-* Users can update their Spot
-* Users can delete their Spot
+## Profiles
+* Users can create a Profile
+* Users can view profiles
+* Users can update their Profile
+* Users can delete their Profile
 
-## Reviews
-* Users can create Reviews on Spots
-* users can read/view all of the Reviews on a Spot
-* Users can delete their Review(s) on a Spot
+## Posts
+* Users can post content
+* Users can read/view all of the posts on FacePamphlet
+* Users can edit their posts
+* Users can delete their posts
+
+## Comments
+* Users can publish comments on posts
+* Users can read/view all of the comments on a post
+* Users can edit their comments
+* Users can delete their comments
+
+## Likes
+* Users can like and dislike posts
+* users can read/view all of the likes on a post
+* Users can delete (unlike) their likes on a Post
 
 ## Bookings
 Logged-in Users can
@@ -70,10 +82,4 @@ Logged-in Users can
 
 ## AWS
 Logged-in Users can
-* Upload multiple images of their spot to AWS S3
-
-
-## Future Features
-### Google Maps Api
-Logged in Users can
-* Locate their spot with Google Maps Api 
+* Upload multiple images to their profiles using AWS
