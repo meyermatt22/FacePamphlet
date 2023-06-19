@@ -20,8 +20,8 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 * React
 * Redux
 
-## Splash Page
-![splash](https://user-images.githubusercontent.com/66566925/174560214-c0601b18-8cbe-4ce4-895c-8bf8b196eeb5.gif)
+## Login / Signup page
+![splash](https://i.imgur.com/Fai9VLl.jpg)
 
 ## Spots
 ![spots](https://user-images.githubusercontent.com/66566925/174561250-05f8e96e-eb7e-4741-9167-e3a6eaf2f7d0.gif)
