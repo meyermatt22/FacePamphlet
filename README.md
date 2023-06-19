@@ -34,28 +34,14 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 
 
 ## Getting started
-1. Clone this repository:
-
-   `
-   https://github.com/itsmaica/Remotebnb.git
-   `
-2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
-
-   * `npm install`
-
-3. Create a **.env** file using the **.envexample** provided 
-
-4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed: 
- 
-   * `npx dotenv sequelize db:create`
-   * `npx dotenv sequelize db:migrate` 
-   * `npx dotenv sequelize db:seed:all`
-
-5. Start the app for both backend and frontend using:
-
-   * `npm start`
-
-6. Now you can use the Demo User or Create an account
+#### How to start project locally:
+1. clone the repo into a desired location
+2. cd into the react-app folder and npm install all the dependencies
+3. run pipenv install -r requirements.txt from the root directory
+4. get into the shell with pipenv shell
+5. run the following commands in order: flask db init, flask db migrate, flask db upgrade, flask seed all
+6. to start the server run flask run
+7. cd into the react-app and run npm start
 
 ## Amazon Web Services S3
 * For setting up your AWS refer to this [guide](https://github.com/jdrichardsappacad/aws-s3-pern-demo)
