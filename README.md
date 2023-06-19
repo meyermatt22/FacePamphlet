@@ -24,7 +24,7 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 ![splash](https://i.imgur.com/Fai9VLl.jpg)
 
 ## Spots
-![spots](https://user-images.githubusercontent.com/66566925/174561250-05f8e96e-eb7e-4741-9167-e3a6eaf2f7d0.gif)
+![spots](https://i.imgur.com/BuUVGth.mp4)
 
 ## One spot page and reviews
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/66566925/174562986-bf32d1d3-29f3-4da1-a4a7-0762f259c31e.gif)
