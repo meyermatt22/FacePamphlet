@@ -18,7 +18,7 @@ function ProfPageCurr() {
     const sessionUser = useSelector(state => state.session.user);
     const profiles = useSelector(state => Object.values(state.profiles))
     const posts = useSelector(state => Object.values(state.posts));
-    // console.log("this should be the session user : ", sessionUser, profiles)
+
 
     let userProf = ''
     let userPosts = []
@@ -37,8 +37,7 @@ function ProfPageCurr() {
 
     let sortedPosts = userPosts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
-    // const userProf = useSelector(state => state.profile)
-    // console.log(userProf)
+    
     if(!userProf && sessionUser) {
         return (
             <div id="noProfPage">

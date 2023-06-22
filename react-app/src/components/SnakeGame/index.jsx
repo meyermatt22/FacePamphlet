@@ -24,7 +24,6 @@ const SnakeGame = ({ profileId }) => {
     false
   );
 
-  console.log(keyPressed);
 
   function eatFood() {
     if (

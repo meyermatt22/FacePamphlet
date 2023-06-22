@@ -31,7 +31,7 @@ function AllPosts() {
 
   // const buttonRef = useRef();
 
-  // console.log('all post page button ref reference:' , buttonRef)
+
 
   // const handleTextContent = (e) => {
   //     if(textContent.length < 100) setTextContent(e.target.value)
@@ -69,16 +69,7 @@ function AllPosts() {
     setHasSubmitted2(false);
   };
 
-  // const handleClick = async (e) => {
-  //     e.preventDefault();
-  //     if(propD === "dropDown") {
-  //         propD = "downDrop"
-  //     } else {
-  //         propD = "dropDown"
-  //     }
-  // }
 
-  // console.log("handle click stuff, propD status", propD)
 
   useEffect(() => {
     const errors = [];
@@ -101,16 +92,10 @@ function AllPosts() {
 
   if (posts.length < 1) return <h1>where have all the posts gone?</h1>;
 
-  // console.log('inside all posts, info for sort', posts)
 
-  // let sortedPosts = posts.sort(
-  //     (a, b) =>
-  //     new Date(...b.createdAt.split("/").reverse()) -
-  //     new Date(...a.createdAt.split("/").reverse())
-  //     );
   let sortedPosts = posts.sort((a, b) => b.id - a.id);
 
-  // console.log('all of the sorted posts, ,,, ', comments)
+
 
   return (
     <div id="allpostpage">

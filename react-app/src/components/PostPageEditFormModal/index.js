@@ -8,21 +8,19 @@ import './PostPageEditFormModal.css'
 function PostPageEditFormModal({ id }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { id } = useParams();
-    const { closeModal } = useModal()
-    // const goHere = id
 
-    // console.log(id)
+    const { closeModal } = useModal()
+
 
     useEffect(() => {
         dispatch(getOnePostThunk(id))
     }, [dispatch, id]);
 
     const post = useSelector(state => state.posts)
-    // console.log('post inside edit page ==> ', (post[id]))
+
 
     const [textContent, setTextContent] = useState('');
-    // const [createdAt, setCreatedAt] = useState(post[id]?.createdAt);
+
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -30,31 +28,27 @@ function PostPageEditFormModal({ id }) {
     useEffect(() => {
         if(post[id]) {
             setTextContent(post[id].textContent)
-            // setTextContent(post[id].createdAt)
+
         }
     }, [post[id]?.textContent]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log('in the handle submit ==> ')
+
 
         setHasSubmitted(true);
         if(validationErrors.length) return alert('Your Post has errors, cannot submit!');
 
         const formData = new FormData();
         formData.append('text_content', textContent);
-        // formData.append('created_at', createdAt);
 
-        // console.log('inside handle submit for edit post 1 ==> ', textContent)
-
-        // console.log('inside handle submit for edit post 2 ==> ', formData, id)
 
         const updatedPost = await dispatch(editPostThunk(formData, id));
-        // console.log('inside handle submit for edit post 3 ==> ', updatedPost)
+
 
         setTextContent(post[id]?.textContent);
-        // setCreatedAt(post[id].createdAt);
+      
 
         setValidationErrors([]);
         setHasSubmitted(false);

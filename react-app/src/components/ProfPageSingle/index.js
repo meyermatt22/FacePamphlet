@@ -32,13 +32,9 @@ function ProfPageSingle() {
             userPosts.push(posts[i])
         }
     }
-    // for(let i = 0; i < profiles.length; i++) {
-    //     if (profiles[i].userId === parseInt(sessionUser.id)) {
-    //         userProf = profiles[i]
-    //     }
-    // }
 
-    console.log('inside single prof page', userProf)
+
+
 
     let sortedPosts = userPosts.sort((a,b) => new Date(...b.createdAt.split('/').reverse()) - new Date(...a.createdAt.split('/').reverse()))
 
@@ -52,10 +48,6 @@ function ProfPageSingle() {
 
     if(profiles.length < 1) return null
 
-
-
-
-    // console.log('session number type ', sessionUser.id, id, parseInt(id) === parseInt(sessionUser.id))
 
     return (
         <div id="ppWrapper">
@@ -74,6 +66,7 @@ function ProfPageSingle() {
                 </div>
                 <div id="profInfo">
                     <h1 id="profName">{profiles[id]?.firstName} {profiles[id]?.middleName} {profiles[id]?.lastName}</h1>
+                    <h4 id="profDOB">Born on {profiles[id]?.dateOfBirth.slice(0,17)}</h4>
                     <label>About Me: </label>
                     <div id="profBio">{profiles[id]?.bio}</div>
                     <label>My most recent posts:</label>

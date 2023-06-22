@@ -76,7 +76,7 @@ function TTTModal({profileId}) {
   useEffect(() => {
        for(let i = 0; i < winningConditions.length; i++) {
         let set = winningConditions[i]
-        console.log(tilesArray[set[0]], tilesArray[set[1]] , tilesArray[set[2]], set[1])
+       
         if(tilesArray[set[0]] === 'O' && tilesArray[set[1]] === 'O' && tilesArray[set[2]] === 'O') {
             setWinner(true)
 

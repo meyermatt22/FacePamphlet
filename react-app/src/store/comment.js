@@ -35,9 +35,9 @@ export const getAllCommentsThunk = () => async (dispatch) => {
 
     if(res.ok) {
         const { comments } = await res.json();
-        console.log('inside get all comments thunk', comments)
+
         dispatch(getAllCommentsAction(comments))
-        console.log('inside get all comments thunk 2', comments)
+
         return comments
     } else {
         return "==========> getAllCommentsThunk res is not ok <=========="
@@ -57,13 +57,12 @@ export const getOneCommentThunk = (commentId) => async (dispatch) => {
 };
 
 export const createCommentThunk = (comment) => async (dispatch) => {
-    console.log('111inside create comment thunk ========>', comment)
+
     const res = await fetch('/api/comments/new', {
         method: "POST",
         body: comment
     });
 
-    console.log('22inside create comment thunk ========>', res)
     if(res.ok) {
         const comment = await res.json();
         dispatch(createCommentAction(comment));
@@ -79,8 +78,6 @@ export const editCommentThunk = (comment, id) => async (dispatch) => {
         method: 'PUT',
         body: comment
     })
-    console.log('inside edit comment thunk ===>', res)
-
 
     if(res.ok) {
         const comment = await res.json()
@@ -120,7 +117,6 @@ function commentReducer(state = initState, action) {
             return newState;
         case CREATE_COMMENT:
             newState = {...state};
-            console.log('action ACTION in the reducer... ==> ', action)
             newState[action.comment.id] = action.comment;
             return newState;
         case EDIT_COMMENT:

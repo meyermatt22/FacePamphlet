@@ -14,9 +14,6 @@ function AllComments() {
 
     const comments = useSelector(state => Object.values(state.comments))
 
-    console.log('inside all comments area : ', comments)
-
-    // if(comments.length < 1) return <h1>Where have all the comments gone?</h1>
 
     return (
         <div id="allComments">

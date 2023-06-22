@@ -26,13 +26,13 @@ const deleteLikeAction = (likeId) => ({
 
 export const getAllLikeThunk = () => async (dispatch) => {
   const res = await fetch(`/api/likes`);
-  console.log("inside get all like thunk, res==> ", res);
+
 
   if (res.ok) {
     const { likes } = await res.json();
-    // console.log('inside get all likes thunk', likes)
+
     dispatch(getAllLikesAction(likes));
-    // console.log('inside get all likes thunk 2', likes)
+   
     return likes;
   } else {
     return "==========> getAllLikesThunk res is not ok <==========";

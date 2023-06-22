@@ -24,7 +24,7 @@ function ProfPageEditForm() {
     }, [dispatch])
 
     const profiles = useSelector(state => Object.values(state.profiles))
-    // console.log('current users profiles', profiles)
+
     let userProf = ''
 
     for(let i = 0; i < profiles.length; i++) {
@@ -33,7 +33,6 @@ function ProfPageEditForm() {
         }
     }
 
-    // console.log('current users profile', userProf.backgroundPic)
 
 
     useEffect(() => {
@@ -44,7 +43,6 @@ function ProfPageEditForm() {
           setMiddleName(userProf.middleName)
           setProfPic(userProf.profPic)
           setBackgroundPic(userProf.backgroundPic)
-        //   console.log('user prof background pic 888 ==>' ,userProf)
           setDateOfBirth(userProf.dateOfBirth)
         }
       }, [userProf])
@@ -56,7 +54,7 @@ function ProfPageEditForm() {
         if(validationErrors.length) return alert('Your Profile has errors, cannot submit!')
 
         const formData = new FormData()
-        // formData.append()
+     
         formData.append('bio', bio)
         formData.append('date_of_birth', dateOfBirth)
         formData.append('first_name', firstName)

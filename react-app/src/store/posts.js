@@ -66,7 +66,6 @@ export const createPostThunk = (post) => async (dispatch) => {
     body: post,
   });
 
-  console.log("inside create post thunk ========>", res);
   if (res.ok) {
     const post = await res.json();
     dispatch(createPostAction(post));
@@ -81,7 +80,6 @@ export const editPostThunk = (post, id) => async (dispatch) => {
     method: "PUT",
     body: post,
   });
-  console.log("inside edit post thunk ===>", res);
 
   if (res.ok) {
     const post = await res.json();
@@ -110,8 +108,6 @@ export const addLikeToPostThunk = (postId) => async (dispatch) => {
         method: "POST",
         body: postId
     });
-
-    console.log('addliketopostthunk inside heres the res ', res)
 
     if(res.ok) {
         const post = await res.json()

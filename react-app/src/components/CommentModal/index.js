@@ -14,14 +14,6 @@ function CommentModal({postId}) {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
-    // useEffect(() => {
-    //     dispatch(getOnePostThunk(postId))
-    // }, [dispatch, postId]);
-
-    // const post = useSelector(state => state.posts)
-
-    // console.log('inside comment model, heres the post', post)
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 

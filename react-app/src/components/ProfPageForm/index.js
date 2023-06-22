@@ -20,7 +20,7 @@ function ProfPageForm() {
 
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
-    // console.log('new prof form, birthday info 2',  Date.now())
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -65,7 +65,7 @@ function ProfPageForm() {
         setValidationErrors(errors)
     }, [ bio, dateOfBirth, firstName, lastName, middleName, profPic, backgroundPic ])
 
-    // console.log('errors in prof page form ===> ', validationErrors)
+  
 
     return (
         <div id="newProfWrap">

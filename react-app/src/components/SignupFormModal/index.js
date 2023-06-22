@@ -32,7 +32,6 @@ function SignupFormModal() {
 		}
 	};
 
-	console.log('signup errors: ', errors['undefined'])
 
 	return (
 		<div  id="signUpModal2">

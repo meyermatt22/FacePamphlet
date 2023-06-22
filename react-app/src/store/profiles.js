@@ -64,7 +64,6 @@ export const getCurrProfThunk = () => async (dispatch) => {
 
     if(res.ok) {
         const profile  = await res.json()
-        console.log('getcurrprofthunk profile is right here ==>', profile)
         dispatch(getCurrProfAction(profile))
         return profile
     } else {

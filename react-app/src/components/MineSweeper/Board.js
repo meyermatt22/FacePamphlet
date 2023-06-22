@@ -27,7 +27,7 @@ function Board({ profileId}) {
   const [winner, setWinner] = useState(false);
   const { closeModal } = useModal();
 
-  // console.log("inside board, grid content, ", grid);
+
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -48,7 +48,7 @@ function Board({ profileId}) {
     const freshBoard = () => {
       const newBoard = CreateBoard(10, 10, 20);
       setNonMinecount(10 * 10 - 20);
-      // console.log(newBoard.mineLocation);
+
       setmineLocation(newBoard.mineLocation);
       setGrid(newBoard.board);
     };
@@ -57,11 +57,10 @@ function Board({ profileId}) {
 
   const updateFlag = (e, x, y) => {
     e.preventDefault();
-    // deep copy of the object
-    // console.log("right - click");
+
     let newGrid = JSON.parse(JSON.stringify(grid));
     newGrid[x][y].flagged = true;
-    console.log(newGrid[x][y]);
+   
     setGrid(newGrid);
   };
 
