@@ -4,7 +4,7 @@ const CREATE_POST = "posts/CREATE_POST";
 const EDIT_POST = "posts/EDIT_POST";
 const DELETE_POST = "posts/DELETE_POST";
 
-const ADD_LIKE_TO_POST = "posts/ADD_LIKE_TO_POST";
+// const ADD_LIKE_TO_POST = "posts/ADD_LIKE_TO_POST";
 
 const getAllPostsAction = (posts) => ({
   type: GET_ALL_POSTS,
@@ -31,10 +31,10 @@ const deletePostAction = (postId) => ({
   postId,
 });
 
-const createLikeAction = (post) => ({
-  type: ADD_LIKE_TO_POST,
-  post,
-});
+// const createLikeAction = (post) => ({
+//   type: ADD_LIKE_TO_POST,
+//   post,
+// });
 
 export const getAllPostsThunk = () => async (dispatch) => {
   const res = await fetch("/api/posts");
@@ -103,20 +103,20 @@ export const deletePostThunk = (postId) => async (dispatch) => {
   }
 };
 
-export const addLikeToPostThunk = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/posts/${postId}/like`, {
-        method: "POST",
-        body: postId
-    });
+// export const addLikeToPostThunk = (postId) => async (dispatch) => {
+//     const res = await fetch(`/api/posts/${postId}/like`, {
+//         method: "POST",
+//         body: postId
+//     });
 
-    if(res.ok) {
-        const post = await res.json()
-        dispatch(createLikeAction(post))
-        return post
-    } else {
-        return "==========> addLikeToPostThunk res is not ok <==========";
-    };
-};
+//     if(res.ok) {
+//         const post = await res.json()
+//         dispatch(createLikeAction(post))
+//         return post
+//     } else {
+//         return "==========> addLikeToPostThunk res is not ok <==========";
+//     };
+// };
 
 const initState = {};
 function postReducer(state = initState, action) {
@@ -144,10 +144,10 @@ function postReducer(state = initState, action) {
       newState = { ...state };
       delete newState[action.postId];
       return newState;
-    case ADD_LIKE_TO_POST:
-      newState = {...state};
-      newState[action.post.id] = action.post;
-      return newState;
+    // case ADD_LIKE_TO_POST:
+    //   newState = {...state};
+    //   newState[action.post.id] = action.post;
+    //   return newState;
     default:
       return state;
   }

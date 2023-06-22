@@ -3,6 +3,7 @@ const GET_LIKE = "likes/GET_LIKE";
 const GET_USERS_LIKES = "likes/GET_USERS_LIKES";
 
 const DELETE_LIKE = "likes/DELETE_LIKE";
+const CREATE_LIKE = "likes/CREATE_LIKE";
 
 const getAllLikesAction = (Likes) => ({
   type: GET_ALL_LIKES,
@@ -24,6 +25,11 @@ const deleteLikeAction = (likeId) => ({
   likeId,
 });
 
+const createLikeAction = (like) => ({
+  type: CREATE_LIKE,
+  like,
+});
+
 export const getAllLikeThunk = () => async (dispatch) => {
   const res = await fetch(`/api/likes`);
 
@@ -32,7 +38,7 @@ export const getAllLikeThunk = () => async (dispatch) => {
     const { likes } = await res.json();
 
     dispatch(getAllLikesAction(likes));
-   
+
     return likes;
   } else {
     return "==========> getAllLikesThunk res is not ok <==========";
@@ -75,6 +81,21 @@ export const deleteLikeThunk = (likeId) => async (dispatch) => {
   }
 };
 
+export const createLikeThunk = (like) => async (dispatch) => {
+  const res = await fetch(`/api/likes/like`, {
+      method: "POST",
+      body: like
+  });
+
+  if(res.ok) {
+      const like = await res.json()
+      dispatch(createLikeAction(like))
+      return like
+  } else {
+      return "==========> createLikeThunk res is not ok <==========";
+  };
+};
+
 const initState = {};
 function likeReducer(state = initState, action) {
   let newState;
@@ -98,6 +119,10 @@ function likeReducer(state = initState, action) {
     case DELETE_LIKE:
       newState = {...state};
       delete newState[action.likeId];
+      return newState;
+    case CREATE_LIKE:
+      newState = {...state};
+      newState[action.like.id] = action.like;
       return newState;
     default:
       return state;
