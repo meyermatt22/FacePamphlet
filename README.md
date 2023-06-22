@@ -13,41 +13,35 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 
 ## Technologies Used
 
-<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /><img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /><img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" /><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /><img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" /><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /><img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
+* Python
+* JS
+* PostgreSQL
+* Flask
+* React
+* Redux
 
-## Splash Page
-![splash](https://user-images.githubusercontent.com/66566925/174560214-c0601b18-8cbe-4ce4-895c-8bf8b196eeb5.gif)
+## Login / Signup page
+![splash](https://i.imgur.com/Fai9VLl.jpg)
 
-## Spots
-![spots](https://user-images.githubusercontent.com/66566925/174561250-05f8e96e-eb7e-4741-9167-e3a6eaf2f7d0.gif)
+## Profiles
+![profiles](https://i.imgur.com/bwC5xEK.jpg)
 
-## One spot page and reviews
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/66566925/174562986-bf32d1d3-29f3-4da1-a4a7-0762f259c31e.gif)
+## Posts
+![posts](https://i.imgur.com/UumSE9e.jpg)
+
+## Profile Page 
+![profile](https://i.imgur.com/L8qfmqj.jpg)
 
 
 ## Getting started
-1. Clone this repository:
-
-   `
-   https://github.com/itsmaica/Remotebnb.git
-   `
-2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
-
-   * `npm install`
-
-3. Create a **.env** file using the **.envexample** provided 
-
-4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed: 
- 
-   * `npx dotenv sequelize db:create`
-   * `npx dotenv sequelize db:migrate` 
-   * `npx dotenv sequelize db:seed:all`
-
-5. Start the app for both backend and frontend using:
-
-   * `npm start`
-
-6. Now you can use the Demo User or Create an account
+#### How to start project locally:
+1. clone the repo into a desired location
+2. cd into the react-app folder and npm install all the dependencies
+3. run pipenv install -r requirements.txt from the root directory
+4. get into the shell with pipenv shell
+5. run the following commands in order: flask db init, flask db migrate, flask db upgrade, flask seed all
+6. to start the server run flask run
+7. cd into the react-app and run npm start
 
 ## Amazon Web Services S3
 * For setting up your AWS refer to this [guide](https://github.com/jdrichardsappacad/aws-s3-pern-demo)
@@ -56,16 +50,28 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 
 # Features 
 
-## Spots
-* Users can create a Spot
-* Users can read/view other Spot
-* Users can update their Spot
-* Users can delete their Spot
+## Profiles
+* Users can create a Profile
+* Users can view profiles
+* Users can update their Profile
+* Users can delete their Profile
 
-## Reviews
-* Users can create Reviews on Spots
-* users can read/view all of the Reviews on a Spot
-* Users can delete their Review(s) on a Spot
+## Posts
+* Users can post content
+* Users can read/view all of the posts on FacePamphlet
+* Users can edit their posts
+* Users can delete their posts
+
+## Comments
+* Users can publish comments on posts
+* Users can read/view all of the comments on a post
+* Users can edit their comments
+* Users can delete their comments
+
+## Likes
+* Users can like and dislike posts
+* users can read/view all of the likes on a post
+* Users can delete (unlike) their likes on a Post
 
 ## Bookings
 Logged-in Users can
@@ -76,10 +82,9 @@ Logged-in Users can
 
 ## AWS
 Logged-in Users can
-* Upload multiple images of their spot to AWS S3
+* Upload multiple images to their profiles using AWS
 
+## Landing Page
+You can access the Login and Signup page here. Also, we have a demo user button for you to check the website.
 
-## Future Features
-### Google Maps Api
-Logged in Users can
-* Locate their spot with Google Maps Api 
+**Home Page: [Facepamphlet](https://facepamphlet.onrender.com)**
