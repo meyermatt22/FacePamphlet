@@ -9,7 +9,7 @@ Check out [FacePamphlet](https://facepamphlet.onrender.com)
 [MVP Feature List](https://github.com/meyermatt22/Capstone-AA/wiki/Feature-List) |
 [Database Scheme](https://github.com/meyermatt22/Capstone-AA/wiki/Database-Schema-and-Backend-Routes) |
 [User Stories](https://github.com/meyermatt22/Capstone-AA/wiki/User-Stories) |
-[Wire Frames](https://github.com/meyermatt22/Capstone-AA/wiki/Wireframes) |
+[Wire Frames](https://github.com/meyermatt22/Capstone-AA/wiki/Wireframes) 
 
 ## Technologies Used
 
